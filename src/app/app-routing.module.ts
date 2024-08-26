@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'advertisement-page',
     loadChildren: () => import('./pages/advertisement-page/advertisement-page.module').then( m => m.AdvertisementPagePageModule)
   },
+  {
+    path: 'post-ad-home-page',
+    loadChildren: () => import('./pages/post-ad-home-page/post-ad-home-page.module').then( m => m.PostAdHomePagePageModule)
+  },
 
 
 ];
