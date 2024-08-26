@@ -5,3 +5,17 @@ ion-header{
         }
     }
 }
+
+ion-content{
+    .filter-box{
+        .search-bar{
+            margin-top: 15px;
+
+            ion-searchbar{
+                --border-radius:15px;
+                border-radius: var(--border-radius);
+            }
+
+        }
+    }
+}

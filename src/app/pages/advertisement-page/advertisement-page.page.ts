@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-advertisement-page',
   templateUrl: './advertisement-page.page.html',
@@ -7,12 +8,18 @@ import { NavController } from '@ionic/angular';
 })
 export class AdvertisementPagePage implements OnInit {
 
+  searchTerm: string = '';
+
   constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
   goToDetailsPage() {
     this.navCtrl.navigateForward('/post-ad-home-page');
+  }
+
+  search(event: any) {
+  
   }
 
 }

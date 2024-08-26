@@ -8,3 +8,16 @@
     <ion-button slot="end"  color="warning" (click)="goToDetailsPage()">Post Ads</ion-button>
   </ion-toolbar>
 </ion-header>
+
+
+<ion-content>
+  <div class="filter-box">
+    <div class="search-bar">
+      <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionInput)="search($event)" show-clear-button="always" value="Always Show"></ion-searchbar>
+    </div>
+  </div>
+
+
+
+
+</ion-content>
