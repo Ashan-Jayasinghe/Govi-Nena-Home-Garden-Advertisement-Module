@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'advertisement-page',
-    loadChildren: () => import('./advertisement-page/advertisement-page.module').then( m => m.AdvertisementPagePageModule)
+    loadChildren: () => import('./pages/advertisement-page/advertisement-page.module').then( m => m.AdvertisementPagePageModule)
   },
 
 
