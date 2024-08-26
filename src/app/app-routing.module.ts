@@ -11,14 +11,8 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'advertisement',
-    loadChildren: () => import('./pages/advertisement/advertisement.module').then( m => m.AdvertisementPageModule)
-  },
-  {
-    path: 'add-post',
-    loadChildren: () => import('./pages/add-post/add-post.module').then( m => m.AddPostPageModule)
-  },
+
+
 ];
 
 @NgModule({
