@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'advertisement-page',
+    loadChildren: () => import('./advertisement-page/advertisement-page.module').then( m => m.AdvertisementPagePageModule)
+  },
 
 
 ];
