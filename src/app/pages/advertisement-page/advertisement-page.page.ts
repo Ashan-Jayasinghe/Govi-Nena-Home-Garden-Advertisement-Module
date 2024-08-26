@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 export class AdvertisementPagePage implements OnInit {
 
   searchTerm: string = '';
-
+  filterVisible=false;
   constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
@@ -20,6 +20,9 @@ export class AdvertisementPagePage implements OnInit {
 
   search(event: any) {
   
+  }
+  toggleFilter() {
+    this.filterVisible = !this.filterVisible;
   }
 
 }

@@ -15,6 +15,17 @@
     <div class="search-bar">
       <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionInput)="search($event)" show-clear-button="always" value="Always Show"></ion-searchbar>
     </div>
+    <div class="filter-container">
+      <div class="filter-header" (click)="toggleFilter()">
+        <span>Filter</span>
+        <ion-icon [name]="filterVisible ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+      </div>
+      
+      <div *ngIf="filterVisible" class="filter-options">
+
+      </div>
+    </div>
+
   </div>
 
 

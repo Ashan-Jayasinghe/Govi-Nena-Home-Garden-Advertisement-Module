@@ -17,5 +17,25 @@ ion-content{
             }
 
         }
+
+        .filter-container {
+            padding: 16px;
+            .filter-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                padding: 5%;
+                background-color: #d7ffe7;
+                border-radius: 5px;
+              }
+          }
+          
+          
+          
+
+          
+
+          
     }
 }
