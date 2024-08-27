@@ -8,6 +8,12 @@ import { NavController } from '@ionic/angular';
 })
 export class AdvertisementPagePage implements OnInit {
 
+  filters = {
+    category: 'planting-materials',
+    price: { lower: 500, upper: 5650 },
+    priceByOrder: 'highToLow',
+  };
+
   searchTerm: string = '';
   filterVisible=false;
 
@@ -41,10 +47,35 @@ export class AdvertisementPagePage implements OnInit {
   search(event: any) {
   
   }
+
+
+
   toggleFilter() {
     this.filterVisible = !this.filterVisible;
   }
 
+
+  categoryChange(ev: any){
+    console.log(ev.detail.value);
+    const type = ev.detail.value;
+    this.filters.category = type;
+
+  }
+
+  highLowChange(ev: any){
+    console.log(ev.detail.value);
+    const type = ev.detail.value;
+    this.filters.priceByOrder = type;
+
+  }
+
+  priceChange(ev: any) {
+    console.log(ev.detail.value);
+    const type = ev.detail.value;
+    this.filters.price.lower = type.lower;
+    this.filters.price.upper = type.upper;
+    console.log(this.filters.price);
+  }
 
   
   // Function to handle Province selection
@@ -128,6 +159,7 @@ export class AdvertisementPagePage implements OnInit {
     ];
     return allGNDivisions.filter(gnDivision => gnDivision.dsDivisionId === dsDivisionId);
   }
+
 }
 
 
