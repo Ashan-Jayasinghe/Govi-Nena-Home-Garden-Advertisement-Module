@@ -45,13 +45,44 @@
             </ion-item>
 
           </ion-radio-group>
-
-
-
-
-
-
         </ion-list>
+
+        <h3>Location</h3>
+
+        <ion-list>
+          <!-- Province Dropdown -->
+          <ion-item>
+            <ion-label>Province</ion-label>
+            <ion-select [(ngModel)]="selectedProvince" (ionChange)="onProvinceChange()">
+              <ion-select-option *ngFor="let province of provinces" [value]="province">{{ province.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+      
+          <!-- District Dropdown -->
+          <ion-item>
+            <ion-label>District</ion-label>
+            <ion-select [(ngModel)]="selectedDistrict" (ionChange)="onDistrictChange()" [disabled]="!selectedProvince">
+              <ion-select-option *ngFor="let district of districts" [value]="district">{{ district.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+      
+          <!-- DS Division Dropdown -->
+          <ion-item>
+            <ion-label>DS Division</ion-label>
+            <ion-select [(ngModel)]="selectedDSDivision" (ionChange)="onDSDivisionChange()" [disabled]="!selectedDistrict">
+              <ion-select-option *ngFor="let dsDivision of dsDivisions" [value]="dsDivision">{{ dsDivision.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+      
+          <!-- GN Division Dropdown -->
+          <ion-item>
+            <ion-label>GN Division</ion-label>
+            <ion-select [(ngModel)]="selectedGNDivision" [disabled]="!selectedDSDivision">
+              <ion-select-option *ngFor="let gnDivision of gnDivisions" [value]="gnDivision">{{ gnDivision.name }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+       
 
       </div>
     </div>
