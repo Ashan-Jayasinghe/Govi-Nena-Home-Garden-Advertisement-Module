@@ -14,6 +14,32 @@ export class AdvertisementPagePage implements OnInit {
     priceByOrder: 'highToLow',
   };
 
+
+  // Define demo data directly within the component
+  ads = [
+    {
+      id: 1,
+      title: 'Advertisement 1',
+      description: 'This is a description for advertisement 1.',
+      imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      details: 'Detailed information about advertisement 1.'
+    },
+    {
+      id: 2,
+      title: 'Advertisement 2',
+      description: 'This is a description for advertisement 2.',
+      imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      details: 'Detailed information about advertisement 2.'
+    },
+    {
+      id: 3,
+      title: 'Advertisement 3',
+      description: 'This is a description for advertisement 3.',
+      imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      details: 'Detailed information about advertisement 3.'
+    }
+  ];
+
   searchTerm: string = '';
   filterVisible=false;
 
@@ -169,6 +195,11 @@ export class AdvertisementPagePage implements OnInit {
   }
   applyFilters() {
     console.log(this.filters);
+  }
+
+  viewDetails(ad: any) {
+    // Logic to navigate to details page with the ad data
+    console.log('Viewing details for:', ad);
   }
 
 }
