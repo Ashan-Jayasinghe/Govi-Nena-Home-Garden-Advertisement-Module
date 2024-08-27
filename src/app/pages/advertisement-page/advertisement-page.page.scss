@@ -32,7 +32,17 @@ ion-content{
           }
           
           
-          
+          .upperBox {
+            background-color: #fff;
+            //box-shadow: rgba(0, 0, 0, 0.15) 1.95px 195px 2.6px;
+            height: auto;
+            margin-bottom: 5px;
+            padding: 20px;
+            h3 {
+              font-size: 20px;
+              color: red;
+            }
+          }
 
           
 

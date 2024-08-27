@@ -10,7 +10,7 @@ export class AdvertisementPagePage implements OnInit {
 
   filters = {
     category: 'planting-materials',
-    price: { lower: 500, upper: 5650 },
+    price: { lower: 500, upper: 5650000 },
     priceByOrder: 'highToLow',
   };
 
@@ -158,6 +158,17 @@ export class AdvertisementPagePage implements OnInit {
       // Add more GN divisions as needed
     ];
     return allGNDivisions.filter(gnDivision => gnDivision.dsDivisionId === dsDivisionId);
+  }
+
+  reset() {
+    this.filters = {
+      category: 'planting-materials',
+      price: { lower: 500, upper: 5650000 },
+      priceByOrder: 'highToLow',
+    };
+  }
+  applyFilters() {
+    console.log(this.filters);
   }
 
 }
