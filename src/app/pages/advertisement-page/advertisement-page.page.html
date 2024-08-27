@@ -17,7 +17,7 @@
     </div>
     <div class="filter-container">
       <div class="filter-header" (click)="toggleFilter()">
-        <span>Filter</span>
+        <span style="font-size: large;">Filter</span>
         <ion-icon [name]="filterVisible ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
       </div>
       
@@ -120,19 +120,16 @@
           </ion-list>
         </div>
 
-        <table>
-          <tr style="text-align: center;"><td>
+       
+          
             <div class="upperBox">
-              <ion-button  (click)="applyFilters()">Apply Filters</ion-button>
+              <ion-button class="apply"  (click)="applyFilters()">Apply Filters</ion-button>
+              <ion-button class="reset" color="danger" (click)="reset()">Reset Filters</ion-button>
+
             </div>
-          </td>
-        <td>
-          <div class="upperBox">
-            <ion-button color="danger" (click)="reset()">Reset Filters</ion-button>
-          </div>
-       </td>
-        </tr>
-        </table>
+      
+          
+  
        
 
      

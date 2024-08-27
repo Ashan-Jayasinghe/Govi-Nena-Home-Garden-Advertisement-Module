@@ -20,6 +20,7 @@ ion-content{
 
         .filter-container {
             padding: 16px;
+            background-color: #d7ffe7;
             .filter-header {
                 display: flex;
                 align-items: center;
@@ -40,7 +41,17 @@ ion-content{
             padding: 20px;
             h3 {
               font-size: 20px;
-              color: red;
+              color: rgb(83, 192, 130);
+            }
+
+            .apply{
+                margin-right: 5%;
+                margin-left: 3%;
+                
+
+            }
+            .reset{
+                margin-left: 5%;
             }
           }
 
