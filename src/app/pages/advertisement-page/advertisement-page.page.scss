@@ -35,7 +35,7 @@ ion-content{
           
           .upperBox {
             background-color: #fff;
-            //box-shadow: rgba(0, 0, 0, 0.15) 1.95px 195px 2.6px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 195px 2.6px;
             height: auto;
             margin-bottom: 5px;
             padding: 20px;
@@ -55,8 +55,31 @@ ion-content{
             }
           }
 
+      
+
           
 
           
     }
+
+    ion-card {
+        height: 400px; /* Set a fixed height for the cards */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden; /* Hide overflowing content */
+      }
+      
+      ion-card img {
+        height: 250px; /* Control the height of the image */
+        object-fit: cover; /* Ensure the image covers the space without distortion */
+      }
+      
+      ion-card-content {
+        flex-grow: 1; /* Allow the content to grow within the card */
+        overflow: hidden; /* Hide any overflow text */
+        text-overflow: ellipsis; /* Add ellipsis to overflowing text */
+        white-space: nowrap; /* Prevent text from wrapping */
+      }
+      
 }
