@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-advertisement-page',
   templateUrl: './advertisement-page.page.html',
@@ -19,26 +19,43 @@ export class AdvertisementPagePage implements OnInit {
   ads = [
     {
       id: 1,
-      title: 'Advertisement 1',
-      description: 'This is a description for advertisement 1.',
+      title: 'Tjc Mango Sooriyawewa 1000 Mango Rs 100000',
+      subtitle: 'Delivery Fast 2024 December 3',
       imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      details: 'Detailed information about advertisement 1.'
+      variant: 'Mango',
+      date: '2024/December/03',
+      address: 'No. 42, Galle Road, Sooriyawewa, Southern Province, Sri Lanka',
+      phone: '+94 72 234 5748',
+      price: 100000.00,
+      description: 'Got it! Here\'s a description you can use for your mango stock on your e-commerce site: Fresh Sooriyawewa Mangoes. Experience the tropical delight of Sooriyawewa mangoes, known for their rich flavor and juicy sweetness. Grown in the fertile soils of Sooriyawewa...'
     },
     {
       id: 2,
-      title: 'Advertisement 2',
-      description: 'This is a description for advertisement 2.',
+      title: 'Tjc Mango Jaffna 1000 Mango Rs 100000',
+      subtitle: 'Delivery Fast 2024 December 3',
       imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      details: 'Detailed information about advertisement 2.'
+      variant: 'Mango',
+      date: '2024/December/03',
+      address: 'No. 42, Galle Road, Sooriyawewa, Southern Province, Sri Lanka',
+      phone: '+94 72 234 5748',
+      price: 100000.00,
+      description: 'Got it! Here\'s a description you can use for your mango stock on your e-commerce site: Fresh Sooriyawewa Mangoes. Experience the tropical delight of Sooriyawewa mangoes, known for their rich flavor and juicy sweetness. Grown in the fertile soils of Sooriyawewa...'
     },
     {
       id: 3,
-      title: 'Advertisement 3',
-      description: 'This is a description for advertisement 3.',
+      title: 'Tjc Mango Colombo 1000 Mango Rs 100000',
+      subtitle: 'Delivery Fast 2024 December 3',
       imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      details: 'Detailed information about advertisement 3.'
+      variant: 'Mango',
+      date: '2024/December/03',
+      address: 'No. 42, Galle Road, Sooriyawewa, Southern Province, Sri Lanka',
+      phone: '+94 72 234 5748',
+      price: 100000.00,
+      description: 'Got it! Here\'s a description you can use for your mango stock on your e-commerce site: Fresh Sooriyawewa Mangoes. Experience the tropical delight of Sooriyawewa mangoes, known for their rich flavor and juicy sweetness. Grown in the fertile soils of Sooriyawewa...'
     }
+    // You can add more demo ads here
   ];
+
 
   searchTerm: string = '';
   filterVisible=false;
@@ -62,7 +79,7 @@ export class AdvertisementPagePage implements OnInit {
   selectedGNDivision: any = null;
   
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -197,9 +214,9 @@ export class AdvertisementPagePage implements OnInit {
     console.log(this.filters);
   }
 
-  viewDetails(ad: any) {
-    // Logic to navigate to details page with the ad data
-    console.log('Viewing details for:', ad);
+
+  viewDetails(ad:any) {
+    this.router.navigate(['/advertisement-details', { id: ad.id }]);
   }
 
 }
