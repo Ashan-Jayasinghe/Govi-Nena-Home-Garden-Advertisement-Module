@@ -22,7 +22,23 @@ const routes: Routes = [
   {
     path: 'advertisement-details',
     loadChildren: () => import('./pages/advertisement-details/advertisement-details.module').then( m => m.AdvertisementDetailsPageModule)
+  },  {
+    path: 'planting-materials',
+    loadChildren: () => import('./planting-materials/planting-materials.module').then( m => m.PlantingMaterialsPageModule)
   },
+  {
+    path: 'fertilizers',
+    loadChildren: () => import('./fertilizers/fertilizers.module').then( m => m.FertilizersPageModule)
+  },
+  {
+    path: 'agro-chemicals',
+    loadChildren: () => import('./agro-chemicals/agro-chemicals.module').then( m => m.AgroChemicalsPageModule)
+  },
+  {
+    path: 'sell-rent',
+    loadChildren: () => import('./sell-rent/sell-rent.module').then( m => m.SellRentPageModule)
+  },
+
 
 
 ];
