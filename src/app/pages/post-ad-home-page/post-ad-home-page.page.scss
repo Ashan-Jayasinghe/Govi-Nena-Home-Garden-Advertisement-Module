@@ -1,42 +1,42 @@
 ion-card {
-    position: relative;
-    margin: 10px;
-    border-radius: 15px;
-    overflow: hidden;
-  
-    ion-card-header {
-      display: flex;
-      justify-content: center; /* Centers the title horizontally */
-      text-align: center;
-    }
-  
-    img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-  
-    .overlay-title {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      font-size: 16px;
-      text-align: center;
-    }
-  }
-  
-  .video-container {
+  position: relative;
+  margin: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  ion-card-header {
     display: flex;
-    justify-content: center;
-    padding: 20px; /* Adds padding around the video */
-    video {
-      width: 100%;
-      max-width: 500px; /* Makes the video slightly smaller */
-      border-radius: 15px;
-    }
+    justify-content: center; /* Centers the title horizontally */
+    text-align: center;
   }
-  
+
+  img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .overlay-title {
+    position: absolute;
+    top: 50%; /* Positions the title at the center vertically */
+    left: 50%; /* Positions the title at the center horizontally */
+    transform: translate(-50%, -50%); /* Offsets the position to truly center it */
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px; /* Adds padding around the video */
+  video {
+    width: 100%;
+    max-width: 500px; /* Makes the video slightly smaller */
+    border-radius: 15px;
+  }
+}
