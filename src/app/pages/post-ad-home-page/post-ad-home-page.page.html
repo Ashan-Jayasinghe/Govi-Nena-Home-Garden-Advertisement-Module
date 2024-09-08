@@ -5,7 +5,7 @@
         <ion-icon color="light" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>POST YOUR AD HERE</ion-title>
+    <ion-title>Post your ad here</ion-title>
     <ion-buttons slot="end">
       <ion-button fill="clear">
         <ion-icon name="home" color="light"></ion-icon>
@@ -17,7 +17,7 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
-      <ion-card-title text-center>How to Post Your Ad?</ion-card-title>
+      <ion-card-title text-center>How to Post your ad?</ion-card-title>
     </ion-card-header>
     <div class="video-container">
       <video controls>
@@ -30,36 +30,41 @@
   </ion-card>
 
   <ion-grid>
-    <!-- First Row -->
     <ion-row>
-      <ion-col size="12" size-md="6">
-        <ion-card color="light" button="true" [routerLink]="['/fertilizers']">
-          <ion-card-title text-center>Fertilizers</ion-card-title>
-          <img alt="Fertilizers" src="assets/Rectangle 34.png" />
+      <ion-col size="6">
+        <ion-card button="true" [routerLink]="['/planting-materials']">
+          <img src="assets/Rectangle 30.png" alt="Planting Materials" />
+          <ion-card-title class="overlay-title">Planting Materials</ion-card-title>
         </ion-card>
       </ion-col>
-
-      <ion-col size="12" size-md="6">
-        <ion-card color="light" button="true" [routerLink]="['/agro-chemicals']">
-          <ion-card-title text-center>Agro Chemicals</ion-card-title>
-          <img alt="Agro Chemicals" src="assets/Frame 1.png" />
+      <ion-col size="6">
+        <ion-card button="true" [routerLink]="['/fertilizers']">
+          <img src="assets/Rectangle 34.png" alt="Fertilizers" />
+          <ion-card-title class="overlay-title">Fertilizers</ion-card-title>
         </ion-card>
       </ion-col>
     </ion-row>
 
-    <!-- Second Row -->
     <ion-row>
-      <ion-col size="12" size-md="6">
-        <ion-card color="light" button="true" [routerLink]="['/planting-materials']">
-          <ion-card-title text-center>Planting Materials</ion-card-title>
-          <img alt="Planting Materials" src="assets/Rectangle 30.png" />
+      <ion-col size="6">
+        <ion-card button="true" [routerLink]="['/agro-chemicals']">
+          <img src="assets/Frame 1.png" alt="Agro Chemicals" />
+          <ion-card-title class="overlay-title">Agro Chemicals</ion-card-title>
         </ion-card>
       </ion-col>
+      <ion-col size="6">
+        <ion-card button="true" [routerLink]="['/sell-rent']">
+          <img src="assets/Rectangle 26.png" alt="Machineries" />
+          <ion-card-title class="overlay-title">Machineries</ion-card-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-      <ion-col size="12" size-md="6">
-        <ion-card color="light" button="true" [routerLink]="['/sell-rent']">
-          <ion-card-title text-center>Machineries</ion-card-title>
-          <img alt="Machineries" src="assets/Rectangle 26.png" />
+    <ion-row>
+      <ion-col size="12">
+        <ion-card button="true" [routerLink]="['/vegetables-fruits']">
+          <img src="assets/Rectangle 40.png" alt="Vegetables and Fruits" />
+          <ion-card-title class="overlay-title">Vegetables and Fruits</ion-card-title>
         </ion-card>
       </ion-col>
     </ion-row>

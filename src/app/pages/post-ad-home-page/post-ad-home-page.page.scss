@@ -1,19 +1,23 @@
 ion-card {
-    margin: 15px;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin: 10px;
+    border-radius: 15px;
+    overflow: hidden;
     img {
       width: 100%;
-      height: auto;
+      height: 150px;
       object-fit: cover;
     }
-    ion-card-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
+    .overlay-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 16px;
       text-align: center;
-      padding: 5%;
     }
   }
   
@@ -23,11 +27,7 @@ ion-card {
     video {
       width: 100%;
       max-width: 600px;
-      height: auto;
+      border-radius: 15px;
     }
-  }
-  
-  ion-grid {
-    padding: 0 15px;
   }
   
