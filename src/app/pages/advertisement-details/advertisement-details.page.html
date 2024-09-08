@@ -9,13 +9,29 @@
 
 
 <ion-content>
-  <ion-card>
+  <ion-card class="mainAdCard">
     <ion-card-header>
       <ion-card-title>{{ ad?.title }}</ion-card-title>
       <p>{{ ad?.subtitle }}</p>
     </ion-card-header>
 
-    <ion-img [src]="ad?.imageUrl"></ion-img>
+    
+  <swiper-container 
+  #swiper
+  (afterinit)="swiperReady()"
+  (slidechange)="swiperSlideChanged($event)"
+  [pagination]="true"
+  [navigation]="true"
+
+  
+   >
+    <swiper-slide *ngFor="let image of ad?.images">
+      <img [src]="image" />
+    </swiper-slide>
+</swiper-container>
+    <!-- <ion-img [src]="ad?.imageUrl"></ion-img> -->
+
+
 
     <ion-grid>
       <ion-row>

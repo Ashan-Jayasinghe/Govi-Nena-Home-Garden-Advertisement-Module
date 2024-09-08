@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import {Swiper} from 'swiper';
 
 @Component({
   selector: 'app-advertisement-details',
@@ -15,7 +15,13 @@ export class AdvertisementDetailsPage implements OnInit {
       id: 1,
       title: 'Tjc Mango Sooriyawewa 1000 Mango Rs 100000',
       subtitle: 'Delivery Fast 2024 December 3',
-      imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      //imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      images: [
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+         'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'      ],
       variant: 'Mango',
       date: '2024/December/03',
       address: 'No. 42, Galle Road, Sooriyawewa, Southern Province, Sri Lanka',
@@ -27,7 +33,16 @@ export class AdvertisementDetailsPage implements OnInit {
       id: 2,
       title: 'Tjc Mango Jaffna 1000 Mango Rs 100000',
       subtitle: 'Delivery Fast 2024 December 3',
-      imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      //imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      images: [
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+         'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      ],
+      
       variant: 'Mango',
       date: '2024/December/03',
       address: 'No. 42, Galle Road, Sooriyawewa, Southern Province, Sri Lanka',
@@ -39,7 +54,15 @@ export class AdvertisementDetailsPage implements OnInit {
       id: 3,
       title: 'Tjc Mango Colombo 1000 Mango Rs 100000',
       subtitle: 'Delivery Fast 2024 December 3',
-      imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      //imageUrl: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      images: [
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+         'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      ],
       variant: 'Mango',
       date: '2024/December/03',
       address: 'No. 42, Galle Road, Sooriyawewa, Southern Province, Sri Lanka',
@@ -49,6 +72,9 @@ export class AdvertisementDetailsPage implements OnInit {
     }
     // Add more demo data if needed
   ];
+  @ViewChild('swiper')
+  swiperRef: ElementRef | undefined;
+  swiper?: Swiper;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -58,6 +84,16 @@ export class AdvertisementDetailsPage implements OnInit {
       this.ad = this.ads.find(ad => ad.id === adId);
     });
   }
+
+
+  swiperSlideChanged(e: any) {
+    console.log('changed: ', e);
+  }
+ 
+  swiperReady() {
+    this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+ 
 
 
 
