@@ -32,9 +32,10 @@ ion-card {
   .video-container {
     display: flex;
     justify-content: center;
+    padding: 20px; /* Adds padding around the video */
     video {
       width: 100%;
-      max-width: 600px;
+      max-width: 500px; /* Makes the video slightly smaller */
       border-radius: 15px;
     }
   }
