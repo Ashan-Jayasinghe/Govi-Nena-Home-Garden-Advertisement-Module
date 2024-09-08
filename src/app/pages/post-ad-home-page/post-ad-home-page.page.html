@@ -1,13 +1,67 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>post-ad-home-page</ion-title>
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-button fill="clear">
+        <ion-icon color="light" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>POST YOUR AD HERE</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">post-ad-home-page</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title text-center>How to Post Your Ad?</ion-card-title>
+    </ion-card-header>
+    <div class="video-container">
+      <video controls>
+        <source
+          src="https://media.geeksforgeeks.org/wp-content/uploads/20231020155223/Full-Stack-Development-_-LIVE-Classes-_-GeeksforGeeks.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+  </ion-card>
+
+  <ion-grid>
+    <!-- First Row -->
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-card color="light" button="true" [routerLink]="['/fertilizers']">
+          <ion-card-title text-center>Fertilizers</ion-card-title>
+          <img alt="Fertilizers" src="assets/Rectangle 34.png" />
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-md="6">
+        <ion-card color="light" button="true" [routerLink]="['/agro-chemicals']">
+          <ion-card-title text-center>Agro Chemicals</ion-card-title>
+          <img alt="Agro Chemicals" src="assets/Frame 1.png" />
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Second Row -->
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-card color="light" button="true" [routerLink]="['/planting-materials']">
+          <ion-card-title text-center>Planting Materials</ion-card-title>
+          <img alt="Planting Materials" src="assets/Rectangle 30.png" />
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" size-md="6">
+        <ion-card color="light" button="true" [routerLink]="['/sell-rent']">
+          <ion-card-title text-center>Machineries</ion-card-title>
+          <img alt="Machineries" src="assets/Rectangle 26.png" />
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
