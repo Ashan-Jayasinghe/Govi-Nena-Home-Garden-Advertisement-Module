@@ -50,6 +50,22 @@ const routes: Routes = [
     path: 'planting-materials-tubers',
     loadChildren: () => import('./pages/planting-materials-tubers/planting-materials-tubers.module').then( m => m.PlantingMaterialsTubersPageModule)
   },
+  {
+    path: 'agro-chemicals',
+    loadChildren: () => import('./pages/agro-chemicals/agro-chemicals.module').then( m => m.AgroChemicalsPageModule)
+  },
+  {
+    path: 'agro-chemicals-pesticides',
+    loadChildren: () => import('./pages/agro-chemicals-pesticides/agro-chemicals-pesticides.module').then( m => m.AgroChemicalsPesticidesPageModule)
+  },
+  {
+    path: 'agro-chemicalss-plant-growth-regulators',
+    loadChildren: () => import('./pages/agro-chemicalss-plant-growth-regulators/agro-chemicalss-plant-growth-regulators.module').then( m => m.AgroChemicalssPlantGrowthRegulatorsPageModule)
+  },
+  {
+    path: 'agro-chemicals-other',
+    loadChildren: () => import('./pages/agro-chemicals-other/agro-chemicals-other.module').then( m => m.AgroChemicalsOtherPageModule)
+  },
 
 
 
