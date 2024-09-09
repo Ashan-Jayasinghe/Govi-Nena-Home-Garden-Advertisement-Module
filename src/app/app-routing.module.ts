@@ -34,6 +34,22 @@ const routes: Routes = [
     path: 'fertilizers-inorganic',
     loadChildren: () => import('./pages/fertilizers-inorganic/fertilizers-inorganic.module').then( m => m.FertilizersInorganicPageModule)
   },
+  {
+    path: 'planting-materials',
+    loadChildren: () => import('./pages/planting-materials/planting-materials.module').then( m => m.PlantingMaterialsPageModule)
+  },
+  {
+    path: 'planting-materials-seeds',
+    loadChildren: () => import('./pages/planting-materials-seeds/planting-materials-seeds.module').then( m => m.PlantingMaterialsSeedsPageModule)
+  },
+  {
+    path: 'planting-materials-seedlings',
+    loadChildren: () => import('./pages/planting-materials-seedlings/planting-materials-seedlings.module').then( m => m.PlantingMaterialsSeedlingsPageModule)
+  },
+  {
+    path: 'planting-materials-tubers',
+    loadChildren: () => import('./pages/planting-materials-tubers/planting-materials-tubers.module').then( m => m.PlantingMaterialsTubersPageModule)
+  },
 
 
 
