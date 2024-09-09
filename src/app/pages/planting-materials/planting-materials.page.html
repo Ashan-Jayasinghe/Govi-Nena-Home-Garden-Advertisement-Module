@@ -1,13 +1,60 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>planting-materials</ion-title>
-  </ion-toolbar>
+
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="search-chef" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">PLANTING MATERIALS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">planting-materials</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content>
+
+  <ion-card class="seeds" [ngClass]="{'selected': selectedCard === 'seeds'}" (click)="selectCard('seeds')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="7">
+          <img src="assets/seeds.jpg" class="seeds-image"/>
+        </ion-col>
+        <ion-col size="5">
+          <h2>Seeds</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+  <ion-card  class="seedlings" [ngClass]="{'selected': selectedCard === 'seedlings'}" (click)="selectCard('seedlings')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="5" class="ion-text-end">
+          <h2>Seedlings</h2>
+        </ion-col>
+        <ion-col size="7">
+          <img src="assets/seedlings.jpg" class="seedlings-image"/>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+  <ion-card  class="tubers" [ngClass]="{'selected': selectedCard === 'tubers'}" (click)="selectCard('tubers')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="7">
+          <img src="assets/tubers.jpg" class="tubers-image"/>
+        </ion-col>
+        <ion-col size="5" class="ion-text-end">
+          <h2>Tubers</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
 </ion-content>
+
