@@ -66,6 +66,42 @@ const routes: Routes = [
     path: 'agro-chemicals-other',
     loadChildren: () => import('./pages/agro-chemicals-other/agro-chemicals-other.module').then( m => m.AgroChemicalsOtherPageModule)
   },
+  {
+    path: 'machineries-and-equipment',
+    loadChildren: () => import('./pages/machineries-and-equipment/machineries-and-equipment.module').then( m => m.MachineriesAndEquipmentPageModule)
+  },
+  {
+    path: 'machineries-tractors',
+    loadChildren: () => import('./pages/machineries-tractors/machineries-tractors.module').then( m => m.MachineriesTractorsPageModule)
+  },
+  {
+    path: 'machineries-tillage',
+    loadChildren: () => import('./pages/machineries-tillage/machineries-tillage.module').then( m => m.MachineriesTillagePageModule)
+  },
+  {
+    path: 'machineries-irrigation-systems',
+    loadChildren: () => import('./pages/machineries-irrigation-systems/machineries-irrigation-systems.module').then( m => m.MachineriesIrrigationSystemsPageModule)
+  },
+  {
+    path: 'machineries-sprayers',
+    loadChildren: () => import('./pages/machineries-sprayers/machineries-sprayers.module').then( m => m.MachineriesSprayersPageModule)
+  },
+  {
+    path: 'machineries-dryers',
+    loadChildren: () => import('./pages/machineries-dryers/machineries-dryers.module').then( m => m.MachineriesDryersPageModule)
+  },
+  {
+    path: 'machineries-harvesting-machines',
+    loadChildren: () => import('./pages/machineries-harvesting-machines/machineries-harvesting-machines.module').then( m => m.MachineriesHarvestingMachinesPageModule)
+  },
+  {
+    path: 'machineries-planting-machines',
+    loadChildren: () => import('./pages/machineries-planting-machines/machineries-planting-machines.module').then( m => m.MachineriesPlantingMachinesPageModule)
+  },
+  {
+    path: 'machineries-other',
+    loadChildren: () => import('./pages/machineries-other/machineries-other.module').then( m => m.MachineriesOtherPageModule)
+  },
 
 
 
