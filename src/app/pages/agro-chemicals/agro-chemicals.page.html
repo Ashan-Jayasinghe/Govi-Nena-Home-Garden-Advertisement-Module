@@ -1,0 +1,60 @@
+
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="search-chef" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">AGRO CHEMICALS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card class="Pestisides" [ngClass]="{'selected': selectedCard === 'Pestisides'}" (click)="selectCard('Pestisides')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="7">
+          <img src="assets/Pestisides.jpg" class="Pestisides-image"/>
+        </ion-col>
+        <ion-col size="5">
+          <h2>Pestisides</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+  <ion-card  class="Plant-Growth-Regulators" [ngClass]="{'selected': selectedCard === 'Plant-Growth-Regulators'}" (click)="selectCard('Plant-Growth-Regulators')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="5" class="ion-text-end">
+          <h2>Plant-Growth-Regulators</h2>
+        </ion-col>
+        <ion-col size="7">
+          <img src="assets/Plant-Growth-Regulators.jpg" class="Plant-Growth-Regulators-image"/>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+  <ion-card  class="Other" [ngClass]="{'selected': selectedCard === 'Other'}" (click)="selectCard('Other')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="7">
+          <img src="assets/Other.jpg" class="Other-image"/>
+        </ion-col>
+        <ion-col size="5" class="ion-text-end">
+          <h2>Other</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>
+
