@@ -24,21 +24,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/advertisement-details/advertisement-details.module').then( m => m.AdvertisementDetailsPageModule)
   },
   {
-    path: 'planting-materials',
-    loadChildren: () => import('./planting-materials/planting-materials.module').then( m => m.PlantingMaterialsPageModule)
-  },
-  {
     path: 'fertilizers',
     loadChildren: () => import('./pages/fertilizers/fertilizers.module').then( m => m.FertilizersPageModule)
+  },  {
+    path: 'fertilizers-organic',
+    loadChildren: () => import('./pages/fertilizers-organic/fertilizers-organic.module').then( m => m.FertilizersOrganicPageModule)
   },
   {
-    path: 'agro-chemicals',
-    loadChildren: () => import('./agro-chemicals/agro-chemicals.module').then( m => m.AgroChemicalsPageModule)
+    path: 'fertilizers-inorganic',
+    loadChildren: () => import('./pages/fertilizers-inorganic/fertilizers-inorganic.module').then( m => m.FertilizersInorganicPageModule)
   },
-  {
-    path: 'sell-rent',
-    loadChildren: () => import('./sell-rent/sell-rent.module').then( m => m.SellRentPageModule)
-  },
+
+
+
+
 
 
 
