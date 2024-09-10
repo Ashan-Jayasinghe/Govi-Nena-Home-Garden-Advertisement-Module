@@ -1,6 +1,4 @@
-
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-planting-materials-tubers',
@@ -8,54 +6,71 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./planting-materials-tubers.page.scss'],
 })
 export class PlantingMaterialsTubersPage implements OnInit {
-  tuberForm: FormGroup;
-  images: File[] = [];
-  imageUrls: string[] = [];
-  prices: { label: string, amount: string }[] = [];
 
-  constructor(private fb: FormBuilder) {
-    this.tuberForm = this.fb.group({
-      type: ['', Validators.required],
-      variety: ['', Validators.required],
-      title: ['', [Validators.required, Validators.maxLength(50)]],
-      stock: ['', Validators.required],
-      description: [''],
-      priceFor: ['1kg', Validators.required],
-      price: ['', Validators.required],
-      address: ['', Validators.required],
-      mobile: ['', Validators.required],
-      terms: [false, Validators.requiredTrue],
-      specifications: this.fb.array([]),
-    });
-  }
+  tuber = {
+    type: '',
+    variety: '',
+    title: '',
+    stock: null,
+    specification: '',
+    price1kg: null,
+    price5kg: null,
+    price10kg: null,
+    address: '',
+    mobile: '',
+    acceptTerms: false
+  };
+  specifications: string[] = [];
+  selectedImages: string[] = [];
 
-  ngOnInit() {}
+  constructor() { }
 
-  onFileChange(event: any) {
-    const files = event.target.files;
-    this.images = Array.from(files);
-    this.imageUrls = this.images.map(file => URL.createObjectURL(file));
-  }
-
-  addPrice() {
-    const priceFor = this.tuberForm.get('priceFor')?.value || '';
-    const price = this.tuberForm.get('price')?.value || '';
-    this.prices.push({ label: priceFor, amount: price });
-    this.tuberForm.patchValue({ price: '' });
-  }
-
-  onSubmit() {
-    if (this.tuberForm.valid) {
-      console.log(this.tuberForm.value);
-      // handle form submission here
+  // Add specification to the list
+  addSpecification() {
+    if (this.tuber.specification) {
+      this.specifications.push(this.tuber.specification);
+      this.tuber.specification = ''; // Clear the input after adding
     }
   }
 
-  get specificationsFormArray(): FormArray {
-    return this.tuberForm.get('specifications') as FormArray;
+  // Handle file selection
+  // onFileChange(event: any) {
+  //   if (event.target.files.length > 0) {
+  //     this.selectedFiles = Array.from(event.target.files);
+  //   }
+  // }
+
+  onFileChange(event: any): void {
+    const files = event.target.files;
+    this.selectedImages = []; // Reset previously selected images
+
+    // Read and preview the selected images
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.selectedImages.push(e.target.result); // Add image URL for preview
+      };
+
+      reader.readAsDataURL(file); // Read the image as Data URL
+    }
   }
 
-  addNewSpecification() {
-    this.specificationsFormArray.push(this.fb.control(''));
+
+  // Handle form submission
+  onSubmit() {
+    if (this.tuber.acceptTerms) {
+      console.log('Form Data:', this.tuber);
+      console.log('Selected Files:', this.selectedImages);
+      console.log('Specifications:', this.specifications);
+      // Perform any further processing, like API submission here
+    } else {
+      alert('Please accept the terms and conditions to proceed.');
+    }
   }
+
+  ngOnInit() {
+  }
+
 }
