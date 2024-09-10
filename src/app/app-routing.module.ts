@@ -99,10 +99,7 @@ const routes: Routes = [
     path: 'machineries-other',
     loadChildren: () => import('./pages/machineries-other/machineries-other.module').then( m => m.MachineriesOtherPageModule)
   },
-  {
-    path: 'planting-materials-tubers',
-    loadChildren: () => import('./pages/planting-materials-tubers/planting-materials-tubers.module').then( m => m.PlantingMaterialsTubersPageModule)
-  },
+ 
 
 
 
