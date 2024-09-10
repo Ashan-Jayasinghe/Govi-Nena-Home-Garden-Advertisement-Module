@@ -26,7 +26,8 @@ const routes: Routes = [
   {
     path: 'fertilizers',
     loadChildren: () => import('./pages/fertilizers/fertilizers.module').then( m => m.FertilizersPageModule)
-  },  {
+  },
+  {
     path: 'fertilizers-organic',
     loadChildren: () => import('./pages/fertilizers-organic/fertilizers-organic.module').then( m => m.FertilizersOrganicPageModule)
   },
@@ -45,10 +46,6 @@ const routes: Routes = [
   {
     path: 'planting-materials-seedlings',
     loadChildren: () => import('./pages/planting-materials-seedlings/planting-materials-seedlings.module').then( m => m.PlantingMaterialsSeedlingsPageModule)
-  },
-  {
-    path: 'planting-materials-tubers',
-    loadChildren: () => import('./pages/planting-materials-tubers/planting-materials-tubers.module').then( m => m.PlantingMaterialsTubersPageModule)
   },
   {
     path: 'agro-chemicals',
@@ -101,6 +98,10 @@ const routes: Routes = [
   {
     path: 'machineries-other',
     loadChildren: () => import('./pages/machineries-other/machineries-other.module').then( m => m.MachineriesOtherPageModule)
+  },
+  {
+    path: 'planting-materials-tubers',
+    loadChildren: () => import('./pages/planting-materials-tubers/planting-materials-tubers.module').then( m => m.PlantingMaterialsTubersPageModule)
   },
 
 

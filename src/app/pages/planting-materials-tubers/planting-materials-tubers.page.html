@@ -1,13 +1,104 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>planting-materials-tubers</ion-title>
-  </ion-toolbar>
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="search-chef" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">TUBERS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">planting-materials-tubers</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<form (ngSubmit)="onSubmit()" #tuberForm="ngForm">
+
+
+    <!-- Type Selector -->
+  <ion-item>
+    <ion-label>Type</ion-label>
+    <ion-select name="type" [(ngModel)]="tuber.type" required>
+      <ion-select-option value="vegetable">Vegetable</ion-select-option>
+      <!-- Add more options if needed -->
+    </ion-select>
+  </ion-item>
+
+      <!-- Variety -->
+      <ion-item>
+        <ion-label position="floating">Variety</ion-label>
+        <ion-input type="text" [(ngModel)]="tuber.variety" name="variety"  required></ion-input>
+      </ion-item>
+
+
+   <!-- Title -->
+   <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input type="text" name="title" maxlength="30" [(ngModel)]="tuber.title"  required></ion-input>
+  </ion-item>
+
+  <!-- Images -->
+  <ion-item>
+    <ion-label>Images</ion-label>
+    <input type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+  </ion-item>
+
+  <!-- Stock -->
+    <ion-item>
+      <ion-label position="floating">Stock</ion-label>
+      <ion-input type="number" name="stock" [(ngModel)]="tuber.stock"></ion-input>
+    </ion-item>
+
+  <!-- Specifications -->
+  <ion-item>
+    <ion-label position="floating">Specifications</ion-label>
+    <ion-input type="text" name="specification" [(ngModel)]="tuber.specification"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="addSpecification()">Add Specification</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
+  </ion-list>
+
+      <!-- Price for different quantities -->
+      <ion-item>
+        <ion-label position="floating">Price for 1kg</ion-label>
+        <ion-input type="number" name="price1kg" [(ngModel)]="tuber.price1kg"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price for 5kg</ion-label>
+        <ion-input type="number" name="price5kg" [(ngModel)]="tuber.price5kg"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price for 10kg</ion-label>
+        <ion-input type="number" name="price10kg" [(ngModel)]="tuber.price10kg"></ion-input>
+      </ion-item>
+  
+      <!-- Address -->
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input type="text" name="address" [(ngModel)]="tuber.address" required></ion-input>
+      </ion-item>
+  
+      <!-- Mobile -->
+      <ion-item>
+        <ion-label position="floating">Mobile</ion-label>
+        <ion-input type="tel" name="mobile" [(ngModel)]="tuber.mobile" required></ion-input>
+      </ion-item>
+  
+      <!-- Terms and Conditions -->
+      <ion-item>
+        <ion-checkbox [(ngModel)]="tuber.acceptTerms" name="acceptTerms"></ion-checkbox>
+        <ion-label>Accept terms and conditions</ion-label>
+      </ion-item>
+  
+      <!-- Submit Button -->
+      <ion-button expand="block" type="submit" [disabled]="!tuberForm.form.valid">List Item</ion-button>
+  
+
+
+  
+
+</form>
 </ion-content>
