@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/planting-materials" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">TUBERS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #tuberForm="ngForm">
+    <!-- Type Selector -->
+    <div class="form-group">
+      <label for="type">Type</label>
+      <ion-select id="type" name="type" [(ngModel)]="tuber.type" required>
+        <ion-select-option value="vegetable">Vegetable</ion-select-option>
+        <!-- Add more options if needed -->
+      </ion-select>
+    </div>
+
+    <!-- Variety -->
+    <div class="form-group">
+      <label for="variety">Variety</label>
+      <ion-input id="variety" type="text" name="variety" [(ngModel)]="tuber.variety" required></ion-input>
+    </div>
+
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="tuber.title" required></ion-input>
+    </div>
+
+    <!-- Images -->
+    <div class="form-group">
+      <label for="images">Images</label>
+      <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+    </div>
+        <!-- Display Image Previews -->
+        <div class="image-preview">
+          <img *ngFor="let image of selectedImages" [src]="image" class="preview-img">
+        </div>
+
+    <!-- Stock -->
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <ion-input id="stock" type="number" name="stock" [(ngModel)]="tuber.stock"></ion-input>
+    </div>
+
+    <!-- Specifications -->
+    <div class="form-group">
+      <label for="specifications">Specifications</label>
+      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="tuber.specification"></ion-input>
+    </div>
+    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
+    <ion-list>
+      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
+    </ion-list>
+
+    <!-- Prices -->
+    <div class="form-group">
+      <label for="price1kg">Price for 1kg</label>
+      <ion-input id="price1kg" type="number" name="price1kg" [(ngModel)]="tuber.price1kg"></ion-input>
+    </div>
+    <div class="form-group">
+      <label for="price5kg">Price for 5kg</label>
+      <ion-input id="price5kg" type="number" name="price5kg" [(ngModel)]="tuber.price5kg"></ion-input>
+    </div>
+    <div class="form-group">
+      <label for="price10kg">Price for 10kg</label>
+      <ion-input id="price10kg" type="number" name="price10kg" [(ngModel)]="tuber.price10kg"></ion-input>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Address</label>
+      <ion-input id="address" type="text" name="address" [(ngModel)]="tuber.address" required></ion-input>
+    </div>
+
+    <!-- Mobile -->
+    <div class="form-group">
+      <label for="mobile">Mobile</label>
+      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="tuber.mobile" required></ion-input>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <ion-item>
+      <ion-checkbox [(ngModel)]="tuber.acceptTerms" name="acceptTerms"></ion-checkbox>
+      <ion-label>Accept terms and conditions</ion-label>
+    </ion-item>
+
+    <!-- Submit Button -->
+    <ion-button expand="block" type="submit" [disabled]="!tuberForm.form.valid">List Item</ion-button>
+  </form>
+</ion-content>
