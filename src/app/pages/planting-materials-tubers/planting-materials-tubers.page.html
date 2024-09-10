@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Tubers</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="tuberForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-select formControlName="type">
+        <ion-select-option value="vegetable">Vegetable</ion-select-option>
+        <!-- Add more options as needed -->
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Variety</ion-label>
+      <ion-input formControlName="variety" placeholder="Enter variety..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input formControlName="title" placeholder="Enter product title..." maxlength="50"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Add Images and Videos</ion-label>
+      <input type="file" multiple (change)="onFileChange($event)" />
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let image of imageUrls">
+          <img [src]="image" style="width: 100px; height: 100px;" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-label>Stock</ion-label>
+      <ion-input formControlName="stock" placeholder="Enter available stock..."></ion-input>
+    </ion-item>
+
+    <ion-item formArrayName="specifications" *ngFor="let spec of specificationsFormArray.controls; let i = index">
+      <ion-label>Specification {{ i + 1 }}</ion-label>
+      <ion-input [formControlName]="i" placeholder="Specification..."></ion-input>
+    </ion-item>
+    <ion-button (click)="addNewSpecification()">Add New Specification</ion-button>
+
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea formControlName="description" placeholder="Enter description..."></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Price for</ion-label>
+      <ion-select formControlName="priceFor">
+        <ion-select-option value="1kg">1kg</ion-select-option>
+        <ion-select-option value="5kg">5kg</ion-select-option>
+        <ion-select-option value="10kg">10kg</ion-select-option>
+        <!-- Add more options as needed -->
+      </ion-select>
+      <ion-input formControlName="price" placeholder="Price..."></ion-input>
+      <ion-button (click)="addPrice()">Add</ion-button>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row *ngFor="let price of prices">
+        <ion-col>{{ price.label }}</ion-col>
+        <ion-col>{{ price.amount }}</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-input formControlName="address" placeholder="Enter address..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Mobile</ion-label>
+      <ion-input formControlName="mobile" placeholder="Enter mobile number..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox formControlName="terms"></ion-checkbox>
+      <ion-label>Accept terms and conditions</ion-label>
+    </ion-item>
+
+    <ion-button type="submit" expand="full" [disabled]="!tuberForm.valid">List Item</ion-button>
+  </form>
+</ion-content>
