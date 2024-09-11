@@ -1,13 +1,107 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>planting-materials-seeds</ion-title>
-  </ion-toolbar>
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/planting-materials" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">SEEDS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">planting-materials-seeds</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div style="text-align: left; padding-left: 40px;">
+  <p style="font-family: 'MyCustomFont', sans-serif; font-size: 20px;">
+    Category
+  </p>
+  <p style="font-family: 'MyCustomFont', sans-serif; font-size: 10px;">
+    Planting Materials -> Seeds
+  </p>
+</div>
+
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #seedsForm="ngForm">
+      <label for="type">Type</label>
+      <ion-select placeholder="Select Type" interface="popover" class="form ">
+        <ion-select-option value="vegetables">Vegetables</ion-select-option>
+        <ion-select-option value="fruits">Fruits</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+
+    <!-- Variety -->
+    <div class="form-group">
+      <label for="variety">Variety</label>
+      <ion-input id="variety" type="text" name="variety" [(ngModel)]="seeds.variety" required></ion-input>
+    </div>
+
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="seeds.title" required></ion-input>
+    </div>
+
+    <!-- Images -->
+    <div class="form-group">
+      <label for="images">Images</label>
+      <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+    </div>
+        <!-- Display Image Previews -->
+        <div class="image-preview">
+          <img *ngFor="let image of selectedImages" [src]="image" class="preview-img">
+        </div>
+
+    <!-- Stock -->
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <ion-input id="stock" type="number" name="stock" [(ngModel)]="seeds.stock"></ion-input>
+    </div>
+
+    <!-- Specifications -->
+    <div class="form-group">
+      <label for="specifications">Specifications</label>
+      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="seeds.specification"></ion-input>
+    </div>
+    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
+    <ion-list>
+      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
+    </ion-list>
+
+    <!-- Prices -->
+    <div class="form-group">
+      <label for="price1kg">Price for 1kg</label>
+      <ion-input id="price1kg" type="number" name="price1kg" [(ngModel)]="seeds.price1kg"></ion-input>
+    </div>
+    <div class="form-group">
+      <label for="price5kg">Price for 5kg</label>
+      <ion-input id="price5kg" type="number" name="price5kg" [(ngModel)]="seeds.price5kg"></ion-input>
+    </div>
+    <div class="form-group">
+      <label for="price10kg">Price for 10kg</label>
+      <ion-input id="price10kg" type="number" name="price10kg" [(ngModel)]="seeds.price10kg"></ion-input>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Address</label>
+      <ion-input id="address" type="text" name="address" [(ngModel)]="seeds.address" required></ion-input>
+    </div>
+
+    <!-- Mobile -->
+    <div class="form-group">
+      <label for="mobile">Mobile</label>
+      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="seeds.mobile" required></ion-input>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <ion-item>
+      <ion-checkbox [(ngModel)]="seeds.acceptTerms" name="acceptTerms"></ion-checkbox>
+      <ion-label>Accept terms and conditions</ion-label>
+    </ion-item>
+
+    <!-- Submit Button -->
+    <ion-button expand="block" type="submit" [disabled]="!seedsForm.form.valid">List Item</ion-button>
+  </form>
 </ion-content>
