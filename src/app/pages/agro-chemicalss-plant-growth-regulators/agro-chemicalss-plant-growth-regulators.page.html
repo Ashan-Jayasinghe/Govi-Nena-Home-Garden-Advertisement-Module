@@ -1,13 +1,110 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>agro-chemicalss-plant-growth-regulators</ion-title>
-  </ion-toolbar>
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/agro-chemicals" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">PLANT-GROWTH REGULATORS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">agro-chemicalss-plant-growth-regulators</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #pgrForm="ngForm">
+    <!-- Type Selector -->
+    <div class="form-group">
+      <label for="type">Type</label>
+      <ion-select id="type" name="type" [(ngModel)]="pgr.type" required>
+        <ion-select-option value="insecticide">Insecticide</ion-select-option>
+        <!-- Add more options if needed -->
+      </ion-select>
+    </div>
+
+
+
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="pgr.title" required></ion-input>
+    </div>
+
+
+
+        <!-- Application Ratio -->
+        <div class="form-group">
+          <label for="applicationRatio">Application Ratio (Liter per Hec)</label>
+          <ion-input id="applicationRatio" type="number" name="applicationRatio" [(ngModel)]="pgr.applicationRatio"></ion-input>
+        </div>
+
+
+    <!-- Images -->
+    <div class="form-group">
+      <label for="images">Images</label>
+      <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+    </div>
+        <!-- Display Image Previews -->
+        <div class="image-preview">
+          <img *ngFor="let image of selectedImages" [src]="image" class="preview-img">
+        </div>
+
+
+
+
+    <!-- Stock -->
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <ion-input id="stock" type="number" name="stock" [(ngModel)]="pgr.stock"></ion-input>
+    </div>
+
+    <!-- Specifications -->
+    <div class="form-group">
+      <label for="specifications">Specifications</label>
+      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="pgr.specification"></ion-input>
+    </div>
+    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
+    <ion-list>
+      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
+    </ion-list>
+
+    <!-- Prices -->
+    <div class="form-group">
+      <label for="price1L">Price for 1L/Kg</label>
+      <ion-input id="price1L" type="number" name="price1L" [(ngModel)]="pgr.price1L"></ion-input>
+    </div>
+    <div class="form-group">
+      <label for="price5L">Price for 5L/Kg</label>
+      <ion-input id="price5L" type="number" name="price5L" [(ngModel)]="pgr.price5L"></ion-input>
+    </div>
+    <div class="form-group">
+      <label for="price10L">Price for 10L/Kg</label>
+      <ion-input id="price10L" type="number" name="price10L" [(ngModel)]="pgr.price10L"></ion-input>
+    </div>
+
+
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Address</label>
+      <ion-input id="address" type="text" name="address" [(ngModel)]="pgr.address" required></ion-input>
+    </div>
+
+    <!-- Mobile -->
+    <div class="form-group">
+      <label for="mobile">Mobile</label>
+      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="pgr.mobile" required></ion-input>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <ion-item>
+      <ion-checkbox [(ngModel)]="pgr.acceptTerms" name="acceptTerms"></ion-checkbox>
+      <ion-label>Accept terms and conditions</ion-label>
+    </ion-item>
+
+    <!-- Submit Button -->
+    <ion-button expand="block" type="submit" [disabled]="!pgrForm.form.valid">List Item</ion-button>
+  </form>
 </ion-content>
