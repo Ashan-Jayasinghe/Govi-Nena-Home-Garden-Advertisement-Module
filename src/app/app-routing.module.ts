@@ -59,10 +59,7 @@ const routes: Routes = [
     path: 'agro-chemicalss-plant-growth-regulators',
     loadChildren: () => import('./pages/agro-chemicalss-plant-growth-regulators/agro-chemicalss-plant-growth-regulators.module').then( m => m.AgroChemicalssPlantGrowthRegulatorsPageModule)
   },
-  {
-    path: 'agro-chemicals-other',
-    loadChildren: () => import('./pages/agro-chemicals-other/agro-chemicals-other.module').then( m => m.AgroChemicalsOtherPageModule)
-  },
+
   {
     path: 'machineries-and-equipment',
     loadChildren: () => import('./pages/machineries-and-equipment/machineries-and-equipment.module').then( m => m.MachineriesAndEquipmentPageModule)
@@ -98,7 +95,8 @@ const routes: Routes = [
   {
     path: 'machineries-other',
     loadChildren: () => import('./pages/machineries-other/machineries-other.module').then( m => m.MachineriesOtherPageModule)
-  },  {
+  },
+  {
     path: 'planting-materials-tubers',
     loadChildren: () => import('./pages/planting-materials-tubers/planting-materials-tubers.module').then( m => m.PlantingMaterialsTubersPageModule)
   },
