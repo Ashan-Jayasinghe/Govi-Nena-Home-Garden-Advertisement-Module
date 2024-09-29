@@ -101,41 +101,90 @@ export class AgroChemicalsPesticidesPage implements OnInit {
   //   }
   // }
 
+  // onSubmit() {
+  //   if (this.pesticides.acceptTerms) {
+  //     const formData = new FormData();
+  
+  //     formData.append('type', this.pesticides.type || '');  // Default to empty string if null
+  //     formData.append('title', this.pesticides.title || '');
+  //     formData.append('applicationRatio', this.pesticides.applicationRatio !== null ? this.pesticides.applicationRatio.toString() : '');
+  //     formData.append('stock', this.pesticides.stock !== null ? this.pesticides.stock.toString() : '');
+  //     formData.append('specifications', JSON.stringify(this.specifications));  // Convert specifications to JSON
+  //     formData.append('price1L', this.pesticides.price1L !== null ? this.pesticides.price1L.toString() : '');
+  //     formData.append('price5L', this.pesticides.price5L !== null ? this.pesticides.price5L.toString() : '');
+  //     formData.append('price10L', this.pesticides.price10L !== null ? this.pesticides.price10L.toString() : '');
+  //     formData.append('address', this.pesticides.address || '');
+  //     formData.append('mobile', this.pesticides.mobile || '');
+  
+  //     // Append images as raw file objects for backend processing
+  //     const input = (document.getElementById('imageInput') as HTMLInputElement);
+  //     if (input?.files) {
+  //       for (let i = 0; i < input.files.length; i++) {
+  //         formData.append('images[]', input.files[i], input.files[i].name);
+  //       }
+  //     }
+  
+  //     // Send data to the PHP backend
+  //     this.http.post('http://yourserver.com/add_agro_chemicals.php', formData).subscribe(response => {
+  //       console.log('Response:', response);
+  //       alert('Advertisement successfully submitted.');
+  //     }, error => {
+  //       console.error('Error:', error);
+  //       alert('An error occurred while submitting the form. Please try again.');
+  //     });
+  //   } else {
+  //     alert('Please accept the terms and conditions to proceed.');
+  //   }
+  // }
+
+
   onSubmit() {
     if (this.pesticides.acceptTerms) {
       const formData = new FormData();
   
-      formData.append('type', this.pesticides.type || '');  // Default to empty string if null
+      // Common attributes
+      formData.append('category', 'Agro Chemicals');  // Hardcode the category name
+      formData.append('subcategory', 'Pesticides');  // Hardcode the subcategory name
       formData.append('title', this.pesticides.title || '');
-      formData.append('applicationRatio', this.pesticides.applicationRatio !== null ? this.pesticides.applicationRatio.toString() : '');
       formData.append('stock', this.pesticides.stock !== null ? this.pesticides.stock.toString() : '');
-      formData.append('specifications', JSON.stringify(this.specifications));  // Convert specifications to JSON
+      formData.append('address', this.pesticides.address || '');
+      formData.append('mobile', this.pesticides.mobile || '');
+      formData.append('acceptTerms', this.pesticides.acceptTerms ? '1' : '0');
+  
+      // Unique attributes for Pesticides
+      formData.append('type', this.pesticides.type || '');
+      formData.append('applicationRatio', this.pesticides.applicationRatio !== null ? this.pesticides.applicationRatio.toString() : '');
+      formData.append('specification', this.pesticides.specification || '');
       formData.append('price1L', this.pesticides.price1L !== null ? this.pesticides.price1L.toString() : '');
       formData.append('price5L', this.pesticides.price5L !== null ? this.pesticides.price5L.toString() : '');
       formData.append('price10L', this.pesticides.price10L !== null ? this.pesticides.price10L.toString() : '');
-      formData.append('address', this.pesticides.address || '');
-      formData.append('mobile', this.pesticides.mobile || '');
   
-      // Append images as raw file objects for backend processing
-      const input = (document.getElementById('imageInput') as HTMLInputElement);
-      if (input?.files) {
-        for (let i = 0; i < input.files.length; i++) {
-          formData.append('images[]', input.files[i], input.files[i].name);
+      // Image handling
+      const imageInput = (document.getElementById('images') as HTMLInputElement);
+      if (imageInput.files) {
+        for (let i = 0; i < imageInput.files.length; i++) {
+          formData.append('images[]', imageInput.files[i], imageInput.files[i].name);
         }
       }
   
-      // Send data to the PHP backend
-      this.http.post('http://yourserver.com/add_agro_chemicals.php', formData).subscribe(response => {
+      // Specifications handling
+      this.specifications.forEach(spec => {
+        formData.append('specifications[]', spec);
+      });
+  
+      // Send form data to backend (add_pesticides.php)
+      this.http.post('http://localhost/Govi-Nena-Home-Garden-Advetisement-Module-Backend/add_pesticides.php', formData).subscribe(response => {
         console.log('Response:', response);
-        alert('Advertisement successfully submitted.');
+        alert('Pesticide advertisement successfully submitted.');
       }, error => {
         console.error('Error:', error);
-        alert('An error occurred while submitting the form. Please try again.');
+        alert('An error occurred while submitting the form.');
       });
     } else {
       alert('Please accept the terms and conditions to proceed.');
     }
   }
+  
   
   
   ngOnInit() {
