@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-agro-chemicals-pesticides',
   templateUrl: './agro-chemicals-pesticides.page.html',
@@ -8,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class AgroChemicalsPesticidesPage implements OnInit {
 
 
-  pesticides = {
+  pesticides: {
+    type: string,
+    title: string,
+    applicationRatio: number | null,
+    stock: number | null,
+    specification: string,
+    price1L: number | null,
+    price5L: number | null,
+    price10L: number | null,
+    address: string,
+    mobile: string,
+    acceptTerms: boolean
+  } = {
     type: '',
     title: '',
-    applicationRatio:null,
+    applicationRatio: null,
     stock: null,
     specification: '',
     price1L: null,
@@ -22,9 +34,9 @@ export class AgroChemicalsPesticidesPage implements OnInit {
     acceptTerms: false
   };
   specifications: string[] = [];
-  selectedImages: string[] = [];
+  selectedImages: File[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   // Add specification to the list
   addSpecification() {
@@ -41,36 +53,91 @@ export class AgroChemicalsPesticidesPage implements OnInit {
   //   }
   // }
 
+  // onFileChange(event: any): void {
+  //   const files = event.target.files;
+  //   this.selectedImages = []; // Reset previously selected images
+
+  //   // Read and preview the selected images
+  //   for (let i = 0; i < files.length; i++) {
+  //     const file = files[i];
+  //     const reader = new FileReader();
+
+  //     reader.onload = (e: any) => {
+  //       this.selectedImages.push(e.target.result); // Add image URL for preview
+  //     };
+
+  //     reader.readAsDataURL(file); // Read the image as Data URL
+  //   }
+  // }
+
   onFileChange(event: any): void {
     const files = event.target.files;
     this.selectedImages = []; // Reset previously selected images
-
+  
     // Read and preview the selected images
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const reader = new FileReader();
-
+  
       reader.onload = (e: any) => {
         this.selectedImages.push(e.target.result); // Add image URL for preview
       };
-
-      reader.readAsDataURL(file); // Read the image as Data URL
+  
+      reader.readAsDataURL(file); // Read the image as Data URL for preview
     }
   }
+  
 
 
   // Handle form submission
+  // onSubmit() {
+  //   if (this.pesticides.acceptTerms) {
+  //     console.log('Form Data:', this.pesticides);
+  //     console.log('Selected Files:', this.selectedImages);
+  //     console.log('Specifications:', this.specifications);
+  //     // Perform any further processing, like API submission here
+  //   } else {
+  //     alert('Please accept the terms and conditions to proceed.');
+  //   }
+  // }
+
   onSubmit() {
     if (this.pesticides.acceptTerms) {
-      console.log('Form Data:', this.pesticides);
-      console.log('Selected Files:', this.selectedImages);
-      console.log('Specifications:', this.specifications);
-      // Perform any further processing, like API submission here
+      const formData = new FormData();
+  
+      formData.append('type', this.pesticides.type || '');  // Default to empty string if null
+      formData.append('title', this.pesticides.title || '');
+      formData.append('applicationRatio', this.pesticides.applicationRatio !== null ? this.pesticides.applicationRatio.toString() : '');
+      formData.append('stock', this.pesticides.stock !== null ? this.pesticides.stock.toString() : '');
+      formData.append('specifications', JSON.stringify(this.specifications));  // Convert specifications to JSON
+      formData.append('price1L', this.pesticides.price1L !== null ? this.pesticides.price1L.toString() : '');
+      formData.append('price5L', this.pesticides.price5L !== null ? this.pesticides.price5L.toString() : '');
+      formData.append('price10L', this.pesticides.price10L !== null ? this.pesticides.price10L.toString() : '');
+      formData.append('address', this.pesticides.address || '');
+      formData.append('mobile', this.pesticides.mobile || '');
+  
+      // Append images as raw file objects for backend processing
+      const input = (document.getElementById('imageInput') as HTMLInputElement);
+      if (input?.files) {
+        for (let i = 0; i < input.files.length; i++) {
+          formData.append('images[]', input.files[i], input.files[i].name);
+        }
+      }
+  
+      // Send data to the PHP backend
+      this.http.post('http://yourserver.com/add_agro_chemicals.php', formData).subscribe(response => {
+        console.log('Response:', response);
+        alert('Advertisement successfully submitted.');
+      }, error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the form. Please try again.');
+      });
     } else {
       alert('Please accept the terms and conditions to proceed.');
     }
   }
-
+  
+  
   ngOnInit() {
   }
 
