@@ -154,7 +154,7 @@ export class AgroChemicalsPesticidesPage implements OnInit {
       // Unique attributes for Pesticides
       formData.append('type', this.pesticides.type || '');
       formData.append('applicationRatio', this.pesticides.applicationRatio !== null ? this.pesticides.applicationRatio.toString() : '');
-      formData.append('specification', this.pesticides.specification || '');
+      //formData.append('specification', this.pesticides.specification || '');
       formData.append('price1L', this.pesticides.price1L !== null ? this.pesticides.price1L.toString() : '');
       formData.append('price5L', this.pesticides.price5L !== null ? this.pesticides.price5L.toString() : '');
       formData.append('price10L', this.pesticides.price10L !== null ? this.pesticides.price10L.toString() : '');
