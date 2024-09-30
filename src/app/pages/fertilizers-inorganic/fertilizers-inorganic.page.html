@@ -40,13 +40,14 @@
     </div>
         <!-- Display Image Previews -->
         <div class="image-preview">
-          <img *ngFor="let image of selectedImages" [src]="image" class="preview-img">
+          <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
         </div>
+
 
         <!-- NPK Ratio -->
         <div class="form-group">
-          <label for="npk">NPK</label>
-          <ion-input id="npk" type="number" name="npk" [(ngModel)]="inorganic.npk"></ion-input>
+          <label for="npkRatio">NPK</label>
+          <ion-input id="npkRatio" type="number" name="npkRatio" [(ngModel)]="inorganic.npkRatio"></ion-input>
         </div>
 
     <!-- Method -->
