@@ -16,6 +16,7 @@ export class MachineriesTractorsPage implements OnInit {
       manufacturer: string,
       specification: string,
       price: number | null,
+      power: number | null,
       address: string,
       mobile: string,
       acceptTerms: boolean
@@ -27,6 +28,7 @@ export class MachineriesTractorsPage implements OnInit {
       manufacturer: '',
       specification: '',
       price: null,
+      power: null,
       address: '',
       mobile: '',
       acceptTerms: false
@@ -80,7 +82,7 @@ export class MachineriesTractorsPage implements OnInit {
         formData.append('rentorsell', this.tractors.rentorsell || '');
         formData.append('manufacturer', this.tractors.manufacturer || '');
         formData.append('price', this.tractors.price !== null ? this.tractors.price.toString() : '');
-  
+        formData.append('power',this.tractors.power != null ?this.tractors.power.toString():'');
         // Add specifications as JSON
         formData.append('specifications', JSON.stringify(this.specifications));
   
