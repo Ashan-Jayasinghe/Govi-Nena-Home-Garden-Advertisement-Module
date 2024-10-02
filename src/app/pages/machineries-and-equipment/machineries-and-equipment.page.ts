@@ -24,8 +24,8 @@ export class MachineriesAndEquipmentPage implements OnInit {
       this.navCtrl.navigateForward('machineries-tillage');
     }else if (type === 'IrrigationSystems') {
       this.navCtrl.navigateForward('machineries-irrigation-systems');
-    }else if (type === 'Sprayers ') {
-      this.navCtrl.navigateForward('machineries-sprayers ');
+    }else if (type === 'Sprayers') {
+      this.navCtrl.navigateForward('machineries-sprayers');
     }else if (type === 'Dryers') {
       this.navCtrl.navigateForward('machineries-dryers');
     }else if (type === 'HarvestingMachines') {
