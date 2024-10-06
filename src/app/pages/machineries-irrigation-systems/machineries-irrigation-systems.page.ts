@@ -96,7 +96,7 @@ export class MachineriesIrrigationSystemsPage implements OnInit {
             .subscribe({
               next: (response) => {
                 console.log('Response:', response);
-                alert('Harvesting machines advertisement successfully submitted.');
+                alert('Irrigation System advertisement successfully submitted.');
               },
               error: (error) => {
                 console.error('Error:', error);
