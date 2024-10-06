@@ -85,6 +85,21 @@
     </ion-grid>
   </ion-card>
 
+
+  <ion-card  class="IrrigationSystems" [ngClass]="{'selected': selectedCard === 'IrrigationSystems'}" (click)="selectCard('IrrigationSystems')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="7">
+          <img src="assets/IrrigationSystem.jpg" class="IrrigationSystems-image"/>
+        </ion-col>
+        <ion-col size="5" class="ion-text-end">
+          <h2>Irrigation Systems</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
   
   <ion-card  class="PlantingMachines" [ngClass]="{'selected': selectedCard === 'PlantingMachines'}" (click)="selectCard('PlantingMachines')">
     <ion-grid>
