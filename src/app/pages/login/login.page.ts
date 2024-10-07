@@ -10,7 +10,6 @@ import { Router } from '@angular/router';  // Import Router for navigation
 })
 export class LoginPage implements OnInit {
 
-
   loginData: {
     email: string,
     password: string
@@ -38,15 +37,15 @@ export class LoginPage implements OnInit {
     formData.append('email', this.loginData.email || '');
     formData.append('password', this.loginData.password || '');
 
-    this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/login.php', formData)
+    this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/login.php', formData, {
+        withCredentials: true // This ensures PHPSESSID is sent with requests
+      })
       .subscribe({
         next: (response: any) => {
           if (response.status === 'success') {
             this.presentToast('Login successful!', 'success');
-            // Store user info in local storage or session storage (Optional)
-            localStorage.setItem('user', JSON.stringify(response.user));
             // Redirect to the dashboard or home page after successful login
-            this.router.navigate(['/advertisement-page']); // Replace with your target page
+            this.router.navigate(['/advertisement-page']);
           } else {
             this.presentToast(response.message, 'danger');
           }
@@ -58,24 +57,22 @@ export class LoginPage implements OnInit {
       });
   }
 
-
   ngOnInit() {
+    // On initialization, check if PHPSESSID cookie exists via a test request (optional)
+    this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/check-session.php', {
+        withCredentials: true // Ensures PHPSESSID is sent with requests
+      })
+      .subscribe({
+        next: (response: any) => {
+          if (response.status === 'authenticated') {
+            // User is already logged in, redirect to the advertisement page
+            this.router.navigate(['/advertisement-page']);
+          }
+        },
+        error: (error) => {
+          console.log('Session not found, user is not logged in');
+        }
+      });
   }
 
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-  

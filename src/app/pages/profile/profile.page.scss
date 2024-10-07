@@ -1,0 +1,66 @@
+ion-content {
+    padding: 16px; // Padding for content
+    background-color: #F7F7F7; // Light background color for better contrast
+  
+    .form-container {
+      margin-top: 25px; // Space from the top
+      max-width: 350px; // Reduce maximum width for the form container
+      margin-left: auto; // Center the container horizontally
+      margin-right: auto; // Center the container horizontally
+    }
+  
+    ion-item {
+      background-color: white; // White background for form items
+      border-radius: 10px; // Rounded corners for items
+      margin-bottom: 16px; // Space between items
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    }
+    h2{
+        margin: 80px 40px 40px 40px;
+    }
+  
+    ion-label {
+      font-weight: 500; // Slightly bolder label
+      color: #555; // Darker color for better readability
+    }
+  
+    ion-input {
+      --padding-start: 10px; // Padding inside input fields
+      border-radius: 5px; // Rounded corners for inputs
+      box-shadow: none; // Remove default shadow
+    }
+  
+    ion-button {
+      background-color: #ebfdf1; // Primary button color
+      color: white; // Button text color
+      font-weight: 600; // Bold button text
+      border-radius: 5px; // Rounded corners for buttons
+      margin-top: 10px; // Space above the button
+      transition: background-color 0.3s, transform 0.2s; // Smooth transition for button effects
+  
+      &:hover {
+        background-color: darken(#3A8EBA, 10%); // Darken on hover
+        transform: scale(1.02); // Slight scaling effect on hover
+      }
+    }
+  
+    input[type="file"] {
+      display: block; // Make file input visible
+      margin: 16px 0; // Margin for spacing
+      border: none; // Remove default border
+      background-color: #fff; // White background for file input
+      border-radius: 5px; // Rounded corners for file input
+      padding: 10px; // Padding for file input
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    }
+  
+    // Profile Image Styling
+    .profile-image {
+      width: 100%; // Make image responsive
+      height: auto; // Maintain aspect ratio
+      border-radius: 10px; // Rounded corners for images
+      margin-bottom: 16px; // Space below the image
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    }
+  }
+  
