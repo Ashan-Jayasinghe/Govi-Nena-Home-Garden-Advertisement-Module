@@ -14,6 +14,8 @@ export class AdvertisementPagePage implements OnInit {
     priceByOrder: 'highToLow',
   };
 
+  userName: string = 'Guest User';  // This should be dynamically loaded after login
+  userProfileImage: string = 'assets/cat.png';  // Default profile image
 
   // Define demo data directly within the component
   ads = [
@@ -82,6 +84,8 @@ export class AdvertisementPagePage implements OnInit {
   constructor(private navCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
+     // Fetch user details like name and profile image from backend or localStorage after login
+     this.loadUserProfile();
   }
   goToDetailsPage() {
     this.navCtrl.navigateForward('/post-ad-home-page');
@@ -91,7 +95,19 @@ export class AdvertisementPagePage implements OnInit {
   
   }
 
+  // Function to load user profile details
+  loadUserProfile() {
+    // Replace with real user data fetching logic (e.g., from an API or localStorage)
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (user) {
+      this.userName = user.name || 'Guest User';
+      this.userProfileImage = user.profileImage || 'assets/cat.png';  // Use a default image if none exists
+    }
+  }
 
+  goToProfile() {
+    this.router.navigate(['/profile']);  // Redirect to profile page
+  }
 
   toggleFilter() {
     this.filterVisible = !this.filterVisible;
