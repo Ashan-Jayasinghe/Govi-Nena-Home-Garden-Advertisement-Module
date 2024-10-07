@@ -21,8 +21,9 @@ export class AdvertisementPagePage implements OnInit {
     name: '',
     email: '',
     password: '',
-    profileImage: null
+    profileImage: ''  // This will either be a URL or empty if not set
   };
+  
   // Define demo data directly within the component
   ads = [
     {
@@ -112,6 +113,11 @@ export class AdvertisementPagePage implements OnInit {
   
   }
 
+  ionViewWillEnter() {
+    // This is called every time the page becomes active again
+    this.loadUserProfile();  // Refresh profile data when the user returns to this page
+  }
+
   // Function to load user profile details
   // loadUserProfile() {
   //   // Replace with real user data fetching logic (e.g., from an API or localStorage)
@@ -129,6 +135,8 @@ export class AdvertisementPagePage implements OnInit {
         if (response.status === 'success') {
           this.user.name = response.user.name;
           this.user.email = response.user.email;
+          this.user.profileImage = response.user.profile_image;  // Assign the profile image URL
+
         } else {
           this.presentToast('Failed to load profile information.', 'danger');
         }

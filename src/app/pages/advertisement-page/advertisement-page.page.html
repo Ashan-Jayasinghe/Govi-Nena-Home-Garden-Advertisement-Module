@@ -12,9 +12,8 @@
 
 <ion-content>
 
-  <!-- Profile Section -->
   <div class="profile-card" (click)="goToProfile()">
-    
+    <img [src]="user.profileImage || 'assets/cat.png'" class="profile-image" />
     <span class="welcome-text">Welcome, {{ user.name }}</span>
   </div>
 

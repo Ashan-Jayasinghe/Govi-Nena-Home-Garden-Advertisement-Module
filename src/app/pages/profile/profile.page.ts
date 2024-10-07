@@ -14,9 +14,9 @@ export class ProfilePage implements OnInit {
     name: '',
     email: '',
     password: '',
-    profileImage: null
+    profileImage: null as File | null  // Now handles both null and File types
   };
-
+  selectedFile: File | null = null;
   userAdvertisements: any[] = [];
 
   constructor(private http: HttpClient, private toastCtrl: ToastController, private router: Router) { }
@@ -31,6 +31,14 @@ export class ProfilePage implements OnInit {
     });
     toast.present();
   }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.user.profileImage = file;  // Now this will not throw an error
+    }
+  }
+  
 
   // Load user's profile and advertisements on init
   ngOnInit() {
@@ -84,8 +92,9 @@ export class ProfilePage implements OnInit {
     const formData = new FormData();
     formData.append('name', this.user.name);
     formData.append('email', this.user.email);
+
     if (this.user.profileImage) {
-      formData.append('profile_image', this.user.profileImage);
+      formData.append('profileImage', this.user.profileImage);  // Attach image if selected
     }
 
     this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/update_profile.php', formData, {
@@ -94,6 +103,8 @@ export class ProfilePage implements OnInit {
       next: (response: any) => {
         if (response.status === 'success') {
           this.presentToast('Profile updated successfully!', 'success');
+          
+
         } else {
           this.presentToast(response.message, 'danger');
         }
@@ -128,10 +139,10 @@ export class ProfilePage implements OnInit {
   }
 
   // Handle profile image selection
-  onImageSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.user.profileImage = file;
-    }
-  }
+  // onImageSelected(event: any) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     this.user.profileImage = file;
+  //   }
+  // }
 }
