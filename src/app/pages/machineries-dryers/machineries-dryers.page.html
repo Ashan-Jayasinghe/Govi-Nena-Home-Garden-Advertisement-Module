@@ -17,7 +17,12 @@
 <ion-content>
   <form (ngSubmit)="onSubmit()" #dryersForm="ngForm">
 
-
+    <!-- User Name -->
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <ion-input id="userName" type="text" name="userName" maxlength="30" [(ngModel)]="dryers.userName" required></ion-input>
+    </div>
+    
     <!-- Type Selector -->
     <div class="form-group">
       <label for="condition">Condition</label>

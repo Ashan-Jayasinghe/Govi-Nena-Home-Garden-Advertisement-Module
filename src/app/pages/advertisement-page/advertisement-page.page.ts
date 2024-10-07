@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-advertisement-page',
   templateUrl: './advertisement-page.page.html',
@@ -14,9 +17,13 @@ export class AdvertisementPagePage implements OnInit {
     priceByOrder: 'highToLow',
   };
 
-  userName: string = 'Guest User';  // This should be dynamically loaded after login
-  userProfileImage: string = 'assets/cat.png';  // Default profile image
-
+  user = {
+    name: '',
+    email: '',
+    password: '',
+    profileImage: ''  // This will either be a URL or empty if not set
+  };
+  
   // Define demo data directly within the component
   ads = [
     {
@@ -81,7 +88,18 @@ export class AdvertisementPagePage implements OnInit {
   selectedGNDivision: any = null;
   
 
-  constructor(private navCtrl: NavController, private router: Router) { }
+  constructor(private toastCtrl: ToastController,private http: HttpClient,private navCtrl: NavController, private router: Router) { }
+
+  // Display a toast message for feedback
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 2000,
+      color,
+      position: 'top'
+    });
+    toast.present();
+  }
 
   ngOnInit() {
      // Fetch user details like name and profile image from backend or localStorage after login
@@ -95,14 +113,39 @@ export class AdvertisementPagePage implements OnInit {
   
   }
 
+  ionViewWillEnter() {
+    // This is called every time the page becomes active again
+    this.loadUserProfile();  // Refresh profile data when the user returns to this page
+  }
+
   // Function to load user profile details
+  // loadUserProfile() {
+  //   // Replace with real user data fetching logic (e.g., from an API or localStorage)
+  //   const user = JSON.parse(localStorage.getItem('user') || '{}');
+  //   if (user) {
+  //     this.userName = user.name || 'Guest User';
+  //     this.userProfileImage = user.profileImage || 'assets/cat.png';  // Use a default image if none exists
+  //   }
+  // }
   loadUserProfile() {
-    // Replace with real user data fetching logic (e.g., from an API or localStorage)
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    if (user) {
-      this.userName = user.name || 'Guest User';
-      this.userProfileImage = user.profileImage || 'assets/cat.png';  // Use a default image if none exists
-    }
+    this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_profile.php', {
+      withCredentials: true
+    }).subscribe({
+      next: (response: any) => {
+        if (response.status === 'success') {
+          this.user.name = response.user.name;
+          this.user.email = response.user.email;
+          this.user.profileImage = response.user.profile_image;  // Assign the profile image URL
+
+        } else {
+          this.presentToast('Failed to load profile information.', 'danger');
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching profile:', error);
+        this.presentToast('Error loading profile information.', 'danger');
+      }
+    });
   }
 
   goToProfile() {

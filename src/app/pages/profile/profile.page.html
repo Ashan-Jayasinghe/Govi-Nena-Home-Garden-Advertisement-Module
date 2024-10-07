@@ -1,9 +1,55 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/planting-materials" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">PROFILE</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div class="form-container"> <!-- Add this wrapper -->
+    <h2>PROFILE INFORMATION</h2>
+    <form (submit)="updateUser($event)">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Profile Image</ion-label>
+        <input type="file" (change)="onFileSelected($event)" />
+      </ion-item>
+      <ion-button fill="clear" expand="block" type="submit" color="success">Update Profile</ion-button>
+    </form>
+
+    <form (submit)="updatePassword()">
+      <ion-item>
+        <ion-label position="floating">New Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
+      </ion-item>
+      <ion-button fill="clear" expand="full" type="submit" color="success">Update Password</ion-button>
+    </form>
+
+    <!-- New Section for Advertisements -->
+     <h2>MY ADVERTISEMENTS</h2>
+    <ion-list>
+      <ion-item *ngFor="let ad of userAdvertisements">
+        <ion-label>
+          <h3>{{ ad.title }}</h3>
+          <p>{{ ad.description }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div> //Close the wrapper 
 
 </ion-content>
