@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/planting-materials" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">SIGN UP</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="signup-container">
+    <h1>Create Your Account</h1>
+
+    <form (ngSubmit)="onSubmit()">
+      <!-- Name -->
+      <ion-item class="input-item">
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" [(ngModel)]="signupData.name" name="name" required placeholder="Enter your name"></ion-input>
+      </ion-item>
+
+      <!-- Email -->
+      <ion-item class="input-item">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="signupData.email" name="email" placeholder="Enter your email" required (ionChange)="onEmailChange()"></ion-input>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="emailInvalid">
+        <p>Please enter a valid email address.</p>
+      </ion-text>
+
+      <!-- Password -->
+      <ion-item class="input-item">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="signupData.password" name="password" placeholder="Enter your password" required (ionChange)="onPasswordChange()"></ion-input>
+      </ion-item>
+
+      <ion-text color="danger" *ngIf="passwordInvalid">
+        <p>Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, and a number.</p>
+      </ion-text>
+
+      <!-- Confirm Password -->
+      <ion-item class="input-item">
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="signupData.confirmPassword" name="confirmPassword" placeholder="Confirm your password" required (ionChange)="onPasswordChange()"></ion-input>
+      </ion-item>
+
+      <!-- Password Mismatch Error -->
+      <ion-text color="danger" *ngIf="passwordMismatch">
+        <p>Passwords do not match</p>
+      </ion-text>
+
+      <!-- Accept Terms and Conditions -->
+      <ion-item lines="none" class="terms">
+        <ion-checkbox [(ngModel)]="signupData.acceptTerms" name="acceptTerms" required></ion-checkbox>
+        <ion-label>I agree to the <a href="#">terms and conditions</a></ion-label>
+      </ion-item>
+
+      <!-- Submit Button -->
+      <ion-button expand="block" type="submit" [disabled]="passwordMismatch || !signupData.acceptTerms">Sign Up</ion-button>
+    </form>
+  </div>
+</ion-content>

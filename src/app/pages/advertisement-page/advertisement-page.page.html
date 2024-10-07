@@ -11,6 +11,14 @@
 
 
 <ion-content>
+
+  <!-- Profile Section -->
+  <div class="profile-card" (click)="goToProfile()">
+    <img [src]="userProfileImage" class="profile-image" alt="User Profile">
+    <span class="welcome-text">Welcome, {{ userName }}</span>
+  </div>
+
+  
   <div class="filter-box">
     <div class="search-bar">
       <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionInput)="search($event)" show-clear-button="always" value="Always Show"></ion-searchbar>
