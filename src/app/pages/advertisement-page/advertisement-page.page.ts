@@ -14,8 +14,8 @@ export class AdvertisementPagePage implements OnInit {
     priceByOrder: 'highToLow',
   };
 
-  userName: string = 'John Doe';  // This should be dynamically loaded after login
-  userProfileImage: string = 'assets/imgs/default-profile.png';  // Default profile image
+  userName: string = 'Guest User';  // This should be dynamically loaded after login
+  userProfileImage: string = 'assets/cat.png';  // Default profile image
 
   // Define demo data directly within the component
   ads = [
@@ -100,7 +100,7 @@ export class AdvertisementPagePage implements OnInit {
     // Replace with real user data fetching logic (e.g., from an API or localStorage)
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (user) {
-      this.userName = user.name || 'John Doe';
+      this.userName = user.name || 'Guest User';
       this.userProfileImage = user.profileImage || 'assets/cat.png';  // Use a default image if none exists
     }
   }

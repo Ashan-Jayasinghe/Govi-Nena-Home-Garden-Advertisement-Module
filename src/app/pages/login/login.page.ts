@@ -10,6 +10,7 @@ import { Router } from '@angular/router';  // Import Router for navigation
 })
 export class LoginPage implements OnInit {
 
+
   loginData: {
     email: string,
     password: string
@@ -57,10 +58,21 @@ export class LoginPage implements OnInit {
       });
   }
 
+
   ngOnInit() {
   }
 
+
+
+
+
 }
+
+
+
+
+
+
 
 
 

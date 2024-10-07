@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';  // Import the ToastController
@@ -9,6 +8,8 @@ import { Router } from '@angular/router'; // Import Router
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+
+  
 
 // Define the signup data model
 signupData: {
@@ -173,6 +174,8 @@ onSubmit() {
   }
 
 }
+
+
 
 
 
