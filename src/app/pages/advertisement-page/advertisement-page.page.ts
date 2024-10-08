@@ -70,10 +70,19 @@ export class AdvertisementPagePage implements OnInit {
   }
 
 // Navigate to the advertisements page based on the selected category
-goToAdvertisements(category: string) {
-  this.router.navigate(['/advertisements', { category }]);
+
+
+
+goToAdvertisements(category: string, subcategory: string | null) {
+  this.router.navigate(['/advertisements'], { queryParams: { category, subcategory } });
 }
 
+goToMyAdvertisements() {
+  this.router.navigate(['/my-advertisements']);
 }
+
+
+}
+
 
 

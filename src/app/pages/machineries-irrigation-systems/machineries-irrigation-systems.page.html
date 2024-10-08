@@ -80,15 +80,21 @@
       <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
     </div>
 
-    <!-- Specifications (Optional) -->
+    <!-- Specifications
     <div class="form-group">
       <label for="specifications">Specifications</label>
-      <ion-input id="specifications" type="text" name="specifications" [(ngModel)]="irrigationSystems.specification"></ion-input>
+      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="dryers.specification"></ion-input>
     </div>
     <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
     <ion-list>
       <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
-    </ion-list>
+    </ion-list> -->
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <ion-textarea id="description" type="text" name="description" [(ngModel)]="irrigationSystems.description" placeholder="Enter description"></ion-textarea>
+    </div>
+    
 
     <!-- Prices (Required) -->
     <div class="form-group">

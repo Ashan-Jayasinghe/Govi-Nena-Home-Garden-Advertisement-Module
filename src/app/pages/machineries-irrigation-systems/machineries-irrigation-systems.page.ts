@@ -16,7 +16,7 @@ export class MachineriesIrrigationSystemsPage implements OnInit {
     title: string,
     stock: string,
     manufacturer: string,
-    specification: string,
+    description: string,
     price: number | null,
     address: string,
     mobile: string,
@@ -28,14 +28,14 @@ export class MachineriesIrrigationSystemsPage implements OnInit {
     title: '',
     stock: '',
     manufacturer: '',
-    specification: '',
+    description: '',
     price: null,
     address: '',
     mobile: '',
     acceptTerms: false
   };
 
-  specifications: string[] = [];
+  //specifications: string[] = [];
   selectedImages: File[] = [];
   previewImages: string[] = [];
   imageError: string = '';  // To display image error
@@ -53,13 +53,13 @@ export class MachineriesIrrigationSystemsPage implements OnInit {
     await toast.present();
   }
 
-  // Add specification to the list
-  addSpecification() {
-    if (this.irrigationSystems.specification) {
-      this.specifications.push(this.irrigationSystems.specification);
-      this.irrigationSystems.specification = ''; // Clear the input after adding
-    }
-  }
+  // // Add specification to the list
+  // addSpecification() {
+  //   if (this.irrigationSystems.specification) {
+  //     this.specifications.push(this.irrigationSystems.specification);
+  //     this.irrigationSystems.specification = ''; // Clear the input after adding
+  //   }
+  // }
 
   // Handle file selection and preview
   onFileChange(event: any): void {
@@ -139,7 +139,7 @@ export class MachineriesIrrigationSystemsPage implements OnInit {
     formData.append('address', this.irrigationSystems.address || '');
     formData.append('mobile', this.irrigationSystems.mobile || '');
     formData.append('acceptTerms', this.irrigationSystems.acceptTerms ? '1' : '0');
-
+    formData.append('description', this.irrigationSystems.description || '');
     // Unique attributes for Irrigation Systems
     formData.append('condition', this.irrigationSystems.condition || '');
     formData.append('rentorsell', this.irrigationSystems.rentorsell || '');
@@ -147,10 +147,10 @@ export class MachineriesIrrigationSystemsPage implements OnInit {
     formData.append('price', this.irrigationSystems.price !== null ? this.irrigationSystems.price.toString() : '');
 
         // Add userName
-        formData.append('userName', this.irrigationSystems.userName || '');
+    formData.append('userName', this.irrigationSystems.userName || '');
 
     // Add specifications as JSON
-    formData.append('specifications', JSON.stringify(this.specifications));
+    //formData.append('specifications', JSON.stringify(this.specifications));
 
     // Add images
     this.selectedImages.forEach((image, index) => {
