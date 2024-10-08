@@ -22,49 +22,49 @@
       <ion-row>
         <!-- Card for All Advertisements -->
         <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('all')">
+          <ion-card class="category-card"  (click)="goToAdvertisements('all', null)">
             <ion-card-header class="category-card-header">
               <ion-card-title class="category-card-title">ALL ADVERTISEMENTS</ion-card-title>
             </ion-card-header>
           </ion-card>
         </ion-col>
-  
+    
         <!-- Card for Fertilizer -->
         <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('fertilizer')" >
+          <ion-card class="category-card"  (click)="goToAdvertisements('fertilizer', null)">
             <ion-card-header class="category-card-header">
               <ion-card-title class="category-card-title">FERTILIZERS</ion-card-title>
             </ion-card-header>
           </ion-card>
         </ion-col>
-  
-        <!-- Card for AgroChemicals -->
+    
+        <!-- Card for Agro-Chemicals -->
         <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card" (click)="goToAdvertisements('agrochemical')">
+          <ion-card class="category-card" (click)="goToAdvertisements('agrochemical', null)">
             <ion-card-header class="category-card-header">
               <ion-card-title class="category-card-title">AGRO-CHEMICALS</ion-card-title>
             </ion-card-header>
           </ion-card>
         </ion-col>
-  
+    
         <!-- Card for Machineries -->
         <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('machineries')" >
+          <ion-card class="category-card"  (click)="goToAdvertisements('machineries', null)">
             <ion-card-header class="category-card-header">
               <ion-card-title class="category-card-title">MACHINERIES</ion-card-title>
             </ion-card-header>
           </ion-card>
         </ion-col>
-  
+    
         <!-- Card for Planting Materials -->
         <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('planting_materials')">
+          <ion-card class="category-card"  (click)="goToAdvertisements('planting_materials', null)">
             <ion-card-header class="category-card-header">
               <ion-card-title class="category-card-title">PLANTING MATERIALS</ion-card-title>
             </ion-card-header>
           </ion-card>
         </ion-col>
-
+    
         <!-- New Card for My Advertisements -->
         <ion-col size="12" size-md="6" size-lg="4">
           <ion-card class="category-card" (click)="goToMyAdvertisements()">
@@ -75,6 +75,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    
   </div>
   
 

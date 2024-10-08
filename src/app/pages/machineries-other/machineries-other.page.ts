@@ -136,7 +136,7 @@ export class MachineriesOtherPage implements OnInit {
 
       // Common attributes
       formData.append('category', 'Machineries');
-      formData.append('subcategory', 'Dryers');
+      formData.append('subcategory', 'Others');
       formData.append('title', this.others.title || '');
       formData.append('stock', this.others.stock || '');
       formData.append('address', this.others.address || '');
@@ -161,7 +161,7 @@ export class MachineriesOtherPage implements OnInit {
       this.selectedImages.forEach((image, index) => {
         formData.append('images[]', image, image.name);
       });
-      
+
     // Send form data to backend (replace with actual endpoint)
     this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/add_others.php', formData, {
       withCredentials: true  // Ensure that cookies are sent with the request

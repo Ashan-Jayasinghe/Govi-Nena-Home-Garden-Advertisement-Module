@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
+import { AdvertisementService } from '../../services/services/advertisement.service';
 
 @Component({
   selector: 'app-advertisements',
@@ -9,55 +8,34 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./advertisements.page.scss'],
 })
 export class AdvertisementsPage implements OnInit {
-  selectedCategory: string = '';  // Category chosen
-  advertisements: any[] = [];     // Store the fetched ads
+
+  category: string = '';  
+  subcategory: string | null = null;  
+  advertisements: any[] = []; // Array to hold advertisements
 
   constructor(
-    private route:ActivatedRoute,
-    private http:HttpClient,
-    private toastController: ToastController
+    private route: ActivatedRoute,
+    private advertisementService: AdvertisementService
   ) { }
 
   ngOnInit() {
-// Get the selected category from the URL
-this.selectedCategory = this.route.snapshot.paramMap.get('category') || '';
+    this.route.queryParams.subscribe(params => {
+      this.category = params['category'] || '';  
+      this.subcategory = params['subcategory'] || null;  
+      this.fetchAdvertisements(); // Fetch advertisements
+    });
+  }
 
-// Fetch advertisements based on category
-this.fetchAdvertisements(); 
-}
+  fetchAdvertisements() {
+    this.advertisementService.getAdvertisementsByCategory(this.category, this.subcategory).subscribe((data) => {
+      this.advertisements = data; // Assign data to advertisements array
+      console.log(this.advertisements); // Debug: Log fetched advertisements
+    });
+  }
 
-  // Fetch advertisements from the backend
-fetchAdvertisements(){
-  this.http.get(`http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_ads.php?category=${this.selectedCategory}`)
-  .subscribe({
-    next: (response: any) => {
-      if (response.status === 'success') {
-        this.advertisements = response.ads;
-      } else {
-        this.presentToast('No advertisements found for this category.', 'danger');
-      }
-    },
-    error: (error) => {
-      console.error('Error fetching ads:', error);
-      this.presentToast('Failed to load advertisements.', 'danger');
-    }
-  });
-}
-
-// Display a toast message for feedback
-async presentToast(message: string, color: string) {
-  const toast = await this.toastController.create({
-    message,
-    duration: 2000,
-    color,
-    position: 'top'
-  });
-  toast.present();
-}
-
-// Function to view ad details (can be linked to another page)
-viewDetails(ad: any) {
-  console.log('Ad details:', ad);
-  // Here, you can implement the logic to navigate to ad details page
-}
+  viewDetails(ads: any) {
+    // Handle navigation to advertisement details page
+    console.log('Viewing details for:', ads);
+    // You can navigate to a details page here
+  }
 }
