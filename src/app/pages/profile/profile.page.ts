@@ -111,7 +111,7 @@ export class ProfilePage implements OnInit {
       },
       error: (error) => {
         console.error('Error updating profile:', error);
-        this.presentToast('Failed to update profile.', 'danger');
+        this.presentToast('this email already used', 'danger');
       }
     });
   }

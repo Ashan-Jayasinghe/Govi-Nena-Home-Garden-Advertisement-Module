@@ -20,7 +20,7 @@
     <!-- User Name -->
     <div class="form-group">
       <label for="userName">User Name</label>
-      <ion-input id="userName" type="text" name="userName" maxlength="30" [(ngModel)]="dryers.userName" required></ion-input>
+      <ion-input id="userName" type="text" name="userName" [(ngModel)]="dryers.userName" readonly></ion-input>
     </div>
     
     <!-- Type Selector -->
@@ -31,6 +31,9 @@
         <ion-select-option value="used">Used</ion-select-option>
         <!-- Add more options if needed -->
       </ion-select>
+      <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.condition">
+        Condition is required.
+      </ion-text>
     </div>
 
     <div class="form-group">
@@ -40,6 +43,10 @@
         <ion-select-option value="sell">Sell</ion-select-option>
         <!-- Add more options if needed -->
       </ion-select>
+
+      <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.rentorsell">
+        Please select whether to rent or sell.
+      </ion-text>
     </div>
 
 
@@ -48,6 +55,10 @@
     <div class="form-group">
       <label for="title">Title</label>
       <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="dryers.title" required></ion-input>
+      <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.title">
+        Title is required.
+      </ion-text>
+ 
     </div>
 
     <!-- Stock -->
@@ -67,6 +78,11 @@
     <div class="form-group">
       <label for="images">Images</label>
       <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+      <ion-text color="danger" *ngIf="imageError">
+        {{ imageError }}
+      </ion-text>
+
+    
     </div>
         <!-- Display Image Previews -->
         <div class="image-preview">
@@ -88,6 +104,10 @@
     <div class="form-group">
       <label for="price">Price</label>
       <ion-input id="price" type="number" name="price" [(ngModel)]="dryers.price"></ion-input>
+      <ion-text color="danger" *ngIf="dryersForm.submitted && dryers.price === null">
+        Price is required.
+      </ion-text>
+    
     </div>
 
     <!-- Address -->
@@ -100,15 +120,23 @@
     <div class="form-group">
       <label for="mobile">Mobile</label>
       <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="dryers.mobile" required></ion-input>
+      <ion-text color="danger" *ngIf="dryersForm.submitted && !isValidMobile(dryers.mobile)">
+        Please enter a valid 10-digit mobile number.
+      </ion-text>
+   
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
       <ion-checkbox [(ngModel)]="dryers.acceptTerms" name="acceptTerms"></ion-checkbox>
       <ion-label>Accept terms and conditions</ion-label>
+    
+      <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.acceptTerms">
+        You must accept the terms and conditions.
+      </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" [disabled]="!dryersForm.form.valid">List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
 </ion-content>
