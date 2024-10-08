@@ -1,169 +1,166 @@
 ion-content {
-    --background: #e6f2e6; /* Light greenish background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    padding: 20px;
-  }
-  
-  .signup-container {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 450px;
-    width: 100%;
-    box-sizing: border-box;
-    animation: fadeIn 0.5s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 50px auto 0 auto; /* Add top margin to adjust the vertical position */
-  }
-  
-  h1 {
-    color: #4caf50; /* Primary green color */
-    margin-bottom: 25px;
-    font-size: 26px;
-    font-weight: 600;
-  }
-  
-  form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  ion-item {
-    width: 100%;
-    --background: transparent;
-    margin-bottom: 24px; /* Increase the bottom margin for more space */
-    --padding-start: 0;
-    --padding-end: 0;
-  }
-  
-  ion-label {
-    color: #388e3c;
-    font-weight: bold;
-    font-size: 16px; /* Increase the font size */
-    padding-bottom: 5px; /* Add more space between label and input */
-  }
-  
-  ion-input {
-    --background: #f8fdf8; /* Light background for input */
-    border: 1px solid #c8e6c9;
-    border-radius: 8px;
-    padding: 12px; /* Increase padding */
-    font-size: 16px;
-  }
-  
-  ion-button {
-    --background: #388e3c;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 12px;
-    border-radius: 8px;
-    width: 100%;
-    margin-top: 20px;
-    transition: background 0.3s;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  ion-button:hover {
-    --background: #2e7d32;
-  }
-  
-  ion-toolbar {
-    --background: #388e3c;
-    --color: white;
-  }
-  
-  ion-text {
-    text-align: center;
-    font-size: 14px;
-    color: #e53935;
-    margin-top: 10px;
-  }
-  
-  .terms {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .terms ion-checkbox {
-    margin-right: 10px;
-  }
-  
-  .terms ion-label {
-    font-size: 13px;
-    color: #666;
-  }
-  
-  a {
-    color: #388e3c;
-    text-decoration: underline;
-  }
-  
-  @keyframes fadeIn {
-    0% {
+  --background: #e6f2e6; /* Light greenish background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
+}
+
+.signup-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+  box-sizing: border-box;
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 50px auto 0 auto; /* Adjust vertical positioning */
+}
+
+h1 {
+  color: #4caf50; /* Primary green color */
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-item {
+  width: 100%;
+  --background: transparent;
+  margin-bottom: 24px; /* Increase the bottom margin for more space */
+  --padding-start: 0;
+  --padding-end: 0;
+  padding: 12px 0; /* Added padding to ion-item */
+}
+
+ion-label {
+  color: #388e3c;
+  font-weight: bold;
+  font-size: 16px; /* Increase the font size */
+  padding-bottom: 5px; /* Add space between label and input */
+}
+
+ion-input {
+  --background: #f8fdf8; /* Light background for input */
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  padding: 12px; /* Increased padding for the input fields */
+  font-size: 16px;
+  width: 100%; /* Ensure full width of the container */
+}
+
+ion-button {
+  --background: #388e3c;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 20px;
+  transition: background 0.3s;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+ion-button:hover {
+  --background: #2e7d32;
+}
+
+ion-toolbar {
+  --background: #388e3c;
+  --color: white;
+}
+
+ion-text {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+a {
+  color: #388e3c;
+  text-decoration: underline;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px; /* Added gap between checkbox and label */
+}
+
+.terms ion-checkbox {
+  margin-right: 10px;
+}
+
+@keyframes fadeIn {
+  0% {
       opacity: 0;
       transform: translateY(-20px);
-    }
-    100% {
+  }
+  100% {
       opacity: 1;
       transform: translateY(0);
-    }
   }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    .signup-container {
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .signup-container {
       padding: 15px;
       max-width: 380px;
       margin: 30px auto 0 auto; /* Adjust top margin for smaller screens */
-    }
-  
-    h1 {
+  }
+
+  h1 {
       font-size: 22px;
-    }
-  
-    ion-input {
+  }
+
+  ion-input {
       font-size: 14px;
       padding: 10px;
-    }
-  
-    ion-button {
+  }
+
+  ion-button {
       font-size: 15px;
       padding: 10px;
-    }
   }
-  
-  @media (max-width: 480px) {
-    .signup-container {
+}
+
+@media (max-width: 480px) {
+  .signup-container {
       padding: 10px;
-      max-width: 350px;
+      max-width: 380px;
       margin: 75px auto 0 auto; /* Further adjust top margin for very small screens */
-    }
-  
-    h1 {
+  }
+
+  h1 {
       font-size: 20px;
-    }
-  
-    ion-input {
+  }
+
+  ion-input {
       font-size: 13px;
       padding: 8px;
-    }
-  
-    ion-button {
+  }
+
+  ion-button {
       font-size: 14px;
       padding: 8px;
-    }
   }
-  
+}
