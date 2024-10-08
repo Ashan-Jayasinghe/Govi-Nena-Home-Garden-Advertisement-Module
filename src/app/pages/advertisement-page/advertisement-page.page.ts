@@ -74,6 +74,11 @@ goToAdvertisements(category: string) {
   this.router.navigate(['/advertisements', { category }]);
 }
 
+goToMyAdvertisements() {
+  // Navigate to the "My Ads" page
+  this.router.navigate(['/my-advertisements']);
+}
+
 }
 
 

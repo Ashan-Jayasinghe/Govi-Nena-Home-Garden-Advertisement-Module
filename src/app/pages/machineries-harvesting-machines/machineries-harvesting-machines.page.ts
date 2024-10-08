@@ -16,7 +16,7 @@ export class MachineriesHarvestingMachinesPage implements OnInit {
     title: string,
     stock: string,
     manufacturer: string,
-    specification: string,
+    description: string,
     price: number | null,
     address: string,
     mobile: string,
@@ -28,14 +28,14 @@ export class MachineriesHarvestingMachinesPage implements OnInit {
     title: '',
     stock: '',
     manufacturer: '',
-    specification: '',
+    description: '',
     price: null,
     address: '',
     mobile: '',
     acceptTerms: false
   };
 
-  specifications: string[] = [];
+  //specifications: string[] = [];
   selectedImages: File[] = [];
   previewImages: string[] = [];
   imageError: string = '';  // To display image error
@@ -53,13 +53,13 @@ export class MachineriesHarvestingMachinesPage implements OnInit {
     await toast.present();
   }
 
-  // Add specification to the list
-  addSpecification() {
-    if (this.harvestingmachines.specification) {
-      this.specifications.push(this.harvestingmachines.specification);
-      this.harvestingmachines.specification = ''; // Clear the input after adding
-    }
-  }
+  // // Add specification to the list
+  // addSpecification() {
+  //   if (this.harvestingmachines.specification) {
+  //     this.specifications.push(this.harvestingmachines.specification);
+  //     this.harvestingmachines.specification = ''; // Clear the input after adding
+  //   }
+  // }
 
   // Handle file selection and preview
   onFileChange(event: any): void {
@@ -140,7 +140,7 @@ export class MachineriesHarvestingMachinesPage implements OnInit {
     formData.append('address', this.harvestingmachines.address || '');
     formData.append('mobile', this.harvestingmachines.mobile || '');
     formData.append('acceptTerms', this.harvestingmachines.acceptTerms ? '1' : '0');
-
+    formData.append('description', this.harvestingmachines.description || '');
     // Unique attributes for Harvesting Machines
     formData.append('condition', this.harvestingmachines.condition || '');
     formData.append('rentorsell', this.harvestingmachines.rentorsell || '');
@@ -152,7 +152,7 @@ export class MachineriesHarvestingMachinesPage implements OnInit {
         formData.append('userName', this.harvestingmachines.userName || '');
 
     // Add specifications as JSON
-    formData.append('specifications', JSON.stringify(this.specifications));
+    //formData.append('specifications', JSON.stringify(this.specifications));
 
     // Add images
     this.selectedImages.forEach((image, index) => {

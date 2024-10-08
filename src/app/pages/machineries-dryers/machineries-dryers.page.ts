@@ -16,7 +16,7 @@ export class MachineriesDryersPage implements OnInit {
     title: string,
     stock: string,
     manufacturer: string,
-    specification: string,
+    description: string,
     price: number | null,
     address: string,
     mobile: string,
@@ -28,14 +28,14 @@ export class MachineriesDryersPage implements OnInit {
     title: '',
     stock: '',
     manufacturer: '',
-    specification: '',
+    description: '',
     price: null,
     address: '',
     mobile: '',
     acceptTerms: false
   };
 
-  specifications: string[] = [];
+  //specifications: string[] = [];
   selectedImages: File[] = [];
   previewImages: string[] = [];
   imageError: string = '';  // To display image error
@@ -54,12 +54,12 @@ export class MachineriesDryersPage implements OnInit {
     }
 
   // Add specification to the list
-  addSpecification() {
-    if (this.dryers.specification) {
-      this.specifications.push(this.dryers.specification);
-      this.dryers.specification = ''; // Clear the input after adding
-    }
-  }
+  // addSpecification() {
+  //   if (this.dryers.specification) {
+  //     this.specifications.push(this.dryers.specification);
+  //     this.dryers.specification = ''; // Clear the input after adding
+  //   }
+  // }
 
   // Handle file selection and preview
   onFileChange(event: any): void {
@@ -194,6 +194,7 @@ onSubmit() {
     formData.append('address', this.dryers.address || '');
     formData.append('mobile', this.dryers.mobile || '');
     formData.append('acceptTerms', this.dryers.acceptTerms ? '1' : '0');
+    formData.append('description', this.dryers.description || '');
 
     // Add userId only if it's defined
     // if (this.dryers.userId !== null && this.dryers.userId !== undefined) {
@@ -212,7 +213,7 @@ onSubmit() {
     formData.append('userName', this.dryers.userName || '');
 
     // Add specifications as JSON
-    formData.append('specifications', JSON.stringify(this.specifications));
+    //formData.append('specifications', JSON.stringify(this.specifications));
 
 
       // Add images
