@@ -10,339 +10,17 @@ ion-button {
   margin-left: 10px;
 }
 
-// ion-content{
-//   --background: #e6f2e6; /* Light greenish background */
-//   position: relative; /* Ensure elements can be positioned within the content */
-//   padding: 20px;
-
-//   .profile-card {
-//     position: absolute;
-//     top: 20px;
-//     right: 20px;
-//     background: white;
-//     padding: 10px 20px;
-//     border-radius: 12px;
-//     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-//     display: flex;
-//     align-items: center;
-//     cursor: pointer;
-//     transition: all 0.3s ease-in-out;
-
-//     &:hover {
-//       box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-//     }
-
-//     .profile-image {
-//       width: 50px;
-//       height: 50px;
-//       border-radius: 50%;
-//       object-fit: cover;
-//       margin-right: 10px;
-//     }
-
-//     .welcome-text {
-//       color: #388e3c;
-//       font-size: 16px;
-//       font-weight: bold;
-//     }
-//   }
-
-
-//     .filter-box{
-//         .search-bar{
-//             margin-top: 15px;
-
-//             ion-searchbar{
-//                 --border-radius:15px;
-//                 border-radius: var(--border-radius);
-//             }
-
-//         }
-
-//         .filter-container {
-//             padding: 16px;
-//             background-color: #d7ffe7;
-//             .filter-header {
-//                 display: flex;
-//                 align-items: center;
-//                 justify-content: space-between;
-//                 cursor: pointer;
-//                 padding: 5%;
-//                 background-color: #d7ffe7;
-//                 border-radius: 5px;
-//               }
-//           }
-          
-          
-//           .upperBox {
-//             background-color: #fff;
-//             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 195px 2.6px;
-//             height: auto;
-//             margin-bottom: 5px;
-//             padding: 20px;
-//             h3 {
-//               font-size: 20px;
-//               color: rgb(83, 192, 130);
-//             }
-
-//             .apply{
-//                 margin-right: 5%;
-//                 margin-left: 3%;
-                
-
-//             }
-//             .reset{
-//                 margin-left: 5%;
-//             }
-//           }
-
-      
-
-          
-
-          
-//     }
-
-//     // ion-card {
-//     //   margin: 15px;
-//     //   padding: 10px;
-//     //   border-radius: 10px;
-//     //   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-//     // }
-    
-//     // ion-card-title {
-//     //   font-size: 18px;
-//     //   font-weight: bold;
-//     //   color: #333;
-//     // }
-    
-//     // ion-card-content {
-//     //   p {
-//     //     font-size: 14px;
-//     //     color: #666;
-//     //     margin-bottom: 10px;
-//     //   }
-//     // }
-    
-//     // ion-button {
-//     //   --background: #94C83D;
-//     //   --border-radius: 5px;
-//     // }
-
-//     ion-card {
-//       margin: 15px;
-//       padding: 0; // Remove padding to ensure image fits properly
-//       border-radius: 10px;
-//       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-//       height: 400px; // Set a fixed height for the card
-//       display: flex;
-//       flex-direction: column;
-//     }
-    
-//     ion-card img {
-//       width: 100%; // Ensure image spans the width of the card
-//       height: 250px; // Set a fixed height for the image
-//       object-fit: cover; // Cover the image area without distortion
-//     }
-    
-//     ion-card-header {
-//       padding: 10px; // Add some padding to header
-//     }
-    
-//     ion-card-title {
-//       font-size: 18px;
-//       font-weight: bold;
-//       color: #333;
-//     }
-    
-//     ion-card-content {
-//       flex: 1;
-//       padding: 10px;
-//       overflow: auto; // Allow scrolling if content overflows
-//       p {
-//         font-size: 14px;
-//         color: #666;
-//         margin-bottom: 10px;
-//       }
-//     }
-    
-//     ion-button {
-//       --background: #94C83D;
-//       --border-radius: 5px;
-//       margin-top: auto; // Push the button to the bottom of the card
-//     }
-    
-
-    
-      
-// }
-
-// ion-content {
-//   --background: #e6f2e6; /* Light greenish background */
-//   position: relative; /* Ensure elements can be positioned within the content */
-//   padding: 20px;
-  
-//   .profile-card {
-//     position: absolute;
-//     top: 20px;
-//     right: 20px;
-//     background: white;
-//     padding: 10px 20px;
-//     border-radius: 12px;
-//     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-//     display: flex;
-//     align-items: center;
-//     cursor: pointer;
-//     transition: all 0.3s ease-in-out;
-//     z-index: 10; /* Ensure the profile card stays on top */
-    
-//     &:hover {
-//       box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-//     }
-
-//     .profile-image {
-//       width: 50px;
-//       height: 50px;
-//       border-radius: 50%;
-//       object-fit: cover;
-//       margin-right: 10px;
-//     }
-
-//     .welcome-text {
-//       color: #388e3c;
-//       font-size: 16px;
-//       font-weight: bold;
-//     }
-//   }
-
-//   .filter-box {
-//     margin-top: 100px; /* Added margin to avoid overlapping with the profile card */
-    
-//     .search-bar {
-//       margin-top: 15px;
-
-//       ion-searchbar {
-//         --border-radius: 15px;
-//         border-radius: var(--border-radius);
-//       }
-//     }
-
-//     .filter-container {
-//       padding: 16px;
-//       background-color: #d7ffe7;
-      
-//       .filter-header {
-//         display: flex;
-//         align-items: center;
-//         justify-content: space-between;
-//         cursor: pointer;
-//         padding: 5%;
-//         background-color: #d7ffe7;
-//         border-radius: 5px;
-//       }
-//     }
-
-//     .upperBox {
-//       background-color: #fff;
-//       box-shadow: rgba(0, 0, 0, 0.15) 1.95px 195px 2.6px;
-//       height: auto;
-//       margin-bottom: 5px;
-//       padding: 20px;
-      
-//       h3 {
-//         font-size: 20px;
-//         color: rgb(83, 192, 130);
-//       }
-
-//       .apply {
-//         margin-right: 5%;
-//         margin-left: 3%;
-//       }
-
-//       .reset {
-//         margin-left: 5%;
-//       }
-//     }
-//   }
-
-//   ion-card {
-//     margin: 15px;
-//     padding: 0; // Remove padding to ensure image fits properly
-//     border-radius: 10px;
-//     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-//     height: 400px; // Set a fixed height for the card
-//     display: flex;
-//     flex-direction: column;
-//   }
-
-//   ion-card img {
-//     width: 100%; // Ensure image spans the width of the card
-//     height: 250px; // Set a fixed height for the image
-//     object-fit: cover; // Cover the image area without distortion
-//   }
-
-//   ion-card-header {
-//     padding: 10px; // Add some padding to header
-//   }
-
-//   ion-card-title {
-//     font-size: 18px;
-//     font-weight: bold;
-//     color: #333;
-//   }
-
-//   ion-card-content {
-//     flex: 1;
-//     padding: 10px;
-//     overflow: auto; // Allow scrolling if content overflows
-//     p {
-//       font-size: 14px;
-//       color: #666;
-//       margin-bottom: 10px;
-//     }
-//   }
-
-//   ion-button {
-//     --background: #94C83D;
-//     --border-radius: 5px;
-//     margin-top: auto; // Push the button to the bottom of the card
-//   }
-// }
-
-// /* Media Queries for smaller screens */
-// @media (max-width: 768px) {
-//   .profile-card {
-//     top: 10px;
-//     right: 10px;
-//   }
-
-//   .filter-box {
-//     margin-top: 80px; /* Adjust margin for smaller screens */
-//   }
-// }
-
-// @media (max-width: 480px) {
-//   .profile-card {
-//     top: 5px;
-//     right: 5px;
-//   }
-
-//   .filter-box {
-//     margin-top: 60px; /* Further adjust margin for smaller screens */
-//   }
-// }
-
 
 ion-content {
-  --background: #e6f2e6; /* Light greenish background */
+  --background: #f0f0f5; /* Light greenish background */
   position: relative;
   padding: 20px;
 
   .profile-card {
     position:relative; /* Make the profile card fixed */
     top:20px;
-    background: rgb(255, 255, 255);
-    padding: 10px 20px;
+    background: rgb(255, 194, 10);
+    padding: 20px 20px;
     border-radius: 12px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -356,112 +34,61 @@ ion-content {
     }
 
     .profile-image {
-      width: 50px;
-      height: 50px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
       margin-right: 20px;
     }
 
     .welcome-text {
-      color: #388e3c;
-      font-size: 16px;
+      color: #000000;
+      font-size: 18px;
       font-weight: bold;
+      font-family:Arial, Helvetica, sans-serif;
     }
   }
 
-  .filter-box {
-    margin-top: 30px; /* Ensure space for the profile card */
-    
-    .search-bar {
-      margin-top: 15px;
-      ion-searchbar {
-        --border-radius: 15px;
-      }
-    }
-
-    .filter-container {
-      padding: 16px;
-      background-color: #d7ffe7;
-      .filter-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        cursor: pointer;
-        padding: 5%;
-        background-color: #d7ffe7;
-        border-radius: 5px;
-      }
-    }
-
-    .upperBox {
-      background-color: #fff;
-      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 195px 2.6px;
-      height: auto;
-      margin-bottom: 5px;
-      padding: 20px;
-      
-      h3 {
-        font-size: 20px;
-        color: rgb(83, 192, 130);
-      }
-
-      .apply {
-        margin-right: 5%;
-        margin-left: 3%;
-      }
-
-      .reset {
-        margin-left: 5%;
-      }
-    }
-  }
-
-  ion-card {
-    margin: 15px;
-    padding: 0;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  ion-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-
-  ion-card-header {
-    padding: 10px;
-  }
-
-  ion-card-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  ion-card-content {
-    flex: 1;
-    padding: 10px;
-    overflow: auto;
-    
-    p {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 10px;
-    }
-  }
-
-  ion-button {
-    --background: #94C83D;
-    --border-radius: 5px;
-    margin-top: auto;
-  }
+}
+.category-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background-color: #fff;
+  text-align: center;
 }
 
+.category-card:hover {
+  transform: translateY(-5px); /* Slight hover lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.category-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #4caf50; /* Green background for the header */
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.category-card-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+}
+
+ion-col {
+  padding: 10px;
+}
+
+h2{
+  margin: 80px 40px 50px 40px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 /* Media Queries for smaller screens */
 @media (max-width: 768px) {
   .profile-card {
@@ -471,9 +98,12 @@ ion-content {
     border-radius: 0;
     justify-content: center; /* Center content in the profile card */
   }
+  .category-card-header {
+    height: 80px; /* Reduce height for smaller screens */
+  }
 
-  .filter-box {
-    margin-top: 80px; /* Adjust margin for smaller screens */
+  .category-card-title {
+    font-size: 1em; /* Adjust font size for smaller screens */
   }
 }
 
@@ -487,7 +117,5 @@ ion-content {
     padding: 10px; /* Adjust padding for smaller screens */
   }
 
-  .filter-box {
-    margin-top: 60px; /* Adjust margin for very small screens */
-  }
+
 }

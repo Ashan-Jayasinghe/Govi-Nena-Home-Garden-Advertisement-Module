@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="search-chef" color="light">
       </ion-back-button>
     </ion-buttons>
-    <ion-title color="light">ADVERTISEMENTS</ion-title>
+    <ion-title color="light">HOME</ion-title>
     <ion-button slot="end"  color="warning" (click)="goToDetailsPage()">Post Ads</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -16,169 +16,59 @@
     <img [src]="user.profileImage || 'assets/cat.png'" class="profile-image" />
     <span class="welcome-text">Welcome, {{ user.name }}</span>
   </div>
-
-  
-  <div class="filter-box">
-    <div class="search-bar">
-      <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionInput)="search($event)" show-clear-button="always" value="Always Show"></ion-searchbar>
-    </div>
-    <div class="filter-container">
-      <div class="filter-header" (click)="toggleFilter()">
-        <span style="font-size: large;">Filter</span>
-        <ion-icon [name]="filterVisible ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-      </div>
-      
-      <div *ngIf="filterVisible" class="filter-options">
-        <div class="upperBox">   
-          <h3>Category</h3>
-
-          <ion-list>
-            <ion-radio-group  [value]="filters.category" (ionChange)="categoryChange($event)">
-              <ion-item>
-                <ion-radio value="planting-materials" label-placement="start">Planting Materials</ion-radio>
-              </ion-item>
-  
-  
-  
-              <ion-item>
-                <ion-radio value="agro-chemicals" label-placement="start">Agro Chemicals</ion-radio>
-              </ion-item>
-  
-              <ion-item>
-                <ion-radio value="fertilizers" label-placement="start">Fertilizers</ion-radio>
-              </ion-item>
-  
-              <ion-item>
-                <ion-radio value="machineries" label-placement="start">Machineries</ion-radio>
-              </ion-item>
-  
-            </ion-radio-group>
-          </ion-list>
-        </div>
-        <div class="upperBox"> 
-          <h3>Location</h3>
-
-          <ion-list>
-            <!-- Province Dropdown -->
-            <ion-item>
-              <ion-label>Province</ion-label>
-              <ion-select [(ngModel)]="selectedProvince" (ionChange)="onProvinceChange()">
-                <ion-select-option *ngFor="let province of provinces" [value]="province">{{ province.name }}</ion-select-option>
-              </ion-select>
-            </ion-item>
-        
-            <!-- District Dropdown -->
-            <ion-item>
-              <ion-label>District</ion-label>
-              <ion-select [(ngModel)]="selectedDistrict" (ionChange)="onDistrictChange()" [disabled]="!selectedProvince">
-                <ion-select-option *ngFor="let district of districts" [value]="district">{{ district.name }}</ion-select-option>
-              </ion-select>
-            </ion-item>
-        
-            <!-- DS Division Dropdown -->
-            <ion-item>
-              <ion-label>DS Division</ion-label>
-              <ion-select [(ngModel)]="selectedDSDivision" (ionChange)="onDSDivisionChange()" [disabled]="!selectedDistrict">
-                <ion-select-option *ngFor="let dsDivision of dsDivisions" [value]="dsDivision">{{ dsDivision.name }}</ion-select-option>
-              </ion-select>
-            </ion-item>
-        
-            <!-- GN Division Dropdown -->
-            <ion-item>
-              <ion-label>GN Division</ion-label>
-              <ion-select [(ngModel)]="selectedGNDivision" [disabled]="!selectedDSDivision">
-                <ion-select-option *ngFor="let gnDivision of gnDivisions" [value]="gnDivision">{{ gnDivision.name }}</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-        </div>
-        <div class="upperBox">
-          <h3>Price</h3>   
-          <ion-list>
-            <ion-radio-group
-              [value]="filters.priceByOrder"
-              (ionChange)="highLowChange($event)"
-            >
-              <ion-item>
-                <ion-radio mode="ios" value="lowToHigh">Low To High</ion-radio>
-              </ion-item>
-      
-              <ion-item>
-                <ion-radio mode="ios" value="highToLow">High To Low</ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-         
-          <ion-list lines="none">
-            <ion-item>
-              <ion-range
-                [value]="filters.price"
-                (ionChange)="priceChange($event)"
-                min="100"
-                dual-knobs="true"
-                max="10000000"
-                color="primary"
-                mode="ios"
-                [pin]="true"
-              ></ion-range>
-              <ion-label slot="end"
-                >Rs {{filters.price.lower}} to Rs {{filters.price.upper}}</ion-label
-              >
-            </ion-item>
-          </ion-list>
-        </div>      
-        <div class="upperBox">
-              <ion-button class="apply"  (click)="applyFilters()" color="success">Apply Filters</ion-button>
-              <ion-button class="reset" color="warning" (click)="reset()">Reset Filters</ion-button>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-  <div class="ad-section">
-    <!-- <ion-grid>
+  <div>
+    <h2>WHAT YOU LOOKING FOR?</h2>
+    <ion-grid>
       <ion-row>
-        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of ads">
-          <ion-card>
-            <img [src]="ad.imageUrl" />
-            <ion-card-header>
-              <ion-card-title>{{ ad.title }}</ion-card-title>
+        <!-- Card for All Advertisements -->
+        <ion-col size="12" size-md="6" size-lg="4">
+          <ion-card class="category-card"  (click)="goToAdvertisements('all')">
+            <ion-card-header class="category-card-header">
+              <ion-card-title class="category-card-title">ALL ADVERTISEMENTS</ion-card-title>
             </ion-card-header>
-            <ion-card-content>
-              {{ ad.description }}
-              <ion-button expand="full" (click)="viewDetails(ad)">View</ion-button>
-            </ion-card-content>
           </ion-card>
         </ion-col>
-      </ion-row>
-    </ion-grid> -->
-
-
-
-    <ion-grid>
-
-      <ion-row>
-      
-        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of ads">
-          <ion-card>
-            <img [src]="ad.imageUrl" />
-            <ion-card-header>
-              <ion-card-title>{{ ad.title }}</ion-card-title>
+  
+        <!-- Card for Fertilizer -->
+        <ion-col size="12" size-md="6" size-lg="4">
+          <ion-card class="category-card"  (click)="goToAdvertisements('fertilizer')" >
+            <ion-card-header class="category-card-header">
+              <ion-card-title class="category-card-title">FERTILIZERS</ion-card-title>
             </ion-card-header>
-            <ion-card-content>
-              <p>{{ ad.subtitle }}</p>
-              <ion-button expand="full" (click)="viewDetails(ad)">View</ion-button>
-            </ion-card-content>
+          </ion-card>
+        </ion-col>
+  
+        <!-- Card for AgroChemicals -->
+        <ion-col size="12" size-md="6" size-lg="4">
+          <ion-card class="category-card" (click)="goToAdvertisements('agrochemical')">
+            <ion-card-header class="category-card-header">
+              <ion-card-title class="category-card-title">AGRO-CHEMICALS</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+  
+        <!-- Card for Machineries -->
+        <ion-col size="12" size-md="6" size-lg="4">
+          <ion-card class="category-card"  (click)="goToAdvertisements('machineries')" >
+            <ion-card-header class="category-card-header">
+              <ion-card-title class="category-card-title">MACHINERIES</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+  
+        <!-- Card for Planting Materials -->
+        <ion-col size="12" size-md="6" size-lg="4">
+          <ion-card class="category-card"  (click)="goToAdvertisements('planting_materials')">
+            <ion-card-header class="category-card-header">
+              <ion-card-title class="category-card-title">PLANTING MATERIALS</ion-card-title>
+            </ion-card-header>
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
+  
+
 
 
 
