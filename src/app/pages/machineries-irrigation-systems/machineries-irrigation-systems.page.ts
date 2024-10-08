@@ -147,7 +147,7 @@ export class MachineriesIrrigationSystemsPage implements OnInit {
     formData.append('price', this.irrigationSystems.price !== null ? this.irrigationSystems.price.toString() : '');
 
         // Add userName
-        formData.append('userName', this.irrigationSystems.userName || '');
+    formData.append('userName', this.irrigationSystems.userName || '');
 
     // Add specifications as JSON
     //formData.append('specifications', JSON.stringify(this.specifications));
