@@ -43,7 +43,7 @@ export class ProfilePage implements OnInit {
   // Load user's profile and advertisements on init
   ngOnInit() {
     this.loadUserProfile();
-    this.loadUserAdvertisements();
+    //this.loadUserAdvertisements();
   }
 
   // Load user profile from the server
@@ -67,23 +67,23 @@ export class ProfilePage implements OnInit {
   }
 
   // Load user advertisements from the server
-  loadUserAdvertisements() {
-    this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_advertisements.php', {
-      withCredentials: true
-    }).subscribe({
-      next: (response: any) => {
-        if (response.status === 'success') {
-          this.userAdvertisements = response.ads;
-        } else {
-          this.presentToast('Failed to load advertisements.', 'danger');
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching advertisements:', error);
-        this.presentToast('Error loading advertisements.', 'danger');
-      }
-    });
-  }
+  // loadUserAdvertisements() {
+  //   this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_advertisements.php', {
+  //     withCredentials: true
+  //   }).subscribe({
+  //     next: (response: any) => {
+  //       if (response.status === 'success') {
+  //         this.userAdvertisements = response.ads;
+  //       } else {
+  //         this.presentToast('Failed to load advertisements.', 'danger');
+  //       }
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching advertisements:', error);
+  //       this.presentToast('Error loading advertisements.', 'danger');
+  //     }
+  //   });
+  // }
 
   // Update user profile (name, email, profile image)
   updateUser(event: Event) {
@@ -145,4 +145,35 @@ export class ProfilePage implements OnInit {
   //     this.user.profileImage = file;
   //   }
   // }
+
+  // Add Logout functionality
+  logout() {
+    this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/logout.php', {}, { withCredentials: true })
+      .subscribe({
+        next: async (response: any) => {
+          if (response.status === 'success') {
+            // Display a success message
+            const toast = await this.toastCtrl.create({
+              message: 'Logged out successfully!',
+              duration: 2000,
+              color: 'success',
+              position: 'top'
+            });
+            await toast.present();
+
+            // Redirect to login page
+            this.router.navigate(['/login']);
+          }
+        },
+        error: async () => {
+          const toast = await this.toastCtrl.create({
+            message: 'Error logging out. Please try again.',
+            duration: 2000,
+            color: 'danger',
+            position: 'top'
+          });
+          await toast.present();
+        }
+      });
+  }
 }
