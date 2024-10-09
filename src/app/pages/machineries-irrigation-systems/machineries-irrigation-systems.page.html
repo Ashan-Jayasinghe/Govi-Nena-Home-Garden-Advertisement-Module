@@ -122,7 +122,7 @@
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="irrigationSystems.acceptTerms" name="acceptTerms"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="irrigationSystems.acceptTerms" name="acceptTerms" required></ion-checkbox>
       <ion-label>Accept terms and conditions</ion-label>
       <ion-text color="danger" *ngIf="irrigationSystemsForm.submitted && !irrigationSystems.acceptTerms">
         You must accept the terms and conditions.

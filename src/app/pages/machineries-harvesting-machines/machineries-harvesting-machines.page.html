@@ -123,7 +123,7 @@
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="harvestingmachines.acceptTerms" name="acceptTerms"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="harvestingmachines.acceptTerms" name="acceptTerms" required></ion-checkbox>
       <ion-label>Accept terms and conditions</ion-label>
       <ion-text color="danger" *ngIf="harvestingMachinesForm.submitted && !harvestingmachines.acceptTerms">
         You must accept the terms and conditions.
