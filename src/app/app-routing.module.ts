@@ -115,6 +115,10 @@ const routes: Routes = [
     path: 'advertisements',
     loadChildren: () => import('./pages/advertisements/advertisements.module').then( m => m.AdvertisementsPageModule)
   },
+  {
+    path: 'my-advertisements',
+    loadChildren: () => import('./pages/my-advertisements/my-advertisements.module').then( m => m.MyAdvertisementsPageModule)
+  },
 
 
 
