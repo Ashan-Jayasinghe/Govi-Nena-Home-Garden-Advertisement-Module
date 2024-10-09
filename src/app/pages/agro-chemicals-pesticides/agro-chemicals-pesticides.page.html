@@ -1,116 +1,115 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/agro-chemicals" color="light">
-      </ion-back-button>
+      <ion-back-button defaultHref="/agro-chemicals" color="light"></ion-back-button>
     </ion-buttons>
     <ion-title color="light">PESTICIDES</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content>
   <form (ngSubmit)="onSubmit()" #pesticidesForm="ngForm">
-    <!-- Type Selector -->
+    <!-- User Name (Read-only) -->
     <div class="form-group">
-      <label for="type">Type</label>
+      <label for="userName">User Name</label>
+      <ion-input id="userName" type="text" name="userName" [(ngModel)]="pesticides.userName" readonly></ion-input>
+    </div>
+
+    <!-- Type Selector (Required) -->
+    <div class="form-group">
+      <label for="type">Type <span style="color: red;">*</span></label>
       <ion-select id="type" name="type" [(ngModel)]="pesticides.type" required>
         <ion-select-option value="insecticide">Insecticide</ion-select-option>
+        <ion-select-option value="herbicide">Herbicide</ion-select-option>
+        <ion-select-option value="fungicide">Fungicide</ion-select-option>
         <!-- Add more options if needed -->
       </ion-select>
+      <ion-text color="danger" *ngIf="pesticidesForm.submitted && !pesticides.type">
+        Type is required.
+      </ion-text>
     </div>
 
-
-
-    <!-- Title -->
+    <!-- Title (Required) -->
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="title">Title <span style="color: red;">*</span></label>
       <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="pesticides.title" required></ion-input>
+      <ion-text color="danger" *ngIf="pesticidesForm.submitted && !pesticides.title">
+        Title is required.
+      </ion-text>
     </div>
 
-
-
-        <!-- Application Ratio -->
-        <div class="form-group">
-          <label for="applicationRatio">Application Ratio (Liter per Hec)</label>
-          <ion-input id="applicationRatio" type="number" name="applicationRatio" [(ngModel)]="pesticides.applicationRatio"></ion-input>
-        </div>
-
+    <!-- Application Ratio -->
+    <div class="form-group">
+      <label for="applicationRatio">Application Ratio (Liter per Hectare) <span style="color: gray;">(Optional)</span></label>
+      <ion-input id="applicationRatio" type="number" name="applicationRatio" [(ngModel)]="pesticides.applicationRatio"></ion-input>
+    </div>
 
     <!-- Images -->
     <div class="form-group">
-      <label for="images">Images</label>
+      <label for="images">Images <span style="color: gray;">(Optional)</span></label>
       <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
     </div>
-        <!-- Display Image Previews -->
-        <div class="image-preview">
-          <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
-        </div>
 
+    <!-- Display Image Previews -->
+    <div class="image-preview">
+      <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
+    </div>
 
-
-
-    <!-- Stock -->
+    <!-- Stock (Optional) -->
     <div class="form-group">
-      <label for="stock">Stock</label>
+      <label for="stock">Stock <span style="color: gray;">(Optional)</span></label>
       <ion-input id="stock" type="number" name="stock" [(ngModel)]="pesticides.stock"></ion-input>
     </div>
 
-    <!-- Specifications
-    <div class="form-group">
-      <label for="specifications">Specifications</label>
-      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="pesticides.specification"></ion-input>
-    </div>
-    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
-    <ion-list>
-      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
-    </ion-list> -->
-
-    <div class="form-group">
-      <label for="description">Description</label>
-      <ion-textarea id="description" type="text" name="description" [(ngModel)]="pesticides.description" placeholder="Enter description"></ion-textarea>
-    </div>
-    
     <!-- Prices -->
     <div class="form-group">
-      <label for="price1L">Price for 1L/Kg</label>
-      <ion-input id="price1L" type="number" name="price1L" [(ngModel)]="pesticides.price1L"></ion-input>
+      <label for="price1L">Price for 1L/Kg <span style="color: red;">*</span></label>
+      <ion-input id="price1L" type="number" name="price1L" [(ngModel)]="pesticides.price1L" required></ion-input>
+      <ion-text color="danger" *ngIf="pesticidesForm.submitted && !pesticides.price1L">
+        Price for 1L/Kg is required.
+      </ion-text>
     </div>
 
     <div class="form-group">
-      <label for="price5L">Price for 5L/Kg</label>
+      <label for="price5L">Price for 5L/Kg <span style="color: gray;">(Optional)</span></label>
       <ion-input id="price5L" type="number" name="price5L" [(ngModel)]="pesticides.price5L"></ion-input>
     </div>
+
     <div class="form-group">
-      <label for="price10L">Price for 10L/Kg</label>
+      <label for="price10L">Price for 10L/Kg <span style="color: gray;">(Optional)</span></label>
       <ion-input id="price10L" type="number" name="price10L" [(ngModel)]="pesticides.price10L"></ion-input>
     </div>
 
-
-    <!-- Address -->
+    <!-- Address (Optional) -->
     <div class="form-group">
-      <label for="address">Address</label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="pesticides.address" required></ion-input>
+      <label for="address">Address <span style="color: gray;">(Optional)</span></label>
+      <ion-input id="address" type="text" name="address" [(ngModel)]="pesticides.address"></ion-input>
     </div>
 
-    <!-- Mobile -->
+    <!-- Mobile (Required) -->
     <div class="form-group">
-      <label for="mobile">Mobile</label>
+      <label for="mobile">Mobile <span style="color: red;">*</span></label>
       <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="pesticides.mobile" required></ion-input>
+      <ion-text color="danger" *ngIf="pesticidesForm.submitted && !isValidMobile(pesticides.mobile)">
+        Please enter a valid 10-digit mobile number.
+      </ion-text>
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
       <ion-checkbox [(ngModel)]="pesticides.acceptTerms" name="acceptTerms"></ion-checkbox>
-      <ion-label>Accept terms and conditions</ion-label>
+      <ion-label>Accept terms and conditions <span style="color: red;">*</span></ion-label>
+      <ion-text color="danger" *ngIf="pesticidesForm.submitted && !pesticides.acceptTerms">
+        You must accept the terms and conditions.
+      </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" [disabled]="!pesticidesForm.form.valid">List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
 </ion-content>

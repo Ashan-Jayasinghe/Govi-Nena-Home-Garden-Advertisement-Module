@@ -111,9 +111,13 @@
     <ion-item>
       <ion-checkbox [(ngModel)]="tillages.acceptTerms" name="acceptTerms"></ion-checkbox>
       <ion-label>Accept terms and conditions <span style="color: red;">*</span></ion-label>
+      <ion-text color="danger" *ngIf="tillagesForm.submitted && !tillages.acceptTerms">
+        You must accept the terms and conditions.
+      </ion-text>
+   
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" [disabled]="!tillagesForm.form.valid">List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
 </ion-content>
