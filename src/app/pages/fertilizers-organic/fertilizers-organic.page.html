@@ -1,111 +1,123 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/fertilizers" color="light">
-      </ion-back-button>
+      <ion-back-button defaultHref="/fertilizers" color="light"></ion-back-button>
     </ion-buttons>
     <ion-title color="light">ORGANIC</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content>
   <form (ngSubmit)="onSubmit()" #organicForm="ngForm">
+
+    <!-- User Name (Read-only) -->
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <ion-input id="userName" type="text" name="userName" [(ngModel)]="organic.userName" readonly></ion-input>
+    </div>
+
     <!-- Type Selector -->
     <div class="form-group">
-      <label for="type">Type</label>
+      <label for="type">Type <span style="color: red;">*</span></label>
       <ion-select id="type" name="type" [(ngModel)]="organic.type" required>
         <ion-select-option value="urea">Urea</ion-select-option>
         <!-- Add more options if needed -->
       </ion-select>
+      <ion-text color="danger" *ngIf="organicForm.submitted && !organic.type">
+        Type is required.
+      </ion-text>
     </div>
-
-
 
     <!-- Title -->
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="title">Title <span style="color: red;">*</span></label>
       <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="organic.title" required></ion-input>
+      <ion-text color="danger" *ngIf="organicForm.submitted && !organic.title">
+        Title is required.
+      </ion-text>
     </div>
 
     <!-- Images -->
     <div class="form-group">
-      <label for="images">Images</label>
+      <label for="images">Images <span style="color: gray;">(Optional)</span></label>
       <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
     </div>
-        <!-- Display Image Previews -->
-        <div class="image-preview">
-          <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
-        </div>
+    <!-- Display Image Previews -->
+    <div class="image-preview">
+      <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
+    </div>
 
-
-        <!-- NPK Ratio -->
-        <div class="form-group">
-          <label for="npk">NPK</label>
-          <ion-input id="npk" type="number" name="npk" [(ngModel)]="organic.npk"></ion-input>
-        </div>
+    <!-- NPK Ratio -->
+    <div class="form-group">
+      <label for="npk">NPK Ratio <span style="color: gray;">(Optional)</span></label>
+      <ion-input id="npk" type="number" name="npk" [(ngModel)]="organic.npk"></ion-input>
+    </div>
 
     <!-- Method -->
     <div class="form-group">
-      <label for="method">Method</label>
+      <label for="method">Method <span style="color: gray;">(Optional)</span></label>
       <ion-input id="method" type="text" name="method" [(ngModel)]="organic.method"></ion-input>
     </div>
 
     <!-- Stock -->
     <div class="form-group">
-      <label for="stock">Stock</label>
+      <label for="stock">Stock <span style="color: gray;">(Optional)</span></label>
       <ion-input id="stock" type="number" name="stock" [(ngModel)]="organic.stock"></ion-input>
     </div>
 
-    <!-- Specifications -->
+    <!-- Description -->
     <div class="form-group">
-      <label for="specifications">Specifications</label>
-      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="organic.specification"></ion-input>
+      <label for="description">Description <span style="color: gray;">(Optional)</span></label>
+      <ion-textarea id="description" name="description" [(ngModel)]="organic.description" placeholder="Enter description"></ion-textarea>
     </div>
-    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
-    <ion-list>
-      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
-    </ion-list>
 
     <!-- Prices -->
     <div class="form-group">
-      <label for="price1L">Price for 1L</label>
-      <ion-input id="price1L" type="number" name="price1L" [(ngModel)]="organic.price1L"></ion-input>
+      <label for="price1L">Price for 1L <span style="color: red;">*</span></label>
+      <ion-input id="price1L" type="number" name="price1L" [(ngModel)]="organic.price1L" required></ion-input>
+      <ion-text color="danger" *ngIf="organicForm.submitted && !organic.price1L">
+        Price for 1L is required.
+      </ion-text>
     </div>
     <div class="form-group">
-      <label for="price5L">Price for 5L</label>
+      <label for="price5L">Price for 5L <span style="color: gray;">(Optional)</span></label>
       <ion-input id="price5L" type="number" name="price5L" [(ngModel)]="organic.price5L"></ion-input>
     </div>
     <div class="form-group">
-      <label for="price10L">Price for 10L</label>
+      <label for="price10L">Price for 10L <span style="color: gray;">(Optional)</span></label>
       <ion-input id="price10L" type="number" name="price10L" [(ngModel)]="organic.price10L"></ion-input>
     </div>
 
-
     <!-- Address -->
     <div class="form-group">
-      <label for="address">Address</label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="organic.address" required></ion-input>
+      <label for="address">Address <span style="color: gray;">(Optional)</span></label>
+      <ion-input id="address" type="text" name="address" [(ngModel)]="organic.address"></ion-input>
     </div>
 
     <!-- Mobile -->
     <div class="form-group">
-      <label for="mobile">Mobile</label>
+      <label for="mobile">Mobile <span style="color: red;">*</span></label>
       <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="organic.mobile" required></ion-input>
+      <ion-text color="danger" *ngIf="organicForm.submitted && !isValidMobile(organic.mobile)">
+        Please enter a valid 10-digit mobile number.
+      </ion-text>
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="organic.acceptTerms" name="acceptTerms"></ion-checkbox>
-      <ion-label>Accept terms and conditions</ion-label>
+      <ion-checkbox [(ngModel)]="organic.acceptTerms" name="acceptTerms" required></ion-checkbox>
+      <ion-label>Accept terms and conditions <span style="color: red;">*</span></ion-label>
+      <ion-text color="danger" *ngIf="organicForm.submitted && !organic.acceptTerms">
+        You must accept the terms and conditions.
+      </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" [disabled]="!organicForm.form.valid">List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
 </ion-content>
