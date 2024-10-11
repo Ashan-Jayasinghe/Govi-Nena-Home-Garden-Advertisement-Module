@@ -19,10 +19,10 @@ const routes: Routes = [
     path: 'post-ad-home-page',
     loadChildren: () => import('./pages/post-ad-home-page/post-ad-home-page.module').then( m => m.PostAdHomePagePageModule)
   },
-  {
-    path: 'advertisement-details',
-    loadChildren: () => import('./pages/advertisement-details/advertisement-details.module').then( m => m.AdvertisementDetailsPageModule)
-  },
+  // {
+  //   path: 'advertisement-details',
+  //   loadChildren: () => import('./pages/advertisement-details/advertisement-details.module').then( m => m.AdvertisementDetailsPageModule)
+  // },
   {
     path: 'fertilizers',
     loadChildren: () => import('./pages/fertilizers/fertilizers.module').then( m => m.FertilizersPageModule)
