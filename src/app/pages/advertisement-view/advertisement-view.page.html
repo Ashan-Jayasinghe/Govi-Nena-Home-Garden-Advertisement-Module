@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>{{ ad?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img [src]="ad?.images ? ad.images[0] : ''" *ngIf="ad?.images && ad.images.length > 0" class="advertisement-image"></ion-img>
+  <ion-card class="advertisement-card">
+    <ion-card-header>
+      <ion-card-title class="advertisement-title">{{ ad?.title }}</ion-card-title>
+      <ion-card-subtitle class="advertisement-price">
+        <strong>Price:</strong> {{ ad?.price || ad?.price_1L }}
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="user" class="advertisement-user">
+        <strong>Posted By:</strong>
+        <ion-img [src]="user?.image_url" *ngIf="user?.image_url" class="user-profile-image"></ion-img>
+        {{ user?.name }}
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="advertisement-description">{{ ad?.description }}</p>
+
+      <!-- Conditionally render attributes based on category -->
+      <div *ngIf="ad?.category === 'Fertilizers'" class="advertisement-category">
+        <strong>Fertilizer Type:</strong> {{ ad?.fertilizerType }}
+        <br>
+        <strong>Nutrient Content:</strong> {{ ad?.nutrientContent }}
+      </div>
+
+      <div *ngIf="ad?.category === 'Planting Materials'" class="advertisement-category">
+        <strong>Plant Type:</strong> {{ ad?.plantType }}
+        <br>
+        <strong>Growth Duration:</strong> {{ ad?.growthDuration }}
+      </div>
+
+      <div *ngIf="ad?.category === 'Machineries'" class="advertisement-category">
+        <strong>Machine Type:</strong> {{ ad?.machineType }}
+        <br>
+        <strong>Power:</strong> {{ ad?.power }}
+        <br>
+        <strong>Condition:</strong> {{ ad?.condition }}
+      </div>
+
+      <div *ngIf="ad?.category === 'Agro Chemicals'" class="advertisement-category">
+        <strong>Chemical Type:</strong> {{ ad?.chemicalType }}
+        <br>
+        <strong>Application:</strong> {{ ad?.application }}
+      </div>
+
+      <!-- Add similar blocks for other categories -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

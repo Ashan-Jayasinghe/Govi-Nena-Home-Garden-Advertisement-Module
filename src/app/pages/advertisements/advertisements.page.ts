@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdvertisementService } from '../../services/services/advertisement.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-advertisements',
   templateUrl: './advertisements.page.html',
@@ -15,7 +15,8 @@ export class AdvertisementsPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private advertisementService: AdvertisementService
+    private advertisementService: AdvertisementService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,9 +34,12 @@ export class AdvertisementsPage implements OnInit {
     });
   }
 
-  viewDetails(ads: any) {
-    // Handle navigation to advertisement details page
-    console.log('Viewing details for:', ads);
-    // You can navigate to a details page here
+
+    viewDetails(ad: any) {
+      console.log(ad);
+      this.router.navigate(['/advertisement-view', ad.id], {
+        state: { advertisement: ad } // Pass the advertisement data in state
+      });
+    }
   }
-}
+  

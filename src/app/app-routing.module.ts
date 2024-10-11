@@ -99,7 +99,8 @@ const routes: Routes = [
   {
     path: 'planting-materials-tubers',
     loadChildren: () => import('./pages/planting-materials-tubers/planting-materials-tubers.module').then( m => m.PlantingMaterialsTubersPageModule)
-  },  {
+  },
+  {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
@@ -119,6 +120,11 @@ const routes: Routes = [
     path: 'my-advertisements',
     loadChildren: () => import('./pages/my-advertisements/my-advertisements.module').then( m => m.MyAdvertisementsPageModule)
   },
+  {
+    path: 'advertisement-view/:id',
+    loadChildren: () => import('./pages/advertisement-view/advertisement-view.module').then( m => m.AdvertisementViewPageModule)
+  },
+
 
 
 
