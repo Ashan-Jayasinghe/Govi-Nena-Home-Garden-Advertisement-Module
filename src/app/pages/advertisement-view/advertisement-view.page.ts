@@ -48,9 +48,10 @@
 // }
 
 // }
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/services/user.service';
+import {Swiper} from 'swiper';
 
 @Component({
   selector: 'app-advertisement-view',
@@ -60,6 +61,11 @@ import { UserService } from 'src/app/services/services/user.service';
 export class AdvertisementViewPage implements OnInit {
   ad: any;
   user:any;
+
+
+ @ViewChild('swiper')
+  swiperRef: ElementRef | undefined
+  swiper?: Swiper;
 
   constructor(private router: Router, private userService: UserService) {
     const navigation = this.router.getCurrentNavigation();
@@ -84,4 +90,15 @@ export class AdvertisementViewPage implements OnInit {
       }
     );
   }
+
+
+  swiperSlideChanged(e: any) {
+    console.log('changed: ', e);
+  }
+ 
+  swiperReady() {
+    this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+ 
+
 }

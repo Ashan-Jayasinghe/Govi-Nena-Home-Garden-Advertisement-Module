@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdvertisementViewPageRoutingModule } from './advertisement-view-routing.module';
 
 import { AdvertisementViewPage } from './advertisement-view.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { AdvertisementViewPage } from './advertisement-view.page';
     IonicModule,
     AdvertisementViewPageRoutingModule
   ],
-  declarations: [AdvertisementViewPage]
+  declarations: [AdvertisementViewPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AdvertisementViewPageModule {}

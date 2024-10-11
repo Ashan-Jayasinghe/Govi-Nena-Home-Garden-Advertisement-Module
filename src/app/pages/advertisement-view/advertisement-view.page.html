@@ -4,10 +4,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-img [src]="ad?.images ? ad.images[0] : ''" *ngIf="ad?.images && ad.images.length > 0" class="advertisement-image"></ion-img>
+<ion-content class="modern-agriculture-theme">
+
+
   <ion-card class="advertisement-card">
+
     <ion-card-header>
+    <swiper-container 
+    #swiper
+    (afterinit)="swiperReady()"
+    (slidechange)="swiperSlideChanged($event)"
+    [pagination]="true"
+    [navigation]="true">
+    <swiper-slide *ngFor="let image of ad?.images">
+      <img [src]="image" class="advertisement-image" />
+    </swiper-slide>
+  </swiper-container>
+    </ion-card-header>
+    <ion-card-content>
       <ion-card-title class="advertisement-title">{{ ad?.title }}</ion-card-title>
       <ion-card-subtitle class="advertisement-price">
         <strong>Price:</strong> {{ ad?.price || ad?.price_1L }}
@@ -17,34 +31,43 @@
         <ion-img [src]="user?.image_url" *ngIf="user?.image_url" class="user-profile-image"></ion-img>
         {{ user?.name }}
       </ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
+
+
       <p class="advertisement-description">{{ ad?.description }}</p>
 
       <!-- Conditionally render attributes based on category -->
       <div *ngIf="ad?.category === 'Fertilizers'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
         <strong>Fertilizer Type:</strong> {{ ad?.fertilizerType }}
         <br>
+        <ion-icon name="nutrition-outline"></ion-icon>
         <strong>Nutrient Content:</strong> {{ ad?.nutrientContent }}
       </div>
 
       <div *ngIf="ad?.category === 'Planting Materials'" class="advertisement-category">
+        <ion-icon name="flower-outline"></ion-icon>
         <strong>Plant Type:</strong> {{ ad?.plantType }}
         <br>
+        <ion-icon name="hourglass-outline"></ion-icon>
         <strong>Growth Duration:</strong> {{ ad?.growthDuration }}
       </div>
 
       <div *ngIf="ad?.category === 'Machineries'" class="advertisement-category">
+        <ion-icon name="cog-outline"></ion-icon>
         <strong>Machine Type:</strong> {{ ad?.machineType }}
         <br>
+        <ion-icon name="flash-outline"></ion-icon>
         <strong>Power:</strong> {{ ad?.power }}
         <br>
+        <ion-icon name="construct-outline"></ion-icon>
         <strong>Condition:</strong> {{ ad?.condition }}
       </div>
 
       <div *ngIf="ad?.category === 'Agro Chemicals'" class="advertisement-category">
+        <ion-icon name="flask-outline"></ion-icon>
         <strong>Chemical Type:</strong> {{ ad?.chemicalType }}
         <br>
+        <ion-icon name="water-outline"></ion-icon>
         <strong>Application:</strong> {{ ad?.application }}
       </div>
 
