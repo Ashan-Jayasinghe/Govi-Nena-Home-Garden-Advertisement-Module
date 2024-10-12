@@ -79,3 +79,39 @@
     }
   }
 }
+
+
+
+.subcategory-buttons{
+  text-align: center;
+}
+
+.agriculture-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50; /* success color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.agriculture-button:hover {
+  background-color: #45a049;
+}
+
+.agriculture-button.selected {
+  background-color: #388e3c; /* Darker shade for selected state */
+  border: 2px solid #4caf50;
+}
+
+.agriculture-button.outline {
+  background-color: transparent;
+  border: 2px solid #4caf50;
+  color: #4caf50;
+}
+
+.agriculture-button.outline.selected {
+  background-color: #4caf50;
+  color: white;
+}

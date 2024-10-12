@@ -60,6 +60,12 @@
       <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
     </div>
 
+            <!-- Description -->
+            <div class="form-group">
+              <label for="description">Description <span style="color: gray;">(Optional)</span></label>
+              <ion-textarea id="description" name="description" [(ngModel)]="pesticides.description" placeholder="Enter description"></ion-textarea>
+            </div>
+
     <!-- Stock (Optional) -->
     <div class="form-group">
       <label for="stock">Stock <span style="color: gray;">(Optional)</span></label>
