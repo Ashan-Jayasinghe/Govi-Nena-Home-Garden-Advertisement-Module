@@ -39,11 +39,28 @@
           <ion-card-content>
             <p>{{ ad.description }}</p>
             <ion-button expand="full" (click)="viewDetails(ad)" color="success">View</ion-button>
+            <div class="button-group" style="margin-top: 10px; display: flex; justify-content: space-between;">
+              <ion-button color="primary" (click)="updateAdvertisement(ad)">
+                <ion-icon slot="start" name="create-outline"></ion-icon>
+                Update
+              </ion-button>
+              <ion-button color="danger" (click)="deleteAdvertisement(ad)">
+                <ion-icon slot="start" name="trash-outline"></ion-icon>
+                Delete
+              </ion-button>
+            </div>
+          
+          
+          
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
+
+
 
   <div *ngIf="advertisements.length === 0" style="text-align: center; margin-top: 20px;">
     <p>No advertisements found for this category.</p>

@@ -145,7 +145,9 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule),
+    canActivate: [LoginGuard] // Guard that allows only non-logged-in users
+
   },
   {
     path: 'profile',
