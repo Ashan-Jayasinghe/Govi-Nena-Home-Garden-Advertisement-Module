@@ -36,12 +36,25 @@
       <p class="advertisement-description">{{ ad?.description }}</p>
 
       <!-- Conditionally render attributes based on category -->
-      <div *ngIf="ad?.category === 'Fertilizers'" class="advertisement-category">
+      <div *ngIf="ad?.category === 'Fertilizer'" class="advertisement-category">
         <ion-icon name="leaf-outline"></ion-icon>
-        <strong>Fertilizer Type:</strong> {{ ad?.fertilizerType }}
+        <strong>Category:</strong> {{ ad?.subcategory }}
         <br>
-        <ion-icon name="nutrition-outline"></ion-icon>
-        <strong>Nutrient Content:</strong> {{ ad?.nutrientContent }}
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>NPK Ratio:</strong> {{ ad?.npk }}
+        <br>
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Method:</strong> {{ ad?.method }}
+        <br>
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address }}
+        <br>   
       </div>
 
       <div *ngIf="ad?.category === 'Planting Materials'" class="advertisement-category">
