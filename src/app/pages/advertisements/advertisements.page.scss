@@ -83,17 +83,19 @@
 
 
 .subcategory-buttons{
+  padding: 10px;
   text-align: center;
 }
 
 .agriculture-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4caf50; /* success color */
-  color: white;
-  border: none;
+  background-color: #ffffff; /* success color */
+  color: rgb(0, 0, 0);
+  border: 1px solid #218838;
   border-radius: 4px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .agriculture-button:hover {
@@ -101,8 +103,9 @@
 }
 
 .agriculture-button.selected {
-  background-color: #388e3c; /* Darker shade for selected state */
+  background-color: #48b64e; /* Darker shade for selected state */
   border: 2px solid #4caf50;
+  color: white;
 }
 
 .agriculture-button.outline {
