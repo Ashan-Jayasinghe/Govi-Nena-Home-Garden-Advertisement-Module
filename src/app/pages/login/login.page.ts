@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';  // Import ToastController
 import { Router } from '@angular/router';  // Import Router for navigation
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginPage implements OnInit {
     password: ''
   };
 
-  constructor(private http: HttpClient, private toastCtrl: ToastController, private router: Router) { }
+  constructor(private http: HttpClient, private toastCtrl: ToastController, private router: Router,private authService: AuthService) { }
 
   // Display a toast message for feedback
   async presentToast(message: string, color: string) {
@@ -58,21 +59,28 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    // On initialization, check if PHPSESSID cookie exists via a test request (optional)
-    this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/check-session.php', {
-        withCredentials: true // Ensures PHPSESSID is sent with requests
-      })
-      .subscribe({
-        next: (response: any) => {
-          if (response.status === 'authenticated') {
-            // User is already logged in, redirect to the advertisement page
-            this.router.navigate(['/advertisement-page']);
-          }
-        },
-        error: (error) => {
-          console.log('Session not found, user is not logged in');
-        }
-      });
+    // // On initialization, check if PHPSESSID cookie exists via a test request (optional)
+    // this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/check-session.php', {
+    //     withCredentials: true // Ensures PHPSESSID is sent with requests
+    //   })
+    //   .subscribe({
+    //     next: (response: any) => {
+    //       if (response.status === 'authenticated') {
+    //         // User is already logged in, redirect to the advertisement page
+    //         this.router.navigate(['/advertisement-page']);
+    //       }
+    //     },
+    //     error: (error) => {
+    //       console.log('Session not found, user is not logged in');
+    //     }
+    //   });
+
+     // Check if the user is already logged in
+     this.authService.checkSession().subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['/advertisement-page']); // Redirect to home if logged in
+      }
+    });
   }
 
 }
