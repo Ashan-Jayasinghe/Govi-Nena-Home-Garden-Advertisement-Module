@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-my-advertisements',
   templateUrl: './my-advertisements.page.html',
@@ -12,7 +12,7 @@ export class MyAdvertisementsPage implements OnInit {
 
   advertisements: any[] = [];  // Array to hold the advertisements
 
-  constructor(private http: HttpClient, private toastController: ToastController) {}
+  constructor(private http: HttpClient, private toastController: ToastController,private router: Router) {}
 
   // Helper method to show a toast notification
   async presentToast(message: string, color: string = 'dark') {
@@ -44,11 +44,76 @@ export class MyAdvertisementsPage implements OnInit {
     });
   }
 
-  // Method to handle viewing details of an advertisement
+  updateAdvertisement(ad: any) {
+    // Navigate to the update advertisement page
+    this.router.navigate(['/update-advertisement'], { state: { advertisement: ad } });
+  }
+
+
+  // deleteAdvertisement(ad: any) {
+  //   if (confirm('Are you sure you want to delete this advertisement?')) {
+  //     this.http
+  //       .delete(`http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/delete_advertisement.php?id=${ad.id}`,{
+  //         withCredentials:true
+  //       })
+  //       .subscribe({
+  //         next: (response: any) => {
+  //           if (response.status === 'success') {
+  //               // Remove the deleted advertisement from the list
+  //               this.advertisements = this.advertisements.filter((a) => a.id !== ad.id);
+  //               this.presentToast('Advertisement deleted successfully.');           
+  //             } else {
+  //             this.presentToast('Failed to delete advertisement.', 'danger');
+  //           }
+  //         },
+  //         error: (error) => {
+  //           console.error('Error deleting advertisement:', error);
+  //           this.presentToast('Failed to delete advertisement.');         
+  //          }
+  //       });
+  //     }
+  // }
+
+
+  // // Method to handle viewing details of an advertisement
+  // viewDetails(ad: any) {
+  //   // Logic to navigate to advertisement details page
+  //   console.log('Viewing details for ad:', ad);
+  //   // You can use Angular Router to navigate to a details page if needed
+  
+  
+  
+  // }
+
+
+  deleteAdvertisement(ad: any) {
+    this.http.delete(`http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/delete_advertisement.php`, {
+      body: { id: ad.advertisement_id || ad.id},
+      withCredentials: true
+    })
+        .subscribe({
+          next: (response: any) => {
+            if (response.status === 'success') {
+              // Remove the deleted advertisement from the list
+              this.advertisements = this.advertisements.filter((a) => a.id !== ad.id);
+              this.presentToast('Advertisement deleted successfully.');
+            } else {
+              this.presentToast('Failed to delete advertisement.', 'danger');
+            }
+          },
+          error: (error) => {
+            console.error('Error deleting advertisement:', error);
+            this.presentToast('Failed to delete advertisement.', 'danger');
+          }
+        });
+    }
+  
+  
   viewDetails(ad: any) {
-    // Logic to navigate to advertisement details page
-    console.log('Viewing details for ad:', ad);
-    // You can use Angular Router to navigate to a details page if needed
+    console.log(ad);
+    this.router.navigate(['/advertisement-view', ad.id], {
+      state: { advertisement: ad } // Pass the advertisement data in state
+    });
   }
 
   ngOnInit() {
