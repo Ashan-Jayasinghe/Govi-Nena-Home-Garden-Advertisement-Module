@@ -21,19 +21,21 @@
     </swiper-slide>
   </swiper-container>
     </ion-card-header>
+
+    
     <ion-card-content>
       <ion-card-title class="advertisement-title">{{ ad?.title }}</ion-card-title>
       <ion-card-subtitle class="advertisement-price">
         <strong>Price:</strong> {{ ad?.price || ad?.price_1L }}
       </ion-card-subtitle>
       <ion-card-subtitle *ngIf="user" class="advertisement-user">
-        <strong>Posted By:</strong>
+        <strong class="posted-tag">Posted By:</strong>
         <ion-img [src]="user?.image_url" *ngIf="user?.image_url" class="user-profile-image"></ion-img>
         {{ user?.name }}
       </ion-card-subtitle>
 
 
-      <p class="advertisement-description">{{ ad?.description }}</p>
+      <p class="advertisement-description">{{ ad?.description || 'N/A'}}</p>
 
       <!-- Conditionally render attributes based on category -->
       <div *ngIf="ad?.category === 'Fertilizer'" class="advertisement-category">
@@ -41,19 +43,19 @@
         <strong>Category:</strong> {{ ad?.subcategory }}
         <br>
         <ion-icon name="flask-outline"></ion-icon>
-        <strong>NPK Ratio:</strong> {{ ad?.npk }}
+        <strong>NPK Ratio:</strong> {{ ad?.npk || 'N/A' }}
         <br>
         <ion-icon name="cube-outline"></ion-icon>
-        <strong>Stock:</strong> {{ ad?.stock }}
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
         <br>
         <ion-icon name="construct-outline"></ion-icon>
-        <strong>Method:</strong> {{ ad?.method }}
+        <strong>Method:</strong> {{ ad?.method || 'N/A' }}
         <br>
         <ion-icon name="call-outline"></ion-icon>
         <strong>Mobile Number:</strong> {{ ad?.mobile }}
         <br>
         <ion-icon name="location-outline"></ion-icon>
-        <strong>Address:</strong> {{ ad?.address }}
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
         <br>   
       </div>
 
