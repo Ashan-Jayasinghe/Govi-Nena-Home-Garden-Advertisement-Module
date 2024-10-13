@@ -1,9 +1,68 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>saved-ads</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Saved Advertisements</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="goHome()">
+        <ion-icon name="home" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <!-- Subcategory Filter Buttons -->
+  <div class="subcategory-buttons">
+    <button 
+      class="agriculture-button" 
+      *ngFor="let subcategory of subcategories" 
+      (click)="filterBySubcategory(subcategory)" 
+      [class.selected]="selectedSubcategory === subcategory">
+      {{ subcategory | titlecase }}
+    </button>
+
+    <!-- Clear Filter Button - Shown only if a subcategory is selected -->
+    <button class="clear-filter-button" *ngIf="selectedSubcategory !== null" (click)="clearFilter()" color="danger">Clear</button>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <!-- Bind filtered saved ads instead of all advertisements -->
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of filteredSavedAds">
+        <ion-card class="advertisement-card">
+          <ion-img [src]="ad.images[0]" *ngIf="ad.images.length > 0"></ion-img>
+
+          <ion-card-header>
+            <ion-card-title>{{ ad.title }}</ion-card-title>
+            <ion-card-subtitle>
+              <strong>Price:</strong> {{ ad.price || ad.price_1L }} 
+            </ion-card-subtitle>
+            <div class="info-row">
+              <span>
+                <ion-icon name="pricetag" class="icon"></ion-icon>
+                {{ ad.subcategory }}
+              </span>
+              <span>
+                <ion-icon name="call" class="icon"></ion-icon>
+                {{ ad.mobile }}
+              </span>
+            </div>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>{{ ad.description }}</p>
+            <ion-button expand="full" (click)="viewDetails(ad)" color="success">View</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Show message if no ads are found -->
+  <div *ngIf="filteredSavedAds.length === 0">
+    <p>No saved advertisements found for this subcategory.</p>
+  </div>
 </ion-content>
