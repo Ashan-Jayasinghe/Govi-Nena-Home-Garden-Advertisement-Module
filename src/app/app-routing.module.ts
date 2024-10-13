@@ -178,7 +178,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/advertisement-view/advertisement-view.module').then( m => m.AdvertisementViewPageModule),
     canActivate: [AuthGuard] // Add the guard here to protect the route
 
+  },  {
+    path: 'saved-ads',
+    loadChildren: () => import('./pages/saved-ads/saved-ads.module').then( m => m.SavedAdsPageModule)
   },
+
+
 
 
 

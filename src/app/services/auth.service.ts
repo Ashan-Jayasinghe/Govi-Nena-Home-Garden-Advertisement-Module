@@ -19,7 +19,7 @@ export class AuthService {
   // This method can be called to bypass login if the user is already authenticated
   checkSession(): Observable<boolean> {
     return this.isAuthenticated();
-  }
+  } 
 }
 
 
