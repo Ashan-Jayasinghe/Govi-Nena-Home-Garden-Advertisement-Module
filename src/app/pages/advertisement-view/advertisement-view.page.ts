@@ -52,6 +52,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/services/user.service';
 import {Swiper} from 'swiper';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-advertisement-view',
@@ -67,7 +68,7 @@ export class AdvertisementViewPage implements OnInit {
   swiperRef: ElementRef | undefined
   swiper?: Swiper;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService,private navCtrl: NavController) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       this.ad = navigation.extras.state['advertisement'];
@@ -100,5 +101,7 @@ export class AdvertisementViewPage implements OnInit {
     this.swiper = this.swiperRef?.nativeElement.swiper;
   }
  
-
+  goBack() {
+    this.navCtrl.back();  // Goes to the previous page
+  }
 }

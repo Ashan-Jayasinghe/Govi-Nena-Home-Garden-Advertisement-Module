@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';  // Import ToastController
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-machineries-dryers',
   templateUrl: './machineries-dryers.page.html',
@@ -40,7 +40,7 @@ export class MachineriesDryersPage implements OnInit {
   previewImages: string[] = [];
   imageError: string = '';  // To display image error
 
-  constructor(private http: HttpClient, private toastController: ToastController) {}  // Inject ToastController
+  constructor(private http: HttpClient, private toastController: ToastController, private router: Router) {}  // Inject ToastController
 
     // Helper method to show a toast notification
     async presentToast(message: string, color: string = 'dark') {
@@ -229,6 +229,8 @@ onSubmit() {
         next: (response) => {
           console.log('Response:', response);
           this.presentToast('Dryers advertisement successfully submitted.', 'success');
+          this.router.navigate(['/advertisement-confirmation']);
+
         },
         error: (error) => {
           console.error('Error:', error);

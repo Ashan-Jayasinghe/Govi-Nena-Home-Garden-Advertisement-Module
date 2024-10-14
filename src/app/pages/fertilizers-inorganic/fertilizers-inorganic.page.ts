@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-fertilizers-inorganic',
   templateUrl: './fertilizers-inorganic.page.html',
@@ -43,7 +43,7 @@ export class FertilizersInorganicPage implements OnInit {
   previewImages: string[] = [];
   imageError: string = '';  // To display image error
 
-  constructor(private http: HttpClient, private toastController: ToastController) {}
+  constructor(private http: HttpClient, private toastController: ToastController, private router:Router) {}
 
   // Helper method to show a toast notification
   async presentToast(message: string, color: string = 'dark') {
@@ -157,6 +157,7 @@ export class FertilizersInorganicPage implements OnInit {
         next: (response) => {
           console.log('Response:', response);
           this.presentToast('Inorganic fertilizer advertisement successfully submitted.', 'success');
+          this.router.navigate(['/advertisement-confirmation']);
         },
         error: (error) => {
           console.error('Error:', error);
