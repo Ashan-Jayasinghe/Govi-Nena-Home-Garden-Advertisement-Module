@@ -137,6 +137,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AdvertisementService } from '../../services/services/advertisement.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';  // Import ToastController
+
 @Component({
   selector: 'app-advertisements',
   templateUrl: './advertisements.page.html',
@@ -165,7 +167,8 @@ export class AdvertisementsPage implements OnInit {
     private advertisementService: AdvertisementService,
     private router: Router,
     private http: HttpClient,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private toastCtrl: ToastController
     
   ) { }
 
@@ -178,6 +181,16 @@ export class AdvertisementsPage implements OnInit {
       this.subcategory = params['subcategory'] || null;  
       this.fetchAdvertisements(); // Fetch advertisements
     });
+  }
+  // Display a toast message for feedback
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 2000,
+      color,
+      position: 'top'
+    });
+    toast.present();
   }
 
 
@@ -249,9 +262,16 @@ export class AdvertisementsPage implements OnInit {
     }).subscribe({
         next: (response: any) => {
             console.log('Ad saved successfully', response);
+            this.presentToast('Ad saved successfully', 'warning');
+            setTimeout(() => {
+              this.router.navigateByUrl('/saved-ads');
+            }, 1000);
+
         },
         error: (error) => {
             console.error('Failed to save ad', error);
+            this.presentToast('Failed to save ad', 'danger');
+
         }
     });
 }
