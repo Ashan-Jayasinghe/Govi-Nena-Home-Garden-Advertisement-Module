@@ -18,86 +18,106 @@
   <form (ngSubmit)="onSubmit()" #seedlingForm="ngForm">
     <!-- Type Selector -->
     <div class="form-group">
-      <label for="type">Type</label>
+      <label for="type">Type <span style="color: red;">*</span></label>
       <ion-select id="type" name="type" [(ngModel)]="seedlings.type" required>
         <ion-select-option value="vegetable">Vegetable</ion-select-option>
-        <!-- Add more options if needed -->
+        <ion-select-option value="fruit">Fruit</ion-select-option>
+        <ion-select-option value="herb">Herb</ion-select-option>
+        <!-- Add more options as needed -->
       </ion-select>
+      <ion-text color="danger" *ngIf="seedlingForm.submitted && !seedlings.type">
+        Type is required.
+      </ion-text>
     </div>
 
     <!-- Variety -->
     <div class="form-group">
-      <label for="variety">Variety</label>
+      <label for="variety">Variety <span style="color: red;">*</span></label>
       <ion-input id="variety" type="text" name="variety" [(ngModel)]="seedlings.variety" required></ion-input>
+      <ion-text color="danger" *ngIf="seedlingForm.submitted && !seedlings.variety">
+        Variety is required.
+      </ion-text>
     </div>
 
     <!-- Title -->
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="title">Title <span style="color: red;">*</span></label>
       <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="seedlings.title" required></ion-input>
+      <ion-text color="danger" *ngIf="seedlingForm.submitted && !seedlings.title">
+        Title is required.
+      </ion-text>
+    </div>
+    <!-- Description (Optional) -->
+    <div class="form-group">
+      <label for="description">Description <span style="color: gray;">(Optional)</span></label>
+      <ion-textarea id="description" name="description" [(ngModel)]="seedlings.description" placeholder="Enter description"></ion-textarea>
     </div>
 
     <!-- Images -->
     <div class="form-group">
-      <label for="images">Images</label>
+      <label for="images">Images <span style="color: gray;">(Optional)</span></label>
       <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
     </div>
-        <!-- Display Image Previews -->
-        <div class="image-preview">
-          <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
-        </div>
-<!-- Age,Size -->
-        <div class="form-group">
-          <label for="age">Age</label>
-          <ion-input id="age" type="number" name="age" [(ngModel)]="seedlings.age"></ion-input>
-        </div>
-        <div class="form-group">
-          <label for="size">Size (cm)</label>
-          <ion-input id="size" type="number" name="size" [(ngModel)]="seedlings.size"></ion-input>
-        </div>
+
+    <!-- Display Image Previews -->
+    <div class="image-preview">
+      <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
+    </div>
+
+
+    <!-- Age -->
+    <div class="form-group">
+      <label for="age">Age (weeks)<span style="color: gray;">(Optional)</span></label>
+      <ion-input id="age" type="number" name="age" [(ngModel)]="seedlings.age"></ion-input>
+    </div>
+
+    <!-- Size -->
+    <div class="form-group">
+      <label for="size">Size (cm)<span style="color: gray;">(Optional)</span></label>
+      <ion-input id="size" type="number" name="size" [(ngModel)]="seedlings.size"></ion-input>
+    </div>
 
     <!-- Stock -->
     <div class="form-group">
-      <label for="stock">Stock</label>
+      <label for="stock">Stock <span style="color: gray;">(Optional)</span></label>
       <ion-input id="stock" type="number" name="stock" [(ngModel)]="seedlings.stock"></ion-input>
     </div>
 
-    <!-- Specifications -->
-    <div class="form-group">
-      <label for="specifications">Specifications</label>
-      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="seedlings.specification"></ion-input>
-    </div>
-    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
-    <ion-list>
-      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
-    </ion-list>
 
-    <!-- age,size,price -->
-
+    <!-- Price -->
     <div class="form-group">
-      <label for="price">Price</label>
-      <ion-input id="price" type="number" name="price" [(ngModel)]="seedlings.price"></ion-input>
+      <label for="price">Price <span style="color: red;">*</span></label>
+      <ion-input id="price" type="number" name="price" [(ngModel)]="seedlings.price" required></ion-input>
+      <ion-text color="danger" *ngIf="seedlingForm.submitted && !seedlings.price">
+        Price is required.
+      </ion-text>
     </div>
 
     <!-- Address -->
     <div class="form-group">
-      <label for="address">Address</label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="seedlings.address" required></ion-input>
+      <label for="address">Address <span style="color: gray;">(Optional)</span></label>
+      <ion-input id="address" type="text" name="address" [(ngModel)]="seedlings.address"></ion-input>
     </div>
 
     <!-- Mobile -->
     <div class="form-group">
-      <label for="mobile">Mobile</label>
+      <label for="mobile">Mobile <span style="color: red;">*</span></label>
       <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="seedlings.mobile" required></ion-input>
+      <ion-text color="danger" *ngIf="seedlingForm.submitted && !isValidMobile(seedlings.mobile)">
+        Please enter a valid 10-digit mobile number.
+      </ion-text>
     </div>
 
-    <!-- Terms and Conditions -->
-    <ion-item>
-      <ion-checkbox [(ngModel)]="seedlings.acceptTerms" name="acceptTerms"></ion-checkbox>
-      <ion-label>Accept terms and conditions</ion-label>
-    </ion-item>
+ <!-- Terms and Conditions -->
+ <ion-item>
+  <ion-checkbox [(ngModel)]="seedlings.acceptTerms" name="acceptTerms" required></ion-checkbox>
+  <ion-label>Accept terms and conditions <span style="color: red;">*</span></ion-label>
+  <ion-text color="danger" *ngIf="seedlingForm.submitted && !seedlings.acceptTerms">
+    You must accept the terms and conditions.
+  </ion-text>
+</ion-item>
 
-    <!-- Submit Button -->
-    <ion-button expand="block" type="submit" [disabled]="!seedlingForm.form.valid">List Item</ion-button>
-  </form>
+<!-- Submit Button -->
+<ion-button expand="block" type="submit">List Item</ion-button>
+</form>
 </ion-content>
