@@ -124,6 +124,14 @@
 
   
 // }
+
+
+
+
+
+
+
+import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdvertisementService } from '../../services/services/advertisement.service';
@@ -156,7 +164,9 @@ export class AdvertisementsPage implements OnInit {
     private route: ActivatedRoute,
     private advertisementService: AdvertisementService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private navCtrl: NavController
+    
   ) { }
 
   ngOnInit() {
@@ -246,5 +256,5 @@ export class AdvertisementsPage implements OnInit {
     });
 }
 
-  
+
 }

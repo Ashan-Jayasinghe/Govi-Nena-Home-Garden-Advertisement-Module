@@ -1,8 +1,17 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-title>{{ ad?.title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  (click)="goBack()" default-href="/search-chef" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">{{ ad.category }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content class="modern-agriculture-theme">
 
