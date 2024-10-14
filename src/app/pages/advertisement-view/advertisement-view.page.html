@@ -26,7 +26,7 @@
     <ion-card-content>
       <ion-card-title class="advertisement-title">{{ ad?.title }}</ion-card-title>
       <ion-card-subtitle class="advertisement-price">
-        <strong>Price:</strong> {{ ad?.price || ad?.price_1L }}
+        <strong>Price:</strong> {{ ad?.price || ad?.price_1L || ad?.price_1kg }}
       </ion-card-subtitle>
       <ion-card-subtitle *ngIf="user" class="advertisement-user">
         <strong class="posted-tag">Posted By:</strong>
