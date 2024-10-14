@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ProfilePage implements OnInit {
 
   user = {
+    id: null as number | null, 
     name: '',
     email: '',
     password: '',
@@ -55,6 +56,9 @@ export class ProfilePage implements OnInit {
         if (response.status === 'success') {
           this.user.name = response.user.name;
           this.user.email = response.user.email;
+          this.user.id = response.user.id;
+          console.log(this.user.id);
+        
         } else {
           this.presentToast('Failed to load profile information.', 'danger');
         }

@@ -81,7 +81,9 @@ goToMyAdvertisements() {
   this.router.navigate(['/my-advertisements']);
 }
 
-
+goToSavedAdvertisements(){
+  this.router.navigate(['/saved-ads']);
+}
 }
 
 
