@@ -182,6 +182,10 @@ const routes: Routes = [
     path: 'saved-ads',
     loadChildren: () => import('./pages/saved-ads/saved-ads.module').then( m => m.SavedAdsPageModule)
   },
+  {
+    path: 'advertisement-confirmation',
+    loadChildren: () => import('./pages/advertisement-confirmation/advertisement-confirmation.module').then( m => m.AdvertisementConfirmationPageModule)
+  },
 
 
 
