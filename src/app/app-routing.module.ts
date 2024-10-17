@@ -186,6 +186,10 @@ const routes: Routes = [
     path: 'advertisement-confirmation',
     loadChildren: () => import('./pages/advertisement-confirmation/advertisement-confirmation.module').then( m => m.AdvertisementConfirmationPageModule)
   },
+  {
+    path: 'vegetables-fruits',
+    loadChildren: () => import('./vegetables-fruits/vegetables-fruits.module').then( m => m.VegetablesFruitsPageModule)
+  },
 
 
 
