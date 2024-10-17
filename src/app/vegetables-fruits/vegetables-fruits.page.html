@@ -1,9 +1,60 @@
+
 <ion-header>
-  <ion-toolbar>
-    <ion-title>vegetables-fruits</ion-title>
-  </ion-toolbar>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="search-chef" color="light">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">VEGETABLES AND FRUITS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="home" color="light" ></ion-icon>
+      </ion-button>
+    </ion-buttons>  </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
 
+  <ion-card class="Vegetables" [ngClass]="{'selected': selectedCard === 'Vegetables'}" (click)="selectCard('Vegetables')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="7">
+          <img src="assets/Vegetables.jpg" class="Vegetables-image"/>
+        </ion-col>
+        <ion-col size="5">
+          <h2>Vegetables</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+  <ion-card  class="Fruits" [ngClass]="{'selected': selectedCard === 'Fruits'}" (click)="selectCard('Fruits')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="5" class="ion-text-end">
+          <h2>Fruits</h2>
+        </ion-col>
+        <ion-col size="7">
+          <img src="assets/Fruits.jpg" class="Fruits-image"/>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+<!--   
+  <ion-card  class="Other" [ngClass]="{'selected': selectedCard === 'Other'}" (click)="selectCard('Other')">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="7">
+          <img src="assets/Other.jpg" class="Other-image"/>
+        </ion-col>
+        <ion-col size="5" class="ion-text-end">
+          <h2>Other</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card> -->
+
 </ion-content>
+

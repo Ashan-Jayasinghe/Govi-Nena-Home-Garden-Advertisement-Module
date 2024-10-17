@@ -190,6 +190,14 @@ const routes: Routes = [
     path: 'vegetables-fruits',
     loadChildren: () => import('./vegetables-fruits/vegetables-fruits.module').then( m => m.VegetablesFruitsPageModule)
   },
+  {
+    path: 'vegetables-fruits-vegetables',
+    loadChildren: () => import('./vegetables-fruits-vegetables/vegetables-fruits-vegetables.module').then( m => m.VegetablesFruitsVegetablesPageModule)
+  },
+  {
+    path: 'vegetables-fruits-fruits',
+    loadChildren: () => import('./vegetables-fruits-fruits/vegetables-fruits-fruits.module').then( m => m.VegetablesFruitsFruitsPageModule)
+  },
 
 
 
