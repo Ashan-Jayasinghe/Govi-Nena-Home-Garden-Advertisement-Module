@@ -34,9 +34,12 @@
     
     <ion-card-content>
       <ion-card-title class="advertisement-title">{{ ad?.title }}</ion-card-title>
-      <ion-card-subtitle class="advertisement-price">
-        <strong>Price:</strong> {{ ad?.price || ad?.price_1L || ad?.price_1kg }}
-      </ion-card-subtitle>
+      <div class="info-row">
+        <ion-card-subtitle class="advertisement-price">
+          <strong>Price: </strong> Rs {{ ad?.price || ad?.price_1L || ad?.price_1kg }}
+        </ion-card-subtitle>
+      </div>
+    
       <ion-card-subtitle *ngIf="user" class="advertisement-user">
         <strong class="posted-tag">Posted By:</strong>
         <ion-img [src]="user?.image_url" *ngIf="user?.image_url" class="user-profile-image"></ion-img>
@@ -47,7 +50,7 @@
       <p class="advertisement-description">{{ ad?.description || 'N/A'}}</p>
 
       <!-- Conditionally render attributes based on category -->
-      <div *ngIf="ad?.category === 'Fertilizer'" class="advertisement-category">
+      <div *ngIf="ad?.subcategory === 'Organic'" class="advertisement-category">
         <ion-icon name="leaf-outline"></ion-icon>
         <strong>Category:</strong> {{ ad?.subcategory }}
         <br>
@@ -68,32 +71,174 @@
         <br>   
       </div>
 
-      <div *ngIf="ad?.category === 'Planting Materials'" class="advertisement-category">
-        <ion-icon name="flower-outline"></ion-icon>
-        <strong>Plant Type:</strong> {{ ad?.plantType }}
+      <div *ngIf="ad?.subcategory === 'Inorganic'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <strong>Category:</strong> {{ ad?.subcategory }}
         <br>
-        <ion-icon name="hourglass-outline"></ion-icon>
-        <strong>Growth Duration:</strong> {{ ad?.growthDuration }}
-      </div>
-
-      <div *ngIf="ad?.category === 'Machineries'" class="advertisement-category">
-        <ion-icon name="cog-outline"></ion-icon>
-        <strong>Machine Type:</strong> {{ ad?.machineType }}
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>NPK Ratio:</strong> {{ ad?.npk || 'N/A' }}
         <br>
-        <ion-icon name="flash-outline"></ion-icon>
-        <strong>Power:</strong> {{ ad?.power }}
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
         <br>
         <ion-icon name="construct-outline"></ion-icon>
-        <strong>Condition:</strong> {{ ad?.condition }}
+        <strong>Method:</strong> {{ ad?.method || 'N/A' }}
+        <br>
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
+        <br>   
       </div>
 
-      <div *ngIf="ad?.category === 'Agro Chemicals'" class="advertisement-category">
-        <ion-icon name="flask-outline"></ion-icon>
-        <strong>Chemical Type:</strong> {{ ad?.chemicalType }}
+      <div *ngIf="ad?.subcategory === 'Pesticides'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <strong>Category:</strong> {{ ad?.subcategory }}
         <br>
-        <ion-icon name="water-outline"></ion-icon>
-        <strong>Application:</strong> {{ ad?.application }}
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>Application Ratio:</strong> {{ ad?.application_ratio || 'N/A' }}
+        <br>
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 5L/Kg:</strong> Rs {{ ad?.price_5L || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 10L/Kg:</strong> Rs {{ ad?.price_10L || 'N/A' }}
+        <br>
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
+        <br>  
       </div>
+
+      <div *ngIf="ad?.subcategory === 'Plant Growth Regulators'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <strong>Category:</strong> {{ ad?.subcategory }}
+        <br>
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>Application Ratio:</strong> {{ ad?.application_ratio || 'N/A' }}
+        <br>
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 5L/Kg:</strong> Rs {{ ad?.price_5L || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 10L/Kg:</strong> Rs {{ ad?.price_10L || 'N/A' }}
+        <br>
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
+        <br>  
+      </div>
+
+      <div *ngIf="ad?.subcategory === 'Seeds'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <strong>Category:</strong> {{ ad?.subcategory }}
+        <br>
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>Variety:</strong> {{ ad?.variety || 'N/A' }}
+        <br>
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 5Kg: </strong> Rs {{ ad?.price_5kg || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 10Kg: </strong> Rs {{ ad?.price_10kg || 'N/A' }}
+        <br>
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
+        <br>  
+      </div>
+
+      <div *ngIf="ad?.subcategory === 'Seedlings'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <strong>Category:</strong> {{ ad?.subcategory }}
+        <br>
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>Variety:</strong> {{ ad?.variety || 'N/A' }}
+        <br>
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Age: </strong> {{ ad?.age || 'N/A' }} days
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Size: </strong> {{ ad?.size || 'N/A' }} cm
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price: </strong> Rs {{ ad?.price || 'N/A' }}
+        <br>
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
+        <br>  
+      </div>
+
+      <div *ngIf="ad?.subcategory === 'Tubers'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <strong>Category:</strong> {{ ad?.subcategory }}
+        <br>
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>Variety:</strong> {{ ad?.variety || 'N/A' }}
+        <br>
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 5Kg: </strong> Rs {{ ad?.price_5kg || 'N/A' }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Price 10Kg: </strong> Rs {{ ad?.price_10kg || 'N/A' }}
+        <br>
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
+        <br>  
+      </div>
+
+      <div *ngIf="ad?.subcategory === 'Tractors'" class="advertisement-category">
+        <ion-icon name="cog-outline"></ion-icon>
+        <strong>Machine Type:</strong> {{ ad?.subcategory }}
+        <br>
+        <ion-icon name="cog-outline"></ion-icon>
+        <strong>Rent or Sell:</strong> {{ad?.rent_or_sell ==="sell" ? "For Sell" : "For Rent"}}
+        <br>
+        <ion-icon name="flash-outline"></ion-icon>
+        <strong>Condition:</strong> {{ ad?.condition_==="new" ? "Brand New" : "Used" }}
+        <br>
+        <ion-icon name="cog-outline"></ion-icon>
+        <strong>Manufacturer:</strong> {{ ad?.manufacturer }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Power:</strong> {{ ad?.power }} HP
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Mobile:</strong> {{ ad?.mobile }}
+        <br>
+        <ion-icon name="construct-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address }}
+      </div>
+
+
 
       <!-- Add similar blocks for other categories -->
     </ion-card-content>
