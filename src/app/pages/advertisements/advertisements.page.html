@@ -6,7 +6,7 @@
     <ion-title color="light">{{ category | titlecase }} Advertisements</ion-title>
     <ion-buttons slot="end">
       <ion-button fill="clear">
-        <ion-icon name="home" color="light" ></ion-icon>
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -14,28 +14,20 @@
 
 <ion-content>
 
+  <!-- Search Bar -->
+  <!-- <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterAdvertisements()"></ion-searchbar> -->
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterAdvertisements()" (keydown.enter)="onEnterPressed()"></ion-searchbar>
+
   <!-- Subcategory Filter Buttons -->
   <div class="subcategory-buttons">
-    <!-- <ion-button size="large" class="agriculture-button" *ngFor="let subcategory of subcategories" 
-                (click)="filterBySubcategory(subcategory)" 
-                color="success" [fill]="selectedSubcategory === subcategory ? 'solid' : 'outline'">
-      {{ subcategory | titlecase }}
-    </ion-button> -->
-
     <button 
-  class="agriculture-button" 
-  *ngFor="let subcategory of subcategories" 
-  (click)="filterBySubcategory(subcategory)" 
-  [class.selected]="selectedSubcategory === subcategory">
-  {{ subcategory | titlecase }}
-</button>
-
-    <!-- Clear Filter Button - Shown only if a subcategory is selected -->
-    <!-- <ion-button  size="large"class="clear-filter-button" *ngIf="selectedSubcategory !== null" (click)="clearFilter()" color="danger">
-     
-    </ion-button> -->
-
-    <button class="clear-filter-button" *ngIf="selectedSubcategory !== null"(click)="clearFilter()" color="danger"> Clear</button>
+      class="agriculture-button" 
+      *ngFor="let subcategory of subcategories" 
+      (click)="filterBySubcategory(subcategory)" 
+      [class.selected]="selectedSubcategory === subcategory">
+      {{ subcategory | titlecase }}
+    </button>
+    <button class="clear-filter-button" *ngIf="selectedSubcategory !== null" (click)="clearFilter()" color="danger"> Clear</button>
   </div>
 
   <ion-grid>
@@ -48,7 +40,7 @@
           <ion-card-header>
             <ion-card-title>{{ ad.title }}</ion-card-title>
             <ion-card-subtitle>
-              <strong>Price:</strong> {{ ad.price || ad.price_1L ||ad.price_1kg}} 
+              <strong>Price:</strong> {{ ad.price || ad.price_1L || ad.price_1kg }} 
             </ion-card-subtitle>
             <div class="info-row">
               <span>
@@ -65,10 +57,7 @@
           <ion-card-content>
             <p>{{ ad.description }}</p>
             <ion-button expand="full" (click)="viewDetails(ad)" color="success">View</ion-button>
-          
-                <!-- Save button -->
             <ion-button expand="full" (click)="savePost(ad)" color="warning">Save</ion-button>
-          
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -79,4 +68,5 @@
   <div *ngIf="filteredAdvertisements.length === 0">
     <p>No advertisements found for this subcategory.</p>
   </div>
+
 </ion-content>
