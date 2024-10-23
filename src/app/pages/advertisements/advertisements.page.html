@@ -14,30 +14,34 @@
 
 <ion-content>
 
-  <!-- Search Bar -->
-     <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterAdvertisements()" (keydown.enter)="onEnterPressed()"></ion-searchbar>
-
-  <!-- Subcategory Filter Buttons -->
-  <div class="subcategory-buttons">
-    <button 
-      class="agriculture-button" 
-      *ngFor="let subcategory of subcategories" 
-      (click)="filterBySubcategory(subcategory)" 
-      [class.selected]="selectedSubcategory === subcategory">
-      {{ subcategory | titlecase }}
-    </button>
-    <button class="clear-filter-button" *ngIf="selectedSubcategory !== null" (click)="clearFilter()" color="danger"> Clear</button>
-  </div>
-
-  <!-- Sorting Dropdown -->
-  <ion-item>
-    <ion-label>Sort by</ion-label>
-    <ion-select [(ngModel)]="selectedSortingOption" (ionChange)="applySorting()">
-      <ion-select-option value="lowToHigh">Price: Low to High</ion-select-option>
-      <ion-select-option value="highToLow">Price: High to Low</ion-select-option>
-    </ion-select>
-  </ion-item>
-
+  <section class="search-filter-section">
+  
+    <!-- Sorting Dropdown -->
+    <ion-item>
+      <ion-label>Sort by</ion-label>
+      <ion-select [(ngModel)]="selectedSortingOption" (ionChange)="applySorting()">
+        <ion-select-option value="lowToHigh">Price: Low to High</ion-select-option>
+        <ion-select-option value="highToLow">Price: High to Low</ion-select-option>
+      </ion-select>
+    </ion-item>
+      
+    <!-- Subcategory Filter Buttons -->
+    <div class="subcategory-buttons">
+      <button 
+        class="agriculture-button" 
+        *ngFor="let subcategory of subcategories" 
+        (click)="filterBySubcategory(subcategory)" 
+        [class.selected]="selectedSubcategory === subcategory">
+        {{ subcategory | titlecase }}
+      </button>
+      <button class="clear-filter-button" *ngIf="selectedSubcategory !== null" (click)="clearFilter()" color="danger">Clear</button>
+    </div>
+  
+    <!-- Search Bar -->
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterAdvertisements()" (keydown.enter)="onEnterPressed()"></ion-searchbar>
+    
+  </section>
+  
   <ion-grid>
     <ion-row>
       <!-- Bind filtered advertisements instead of all advertisements -->
