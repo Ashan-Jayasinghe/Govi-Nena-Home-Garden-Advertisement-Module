@@ -131,6 +131,23 @@ ion-searchbar {
   width: 92%; // Match font size with cards and buttons
 }
 
+
+.saved-button {
+  --background: #ff991c; /* Red color for unsave */
+  --color: white; /* Text color */
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.unsaved-button {
+  --background: rgb(203, 186, 4); /* Green color for save */
+  --color: rgb(0, 0, 0);
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+}
+
 // Style for subcategory filter buttons
 .subcategory-buttons {
   display: flex;
