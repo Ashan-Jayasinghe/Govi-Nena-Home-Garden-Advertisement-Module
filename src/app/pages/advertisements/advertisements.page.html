@@ -15,8 +15,7 @@
 <ion-content>
 
   <!-- Search Bar -->
-  <!-- <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterAdvertisements()"></ion-searchbar> -->
-  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterAdvertisements()" (keydown.enter)="onEnterPressed()"></ion-searchbar>
+     <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterAdvertisements()" (keydown.enter)="onEnterPressed()"></ion-searchbar>
 
   <!-- Subcategory Filter Buttons -->
   <div class="subcategory-buttons">
@@ -29,6 +28,15 @@
     </button>
     <button class="clear-filter-button" *ngIf="selectedSubcategory !== null" (click)="clearFilter()" color="danger"> Clear</button>
   </div>
+
+  <!-- Sorting Dropdown -->
+  <ion-item>
+    <ion-label>Sort by</ion-label>
+    <ion-select [(ngModel)]="selectedSortingOption" (ionChange)="applySorting()">
+      <ion-select-option value="lowToHigh">Price: Low to High</ion-select-option>
+      <ion-select-option value="highToLow">Price: High to Low</ion-select-option>
+    </ion-select>
+  </ion-item>
 
   <ion-grid>
     <ion-row>
