@@ -1,133 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute } from '@angular/router';
-// import { AdvertisementService } from '../../services/services/advertisement.service';
-// import { Router } from '@angular/router';
-// import { HttpClient } from '@angular/common/http';
-
-
-// @Component({
-//   selector: 'app-advertisements',
-//   templateUrl: './advertisements.page.html',
-//   styleUrls: ['./advertisements.page.scss'],
-// })
-// export class AdvertisementsPage implements OnInit {
-
-//   category: string = '';  
-//   subcategory: string | null = null;  
-//   advertisements: any[] = []; // Array to hold advertisements
-//   filteredAdvertisements: any[] = []; // Filtered advertisements to be shown
-//   subcategories: string[] = []; // List of subcategories for the category
-//   selectedSubcategory: string | null = null; // Currently selected subcategory for filtering
-
-// // // User object to hold the profile data
-// // user = {
-// //   id: null as number | null,
-// //   name: '',
-// //   email: '',
-// //   profileImage: null as File | null
-// // };
-
-
-//   constructor(
-//     private route: ActivatedRoute,
-//     private advertisementService: AdvertisementService,
-//     private router: Router,
-//     private http: HttpClient
-//   ) { }
-
-//   ngOnInit() {
-//     //this.loadUserProfile(); // Load the user profile when the page is initialized
-
-
-//     this.route.queryParams.subscribe(params => {
-//       this.category = params['category'] || '';  
-//       this.subcategory = params['subcategory'] || null;  
-//       this.fetchAdvertisements(); // Fetch advertisements
-//     });
-//   }
-
-
-//     // Method to load the user profile from the backend
-//     // loadUserProfile() {
-//     //   this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_profile.php', {
-//     //     withCredentials: true
-//     //   }).subscribe({
-//     //     next: (response: any) => {
-//     //       if (response.status === 'success') {
-//     //         this.user.id = response.user.id;  // Store the user ID
-//     //         this.user.name = response.user.name;
-//     //         this.user.email = response.user.email;
-//     //         this.user.profileImage = response.user.profileImage || null;
-//     //       } else {
-//     //         console.log('Failed to load user profile');
-//     //       }
-//     //     },
-//     //     error: (error) => {
-//     //       console.error('Error fetching user profile:', error);
-//     //     }
-//     //   });
-//     // }
-
-
-//   fetchAdvertisements() {
-//     this.advertisementService.getAdvertisementsByCategory(this.category, this.subcategory).subscribe((data) => {
-//       this.advertisements = data;
-//       this.filteredAdvertisements = this.advertisements; // Initially, show all ads
-
-//       // Extract unique subcategories for filter buttons
-//       this.subcategories = [...new Set(this.advertisements
-//         .filter(ad => ad.subcategory && ad.subcategory.trim() !== '')
-//         .map(ad => ad.subcategory))];
-
-//       console.log('Advertisements:', this.advertisements); // Log fetched advertisements
-//       console.log('Subcategories:', this.subcategories); // Log subcategories for debugging
-//     });
-//   }
-
-//   // Filter the advertisements by subcategory
-//   filterBySubcategory(subcategory: string) {
-//     console.log('Selected Subcategory:', subcategory); // Log which subcategory is selected
-//     this.selectedSubcategory = subcategory;
-    
-//     // Apply filter for subcategory
-//     this.filteredAdvertisements = this.advertisements.filter(ad => ad.subcategory === subcategory);
-//     console.log('Filtered Advertisements:', this.filteredAdvertisements); // Log filtered ads
-//   }
-
-//   // Clear the filter and show all advertisements
-//   clearFilter() {
-//     this.selectedSubcategory = null; // Clear the selected subcategory
-//     this.filteredAdvertisements = this.advertisements; // Show all advertisements again
-//   }
-
-//   viewDetails(ad: any) {
-//     console.log(ad);
-//     this.router.navigate(['/advertisement-view', ad.id], {
-//       state: { advertisement: ad } // Pass the advertisement data in state
-//     });
-//   }
-//   savePost(ad: any) {
-//     const body = { ad_id: ad.advertisement_id };  // Send the ad_id
-
-//     // Directly make an HTTP POST request to save the ad
-//     this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/save_ad.php', body, {
-//         withCredentials: true  // Ensure credentials (like session cookies) are sent with the request
-//     }).subscribe({
-//         next: (response: any) => {
-//             console.log('Ad saved successfully', response);
-//         },
-//         error: (error) => {
-//             console.error('Failed to save ad', error);
-//         }
-//     });
-// }
-
-  
-// }
-
-
-
-
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -152,6 +22,7 @@ export class AdvertisementsPage implements OnInit {
   selectedSubcategory: string | null = null; // Currently selected subcategory for filtering
   searchQuery: string = ''; // Variable to hold the search query
   selectedSortingOption: string = ''; // Variable to hold the selected sorting option (Low to High, High to Low)
+  savedAdIds: number[] = []; // Array to hold saved advertisement IDs
 
   constructor(
     private route: ActivatedRoute,
@@ -167,6 +38,8 @@ export class AdvertisementsPage implements OnInit {
       this.category = params['category'] || '';  
       this.subcategory = params['subcategory'] || null;  
       this.fetchAdvertisements(); // Fetch advertisements
+      this.fetchSavedAds(); // Fetch saved ads separately
+
     });
   }
 
@@ -180,17 +53,30 @@ export class AdvertisementsPage implements OnInit {
       });
       toast.present();
     }
+
+    // Fetch saved advertisements for the user
+  fetchSavedAds() {
+    this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_saved_ads.php', { withCredentials: true })
+      .subscribe((response: any) => {
+        this.savedAdIds = response.data.map((ad: any) => ad.id); // Fetch saved ad IDs
+        this.updateSavedAdStatus(); // Update saved status for ads
+      });
+  }
   
     fetchAdvertisements() {
       this.advertisementService.getAdvertisementsByCategory(this.category, this.subcategory).subscribe((data) => {
         // Assuming data includes a 'created_at' or 'timestamp' field
         this.advertisements = data;
-    
+
+        this.advertisements.forEach(ad => ad.isSaved = false); // Initialize all ads as not saved
+
         // Sort advertisements by 'created_at' (or 'timestamp') in descending order (newest first)
         this.advertisements.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     
         // Initially show all ads
         this.filteredAdvertisements = this.advertisements;
+        this.updateSavedAdStatus(); // Update saved status after fetching ads
+
     
         // Extract unique subcategories for filter buttons
         this.subcategories = [...new Set(this.advertisements
@@ -207,24 +93,24 @@ export class AdvertisementsPage implements OnInit {
     this.filterAdvertisements();
   }
   
-  // filterAdvertisements() {
-  //   this.filteredAdvertisements = this.advertisements.filter(ad => {
-  //     const matchesSubcategory = this.selectedSubcategory ? ad.subcategory === this.selectedSubcategory : true;
-  
-  //     // Ensure the search query is checked against multiple fields
-  //     const matchesQuery = this.searchQuery ? (
-  //       (ad.title && ad.title.toLowerCase().includes(this.searchQuery.toLowerCase())) ||
-  //       (ad.category && ad.category.toLowerCase().includes(this.searchQuery.toLowerCase())) ||
-  //       (ad.subcategory && ad.subcategory.toLowerCase().includes(this.searchQuery.toLowerCase())) ||
-  //       (ad.description && ad.description.toLowerCase().includes(this.searchQuery.toLowerCase())) ||
-  //       (ad.type && ad.type.toLowerCase().includes(this.searchQuery.toLowerCase())) ||
-  //       (ad.variety && ad.variety.toLowerCase().includes(this.searchQuery.toLowerCase()))
-  //     ) : true;
-  
-  //     return matchesSubcategory && matchesQuery;
-  //   });
-  // }
-  
+
+  // Update the saved status for each ad based on savedAdIds
+  updateSavedAdStatus() {
+    this.advertisements.forEach(ad => {
+      ad.isSaved = this.savedAdIds.includes(ad.id); // Mark as saved if ad ID is in savedAdIds
+    });
+  }
+
+// Toggle save/unsave functionality
+toggleSave(ad: any) {
+  if (ad.isSaved) {
+    this.unsavePost(ad);
+  } else {
+    this.savePost(ad);
+  }
+}
+
+  // filterAdvertisements
   filterAdvertisements() {
     // Split the search query into individual words (ignore extra spaces)
     const searchTerms = this.searchQuery ? this.searchQuery.toLowerCase().split(/\s+/) : [];
@@ -287,23 +173,56 @@ applySorting() {
   }
 
   savePost(ad: any) {
-    const body = { ad_id: ad.advertisement_id };  // Send the ad_id
+    const body = { ad_id: ad.advertisement_id };  // Make sure 'ad.advertisement_id' is the correct identifier
+
+    console.log("Saving ad with ID:", ad.advertisement_id);  // Log the ad ID before sending the request
 
     this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/save_ad.php', body, {
-        withCredentials: true  // Ensure credentials (like session cookies) are sent with the request
+      withCredentials: true
     }).subscribe({
-        next: (response: any) => {
-            console.log('Ad saved successfully', response);
-            this.presentToast('Ad saved successfully', 'warning');
-            setTimeout(() => {
-              this.router.navigateByUrl('/saved-ads');
-            }, 1000);
+      next: (response: any) => {
+        console.log("Save response:", response);  // Log the response from the backend
 
-        },
-        error: (error) => {
-            console.error('Failed to save ad', error);
-            this.presentToast('Failed to save ad', 'danger');
+        if (response.status === 'success') {
+          ad.isSaved = true; // Mark ad as saved
+          this.savedAdIds.push(ad.advertisement_id); // Add ad ID to saved list
+          this.presentToast('Ad saved successfully', 'success');
+        } else {
+          this.presentToast('Failed to save ad: ' + response.message, 'danger');
         }
+      },
+      error: (error) => {
+        console.error("Failed to save ad:", error);  // Log the error response
+        this.presentToast('Failed to save ad', 'danger');
+      }
     });
-  }
+}
+
+unsavePost(ad: any) {
+    const body = { ad_id: ad.advertisement_id };  // Make sure 'ad.advertisement_id' is the correct identifier
+
+    console.log("Unsaving ad with ID:", ad.advertisement_id);  // Log the ad ID before sending the request
+
+    this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/unsave_ad.php', body, {
+      withCredentials: true
+    }).subscribe({
+      next: (response: any) => {
+        console.log("Unsave response:", response);  // Log the response from the backend
+
+        if (response.status === 'success') {
+          ad.isSaved = false; // Mark ad as unsaved
+          this.savedAdIds = this.savedAdIds.filter(id => id !== ad.advertisement_id); // Remove ad ID from saved list
+          this.presentToast('Ad unsaved successfully', 'success');
+        } else {
+          this.presentToast('Failed to unsave ad: ' + response.message, 'danger');
+        }
+      },
+      error: (error) => {
+        console.error("Failed to unsave ad:", error);  // Log the error response
+        this.presentToast('Failed to unsave ad', 'danger');
+      }
+    });
+}
+
+
 }
