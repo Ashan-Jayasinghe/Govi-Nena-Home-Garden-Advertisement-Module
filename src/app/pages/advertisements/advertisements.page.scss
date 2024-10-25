@@ -148,6 +148,12 @@ ion-searchbar {
 
 }
 
+// Disabled Button Style for Expired Ads
+ion-button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 // Style for subcategory filter buttons
 .subcategory-buttons {
   display: flex;
@@ -284,4 +290,16 @@ ion-searchbar {
       }
     }
   }
+}
+
+.expired-advertisement {
+  border: 1px solid #f44336; // Red border for expired ads
+  opacity: 0.6;
+  filter: grayscale(0.5);
+  pointer-events: none; // Disable interactivity on the whole card
+}
+
+// Styles for active and expired ads
+.active-advertisement {
+  border: 1px solid #48b64e; // Green border for active ads
 }
