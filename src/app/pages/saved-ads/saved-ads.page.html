@@ -64,7 +64,10 @@
   </ion-grid>
 
   <!-- Show message if no ads are found -->
-  <div *ngIf="filteredSavedAds.length === 0">
+     <!-- Update to check filteredAdvertisements instead of advertisements -->
+  <div *ngIf="filteredSavedAds.length === 0" style="text-align: center; color: grey;">
     <p>No saved advertisements found for this subcategory.</p>
   </div>
+
+
 </ion-content>
