@@ -55,38 +55,46 @@ export class AdvertisementsPage implements OnInit {
     }
 
     // Fetch saved advertisements for the user
-  fetchSavedAds() {
-    this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_saved_ads.php', { withCredentials: true })
-      .subscribe((response: any) => {
-        this.savedAdIds = response.data.map((ad: any) => ad.id); // Fetch saved ad IDs
-        this.updateSavedAdStatus(); // Update saved status for ads
-      });
-  }
+    fetchSavedAds() {
+      this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_saved_ads.php', { withCredentials: true })
+        .subscribe({
+          next: (response: any) => {
+            this.savedAdIds = response.data.map((ad: any) => ad.id);
+            this.updateSavedAdStatus();
+          },
+          error: (error) => {
+            console.error("Failed to fetch saved ads:", error);
+            this.presentToast('Failed to load saved ads', 'danger');
+          }
+        });
+    }
   
+
     fetchAdvertisements() {
-      this.advertisementService.getAdvertisementsByCategory(this.category, this.subcategory).subscribe((data) => {
-        // Assuming data includes a 'created_at' or 'timestamp' field
-        this.advertisements = data;
-
-        this.advertisements.forEach(ad => ad.isSaved = false); // Initialize all ads as not saved
-
-        // Sort advertisements by 'created_at' (or 'timestamp') in descending order (newest first)
-        this.advertisements.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     
-        // Initially show all ads
-        this.filteredAdvertisements = this.advertisements;
-        this.updateSavedAdStatus(); // Update saved status after fetching ads
-
+      this.advertisementService.getAdvertisementsByCategory(this.category, this.subcategory).subscribe({
+        next: (data) => {
+          this.advertisements = data;
     
-        // Extract unique subcategories for filter buttons
-        this.subcategories = [...new Set(this.advertisements
-          .filter(ad => ad.subcategory && ad.subcategory.trim() !== '')
-          .map(ad => ad.subcategory))];
+          // Sort advertisements by 'created_at' to show the latest ads first
+          this.advertisements.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     
-        console.log('Advertisements:', this.advertisements); // Log fetched advertisements
-        console.log('Subcategories:', this.subcategories); // Log subcategories for debugging
+          // Initialize ads and update saved statuses
+          this.advertisements.forEach(ad => ad.isSaved = false);
+          this.filteredAdvertisements = [...this.advertisements]; // Show all ads initially
+          this.updateSavedAdStatus(); // Update saved status
+    
+          // Set unique subcategories for the filter buttons
+          this.subcategories = [...new Set(this.advertisements
+            .filter(ad => ad.subcategory && ad.subcategory.trim() !== '')
+            .map(ad => ad.subcategory))];
+        },
+        error: (error) => {
+          console.error('Error fetching advertisements:', error);
+        }
       });
     }
+    
     
   onEnterPressed() {
     // Call the filtering logic when the Enter key is pressed
