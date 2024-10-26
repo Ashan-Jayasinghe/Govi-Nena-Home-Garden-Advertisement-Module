@@ -101,3 +101,13 @@ ion-button:disabled {
 .active-advertisement {
   border: 1px solid #48b64e; // Green border for active ads
 }
+
+.section-Header {
+  font-size: 1.2rem;        // Moderate size for mobile
+  font-weight: 600;         // Semi-bold for prominence
+  color: #4CAF50;           // Subtle green color matching mobile themes
+  padding: 10px 0;          // Padding to give spacing from content
+  margin: 20px 0 10px;      // Margin to add spacing between sections
+  text-align: center;       // Center alignment for a clean look
+  border-bottom: 2px solid #e0e0e0;  // Light border for separation
+}
