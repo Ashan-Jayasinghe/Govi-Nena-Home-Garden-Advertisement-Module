@@ -13,6 +13,7 @@ export class MyAdvertisementsPage implements OnInit {
   advertisements: any[] = [];
   activeAds: any[] = [];
   expiredAds: any[] = [];
+  deactivatedAds: any[] = [];
 
   constructor(private http: HttpClient, private toastController: ToastController, private router: Router) {}
 
@@ -50,6 +51,7 @@ export class MyAdvertisementsPage implements OnInit {
   categorizeAds() {
     this.activeAds = this.advertisements.filter(ad => !(ad.isExpired) && ad.is_active);
     this.expiredAds = this.advertisements.filter(ad => ad.isExpired);
+    this.deactivatedAds = this.advertisements.filter(ad => !(ad.isExpired) && !(ad.is_active));
   }
 
 
