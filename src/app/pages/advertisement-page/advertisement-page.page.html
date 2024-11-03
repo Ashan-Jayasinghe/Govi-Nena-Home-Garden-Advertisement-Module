@@ -1,105 +1,154 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-buttons slot="start"> 
+    <ion-buttons slot="start">
+      <!-- You can uncomment this if needed -->
       <!-- <ion-back-button defaultHref="search-chef" color="light"> -->
       <!-- </ion-back-button> -->
-     </ion-buttons> 
+    </ion-buttons>
     <ion-title color="light">ADVERTISEMENTS</ion-title>
-    <ion-button slot="end"  color="warning" (click)="goToDetailsPage()">Post Ads</ion-button>
+    <ion-button slot="end" color="warning" (click)="goToDetailsPage()">
+      Post Ads
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-
   <div class="profile-card" (click)="goToProfile()">
     <img [src]="user.profileImage || 'assets/cat.png'" class="profile-image" />
     <span class="welcome-text">Welcome, {{ user.name }}</span>
   </div>
-  <div>
-    <h2>WHAT YOU LOOKING FOR?</h2>
-    <ion-grid>
-      <ion-row>
-        <!-- Card for All Advertisements -->
-        <!-- <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('all', null)">
-            <ion-card-header class="category-card-header">
-              <ion-card-title class="category-card-title">ALL ADVERTISEMENTS</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-col> -->
-    
-        <!-- Card for Fertilizer -->
-        <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('fertilizer', null)">
-            <ion-card-header class="category-card-header">
-              <ion-card-title class="category-card-title">FERTILIZERS</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-col>
-    
-        <!-- Card for Agro-Chemicals -->
-        <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card" (click)="goToAdvertisements('agro chemicals', null)">
-            <ion-card-header class="category-card-header">
-              <ion-card-title class="category-card-title">AGRO-CHEMICALS</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-col>
-    
-        <!-- Card for Machineries -->
-        <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('machineries', null)">
-            <ion-card-header class="category-card-header">
-              <ion-card-title class="category-card-title">MACHINERIES</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-col>
-    
-        <!-- Card for Planting Materials -->
-        <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card"  (click)="goToAdvertisements('planting materials', null)">
-            <ion-card-header class="category-card-header">
-              <ion-card-title class="category-card-title">PLANTING MATERIALS</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-col>
 
-        <!-- Card for Vegetables and Fruits -->
-        <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card" (click)="goToAdvertisements('vegetables-fruits', null)">
-            <ion-card-header class="category-card-header">
-          <ion-card-title class="category-card-title">VEGETABLES & FRUITS</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-col>
+  <h2>WHAT ARE YOU LOOKING FOR?</h2>
 
-    
-        <!-- New Card for My Advertisements -->
-        <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card class="category-card" (click)="goToMyAdvertisements()">
-            <ion-card-header class="category-card-header">
-              <ion-card-title class="category-card-title">MY ADVERTISEMENTS</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-col>
-      </ion-row>
+  <ion-grid>
+    <ion-row>
+      <!-- Card for Fertilizer -->
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card
+          class="category-card fertilizer"
+          (click)="goToAdvertisements('fertilizer', null)"
+        >
+          <ion-card-header class="category-card-header">
+            <ion-card-title class="category-card-title"
+              >FERTILIZERS</ion-card-title
+            >
+            <ion-icon name="leaf" slot="start" class="category-icon"></ion-icon>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Find a variety of fertilizers to boost your crop yield.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
-              <!-- Card for Saaved ads-->
-              <ion-col size="12" size-md="6" size-lg="4">
-                <ion-card class="category-card"  (click)="goToSavedAdvertisements()">
-                  <ion-card-header class="category-card-header">
-                    <ion-card-title class="category-card-title">SAVED ADVERTISEMENTS</ion-card-title>
-                  </ion-card-header>
-                </ion-card>
-              </ion-col>
-    </ion-grid>
-    
-  </div>
-  
+      <!-- Card for Agro-Chemicals -->
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card
+          class="category-card agro-chemicals"
+          (click)="goToAdvertisements('agro chemicals', null)"
+        >
+          <ion-card-header class="category-card-header">
+            <ion-card-title class="category-card-title"
+              >AGRO-CHEMICALS</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <p>Explore a range of agro-chemicals for effective pest control.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
+      <!-- Card for Machineries -->
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card
+          class="category-card machineries"
+          (click)="goToAdvertisements('machineries', null)"
+        >
+          <ion-card-header class="category-card-header">
+            <ion-card-title class="category-card-title"
+              >MACHINERIES</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <p>Discover the latest agricultural machinery and equipment.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
+      <!-- Card for Planting Materials -->
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card
+          class="category-card planting-materials"
+          (click)="goToAdvertisements('planting materials', null)"
+        >
+          <ion-card-header class="category-card-header">
+            <ion-card-title class="category-card-title"
+              >PLANTING MATERIALS</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <p>Access quality seeds and planting materials for your crops.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
+      <!-- Card for Vegetables and Fruits -->
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card
+          class="category-card vegetables-fruits"
+          (click)="goToAdvertisements('vegetables-fruits', null)"
+        >
+          <ion-card-header class="category-card-header">
+            <ion-card-title class="category-card-title"
+              >VEGETABLES & FRUITS</ion-card-title
+            >
+            <ion-icon
+              name="nutrition"
+              slot="start"
+              class="category-icon"
+            ></ion-icon>
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              Browse a selection of fresh vegetables and fruits available for
+              sale.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
+      <!-- New Card for My Advertisements -->
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card
+          class="category-card my-advertisements"
+          (click)="goToMyAdvertisements()"
+        >
+          <ion-card-header class="category-card-header">
+            <ion-card-title class="category-card-title"
+              >MY ADVERTISEMENTS</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <p>Manage your advertisements in one convenient place.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
+      <!-- Card for Saved Ads -->
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card
+          class="category-card saved-advertisements"
+          (click)="goToSavedAdvertisements()"
+        >
+          <ion-card-header class="category-card-header">
+            <ion-card-title class="category-card-title"
+              >SAVED ADVERTISEMENTS</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <p>View and manage your saved advertisements.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

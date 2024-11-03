@@ -1,125 +1,144 @@
-ion-header{
-    ion-toolbar{
-        ion-button{
-            margin-right: 10px;
-        }
-    }
-}
-
-ion-button {
-  margin-left: 10px;
-}
-
-
 ion-content {
-  --background: #f0f0f5; /* Light greenish background */
+  --background: #f4f5f8; /* Soft background color */
+  padding: 15px;
+}
+
+/* Enhanced Heading */
+h2 {
+  color: #00796b; /* Change color for better visibility */
+  font-size: 1.8em; /* Increased font size */
+  font-weight: bold;
+  margin: 30px 0; /* Increased margin for better spacing */
+  text-align: center; /* Centered heading */
+  position: relative; /* To position decorative elements if added */
+
+  &::after {
+    content: ""; /* Decorative underline */
+    display: block;
+    width: 50%; /* Width of the line */
+    height: 3px; /* Thickness of the line */
+    background: #4caf50; /* Color of the line */
+    margin: 10px auto; /* Centered line */
+    border-radius: 5px; /* Rounded edges */
+  }
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  padding: 20px; /* Increased padding for better spacing */
+  background: linear-gradient(
+    135deg,
+    #ffe0b2 0%,
+    #c8e6c9 100%
+  ); /* Gradient background */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow for a modern look */
+  margin-bottom: 30px; /* Increased margin for spacing */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+
+  &:hover {
+    transform: translateY(-4px); /* More pronounced hover effect */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+  }
+}
+
+.profile-image {
+  width: 70px; /* Slightly larger image */
+  height: 70px;
+  border-radius: 50%;
+  margin-right: 20px; /* More spacing for a cleaner look */
+  border: 2px solid #00796b;
+}
+
+.welcome-text {
+  font-weight: 600; /* Semi-bold for emphasis */
+  color: #00796b;
+  font-size: 1.3em; /* Larger font size for prominence */
+  line-height: 1.5; /* Increased line height for better readability */
+  text-align: center; /* Center align for a modern feel */
+  flex-grow: 1; /* Allow text to take up available space */
+}
+
+/* Category Cards */
+.category-card {
   position: relative;
-  padding: 20px;
+  border-left: 6px solid #4caf50; /* Green border to match theme */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 20px 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  min-height: 150px; /* Increased card height for emphasis */
+  display: flex;
+  flex-direction: column; /* Changed to column layout for icon and text */
+  align-items: start; /* Aligned items to start */
+  justify-content: center; /* Centered content vertically */
 
-  .profile-card {
-    position:relative; /* Make the profile card fixed */
-    top:20px;
-    background: rgb(255, 194, 10);
-    padding: 20px 20px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    z-index: 10;
-
-    &:hover {
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .profile-image {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 20px;
-    }
-
-    .welcome-text {
-      color: #000000;
-      font-size: 18px;
-      font-weight: bold;
-      font-family:Arial, Helvetica, sans-serif;
-    }
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
   }
 
-}
-.category-card {
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  background-color: #fff;
-  text-align: center;
-}
+  ion-icon {
+    font-size: 2em; /* Icon size */
+    color: #4caf50; /* Match icon color to theme */
+    margin-bottom: 10px; /* Space between icon and title */
+  }
 
-.category-card:hover {
-  transform: translateY(-5px); /* Slight hover lift effect */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+  &.fertilizer {
+    background-color: #c8e6c9; /* Light green for Fertilizers */
+    border-left-color: #388e3c; /* Darker green border */
+  }
 
-.category-card-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  background-color: #4caf50; /* Green background for the header */
-  color: white;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  &.agro-chemicals {
+    background-color: #ffe0b2; /* Light orange for Agro-Chemicals */
+    border-left-color: #fb8c00; /* Darker orange border */
+  }
+
+  &.machineries {
+    background-color: #bbdefb; /* Light blue for Machineries */
+    border-left-color: #1976d2; /* Darker blue border */
+  }
+
+  &.planting-materials {
+    background-color: #ffccbc; /* Light peach for Planting Materials */
+    border-left-color: #d84315; /* Darker peach border */
+  }
+
+  &.vegetables-fruits {
+    background-color: #f0f4c3; /* Light yellow for Vegetables & Fruits */
+    border-left-color: #c0ca33; /* Darker yellow border */
+  }
+
+  &.my-advertisements {
+    background-color: #e1bee7; /* Light purple for My Advertisements */
+    border-left-color: #8e24aa; /* Darker purple border */
+  }
+
+  &.saved-advertisements {
+    background-color: #ffab91; /* Light red for Saved Advertisements */
+    border-left-color: #f44336; /* Darker red border */
+  }
 }
 
 .category-card-title {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: white;
+  font-size: 1.2em; /* Increased title font size for visibility */
+  font-weight: bold;
+  margin: 0;
 }
 
-ion-col {
-  padding: 10px;
+.category-card-content {
+  font-size: 0.9em; /* Smaller font size for descriptions */
+  color: #666; /* Dark gray for description text */
+  margin-top: 5px; /* Space between title and description */
 }
 
-h2{
-  margin: 80px 40px 50px 40px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-/* Media Queries for smaller screens */
-@media (max-width: 768px) {
-  .profile-card {
-    top: 0;
-    right: 0;
-    width: 100%; /* Full width on smaller screens */
-    border-radius: 0;
-    justify-content: center; /* Center content in the profile card */
-  }
-  .category-card-header {
-    height: 80px; /* Reduce height for smaller screens */
-  }
-
-  .category-card-title {
-    font-size: 1em; /* Adjust font size for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-card {
-    top: 0;
-    right: 0;
-    width: 100%; /* Full width on mobile screens */
-    border-radius: 0;
-    justify-content: center;
-    padding: 10px; /* Adjust padding for smaller screens */
-  }
-  .category-card-title {
-    font-size: 1.5em;
-    font-weight: 400;
-    color: white;
-  }
-
+/* Button styling */
+ion-button {
+  --background: #ffeb3b; /* Yellow button color */
+  --background-hover: #ffd700;
+  border-radius: 8px;
+  font-weight: bold;
 }
