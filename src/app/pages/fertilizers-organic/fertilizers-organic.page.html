@@ -25,8 +25,16 @@
     <div class="form-group">
       <label for="type">Type <span style="color: red;">*</span></label>
       <ion-select id="type" name="type" [(ngModel)]="organic.type" required>
-        <ion-select-option value="urea">Urea</ion-select-option>
-        <!-- Add more options if needed -->
+        <ion-select-option value="compost">Compost</ion-select-option>
+        <ion-select-option value="manure">Manure</ion-select-option>
+        <ion-select-option value="bone_meal">Bone Meal</ion-select-option>
+        <ion-select-option value="blood_meal">Blood Meal</ion-select-option>
+        <ion-select-option value="fish_emulsion">Fish Emulsion</ion-select-option>
+        <ion-select-option value="seaweed_extract">Seaweed Extract</ion-select-option>
+        <ion-select-option value="green_manures">Green Manures</ion-select-option>
+        <ion-select-option value="worm_castings">Worm Castings</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+
       </ion-select>
       <ion-text color="danger" *ngIf="organicForm.submitted && !organic.type">
         Type is required.
@@ -36,7 +44,7 @@
     <!-- Title -->
     <div class="form-group">
       <label for="title">Title <span style="color: red;">*</span></label>
-      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="organic.title" required></ion-input>
+      <ion-input id="title" type="text" name="title" maxlength="70" [(ngModel)]="organic.title" required></ion-input>
       <ion-text color="danger" *ngIf="organicForm.submitted && !organic.title">
         Title is required.
       </ion-text>
@@ -55,7 +63,7 @@
     <!-- NPK Ratio -->
     <div class="form-group">
       <label for="npk">NPK Ratio <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="npk" type="number" name="npk" [(ngModel)]="organic.npk"></ion-input>
+      <ion-input id="npk" type="text" name="npk" [(ngModel)]="organic.npk"></ion-input>
     </div>
 
     <!-- Method -->

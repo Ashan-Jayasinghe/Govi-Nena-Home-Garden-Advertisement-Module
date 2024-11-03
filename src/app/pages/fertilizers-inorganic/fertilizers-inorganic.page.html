@@ -25,9 +25,39 @@
     <div class="form-group">
       <label for="type">Type <span style="color: red;">*</span></label>
       <ion-select id="type" name="type" [(ngModel)]="inorganic.type" required>
-        <ion-select-option value="urea">Urea</ion-select-option>
-        <!-- Add more options if needed -->
-      </ion-select>
+         <!-- Nitrogen Fertilizers -->
+    <ion-select-option value="urea">Urea (46% N)</ion-select-option>
+    <ion-select-option value="ammonium_nitrate">Ammonium Nitrate (33-34% N)</ion-select-option>
+    <ion-select-option value="ammonium_sulfate">Ammonium Sulfate (21% N, 24% S)</ion-select-option>
+    <ion-select-option value="calcium_ammonium_nitrate">Calcium Ammonium Nitrate (27% N)</ion-select-option>
+
+    <!-- Phosphorus Fertilizers -->
+    <ion-select-option value="ssp">Single Superphosphate (16-20% P₂O₅, 11-12% S)</ion-select-option>
+    <ion-select-option value="tsp">Triple Superphosphate (44-46% P₂O₅)</ion-select-option>
+    <ion-select-option value="dap">Diammonium Phosphate (18% N, 46% P₂O₅)</ion-select-option>
+    <ion-select-option value="map">Monoammonium Phosphate (11% N, 52% P₂O₅)</ion-select-option>
+
+    <!-- Potassium Fertilizers -->
+    <ion-select-option value="kcl">Potassium Chloride (60-62% K₂O)</ion-select-option>
+    <ion-select-option value="k2so4">Potassium Sulfate (50% K₂O, 18% S)</ion-select-option>
+    <ion-select-option value="kno3">Potassium Nitrate (13% N, 44% K₂O)</ion-select-option>
+
+    <!-- Mixed NPK Fertilizers -->
+    <ion-select-option value="npk_10_10_10">NPK 10-10-10 (10% N, 10% P, 10% K)</ion-select-option>
+    <ion-select-option value="npk_20_10_10">NPK 20-10-10 (20% N, 10% P, 10% K)</ion-select-option>
+    <ion-select-option value="npk_15_15_15">NPK 15-15-15 (15% N, 15% P, 15% K)</ion-select-option>
+
+    <!-- Secondary and Micronutrient Fertilizers -->
+    <ion-select-option value="calcium_nitrate">Calcium Nitrate (15.5% N, 19% Ca)</ion-select-option>
+    <ion-select-option value="magnesium_sulfate">Magnesium Sulfate (9.8% Mg, 13% S)</ion-select-option>
+    <ion-select-option value="zinc_sulfate">Zinc Sulfate</ion-select-option>
+    <ion-select-option value="iron_chelates">Iron Chelates</ion-select-option>
+    <ion-select-option value="copper_sulfate">Copper Sulfate</ion-select-option>
+    <ion-select-option value="other">Other</ion-select-option>
+
+  
+  
+  </ion-select>
       <ion-text color="danger" *ngIf="inorganicForm.submitted && !inorganic.type">
         Type is required.
       </ion-text>
@@ -36,7 +66,7 @@
     <!-- Title -->
     <div class="form-group">
       <label for="title">Title <span style="color: red;">*</span></label>
-      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="inorganic.title" required></ion-input>
+      <ion-input id="title" type="text" name="title" maxlength="70" [(ngModel)]="inorganic.title" required></ion-input>
       <ion-text color="danger" *ngIf="inorganicForm.submitted && !inorganic.title">
         Title is required.
       </ion-text>
@@ -55,7 +85,7 @@
     <!-- NPK Ratio -->
     <div class="form-group">
       <label for="npkRatio">NPK Ratio <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="npkRatio" type="number" name="npkRatio" [(ngModel)]="inorganic.npkRatio"></ion-input>
+      <ion-input id="npkRatio" type="text" name="npkRatio" [(ngModel)]="inorganic.npkRatio"></ion-input>
     </div>
 
     <!-- Method -->
