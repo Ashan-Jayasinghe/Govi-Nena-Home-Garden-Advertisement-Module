@@ -72,44 +72,7 @@ export class SignupPage implements OnInit {
 
   // Handle form submission
   onSubmit() {
-    // if (this.signupData.acceptTerms) {
-    //   // Ensure password and confirm password match
-    //   if (this.passwordMismatch) {
-    //     this.presentToast('Passwords do not match', 'danger');
-    //     return;
-    //   }
-
-    //   const formData = new FormData();
-
-    //   // Append the data fields to the form data
-    //   formData.append('name', this.signupData.name || '');
-    //   formData.append('email', this.signupData.email || '');
-    //   formData.append('password', this.signupData.password || '');
-    //   formData.append('acceptTerms', this.signupData.acceptTerms ? '1' : '0');
-
-    //   // Send form data to backend (replace with actual endpoint)
-    //   this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/signup.php', formData)
-    //     .subscribe({
-    //       next: (response) => {
-    //         console.log('Response:', response);
-    //         this.presentToast('Signup successful', 'success');
-    //       },
-    //       error: (error) => {
-    //         console.error('Error:', error);
-    //         this.presentToast('Signup failed. Please try again.', 'danger');
-    //       }
-    //     });
-    // } else {
-    //   this.presentToast('Please accept the terms and conditions to proceed.', 'warning');
-    // }
-
     if (this.signupData.acceptTerms) {
-      // Ensure password and confirm password match
-      // if (this.passwordMismatch) {
-      //   this.presentToast('Passwords do not match', 'danger');
-      //   return;
-      // }
-
       this.validateEmail();
       this.validatePassword();
 

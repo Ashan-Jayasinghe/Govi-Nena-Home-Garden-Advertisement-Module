@@ -1,36 +1,59 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/planting-materials" color="light">
-      </ion-back-button>
+      <ion-back-button
+        defaultHref="/planting-materials"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title color="light">SIGN UP</ion-title>
+    <ion-title color="light">LOGIN</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="login-img">
+    <img src="../../../assets/regenerative.png" alt="login-img" />
+  </div>
   <div class="login-container">
     <h1>Welcome Back!</h1>
     <form (ngSubmit)="onSubmit()">
       <!-- Email -->
       <ion-item>
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" [(ngModel)]="loginData.email" name="email" required placeholder="Enter your email"></ion-input>
+        <ion-input
+          type="email"
+          [(ngModel)]="loginData.email"
+          name="email"
+          required
+          placeholder="Enter your email"
+        ></ion-input>
       </ion-item>
 
       <!-- Password -->
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input type="password" [(ngModel)]="loginData.password" name="password" required placeholder="Enter your password"></ion-input>
+        <ion-input
+          type="password"
+          [(ngModel)]="loginData.password"
+          name="password"
+          required
+          placeholder="Enter your password"
+        ></ion-input>
       </ion-item>
 
       <!-- Submit Button -->
       <ion-button expand="block" type="submit">Login</ion-button>
     </form>
+
+    <!-- Forgot Password Link -->
+    <ion-text class="forgot-password">
+      <a routerLink="/forgot-password">Forgot Password?</a>
+    </ion-text>
 
     <!-- Signup Link -->
     <ion-text>

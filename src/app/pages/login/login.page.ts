@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';  // Import ToastController
-import { Router } from '@angular/router';  // Import Router for navigation
+import { ToastController } from '@ionic/angular'; // Import ToastController
+import { Router } from '@angular/router'; // Import Router for navigation
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -10,16 +10,20 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   loginData: {
-    email: string,
-    password: string
+    email: string;
+    password: string;
   } = {
     email: '',
-    password: ''
+    password: '',
   };
 
-  constructor(private http: HttpClient, private toastCtrl: ToastController, private router: Router,private authService: AuthService) { }
+  constructor(
+    private http: HttpClient,
+    private toastCtrl: ToastController,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   // Display a toast message for feedback
   async presentToast(message: string, color: string) {
@@ -27,10 +31,12 @@ export class LoginPage implements OnInit {
       message,
       duration: 2000,
       color,
-      position: 'top'
+      position: 'top',
     });
     toast.present();
   }
+
+
 
   // Handle form submission
   onSubmit() {
@@ -38,9 +44,14 @@ export class LoginPage implements OnInit {
     formData.append('email', this.loginData.email || '');
     formData.append('password', this.loginData.password || '');
 
-    this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/login.php', formData, {
-        withCredentials: true // This ensures PHPSESSID is sent with requests
-      })
+    this.http
+      .post(
+        'http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/login.php',
+        formData,
+        {
+          withCredentials: true, // This ensures PHPSESSID is sent with requests
+        }
+      )
       .subscribe({
         next: (response: any) => {
           if (response.status === 'success') {
@@ -54,33 +65,16 @@ export class LoginPage implements OnInit {
         error: (error) => {
           console.error('Error:', error);
           this.presentToast('An error occurred. Please try again.', 'danger');
-        }
+        },
       });
   }
 
   ngOnInit() {
-    // // On initialization, check if PHPSESSID cookie exists via a test request (optional)
-    // this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/check-session.php', {
-    //     withCredentials: true // Ensures PHPSESSID is sent with requests
-    //   })
-    //   .subscribe({
-    //     next: (response: any) => {
-    //       if (response.status === 'authenticated') {
-    //         // User is already logged in, redirect to the advertisement page
-    //         this.router.navigate(['/advertisement-page']);
-    //       }
-    //     },
-    //     error: (error) => {
-    //       console.log('Session not found, user is not logged in');
-    //     }
-    //   });
-
-     // Check if the user is already logged in
-     this.authService.checkSession().subscribe(isLoggedIn => {
+    // Check if the user is already logged in
+    this.authService.checkSession().subscribe((isLoggedIn) => {
       if (isLoggedIn) {
         this.router.navigate(['/advertisement-page']); // Redirect to home if logged in
       }
     });
   }
-
 }
