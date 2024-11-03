@@ -13,38 +13,43 @@
 </ion-header>
 
 <ion-content>
-
-  <div class="form-container"> <!-- Add this wrapper -->
+  <div class="form-container">
     <h2>PROFILE INFORMATION</h2>
-    <form (submit)="updateUser($event)">
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Profile Image</ion-label>
-        <input type="file" (change)="onFileSelected($event)" />
-      </ion-item>
-      <ion-button fill="clear" expand="block" type="submit" color="success">Update Profile</ion-button>
-    </form>
-
-    <form (submit)="updatePassword()">
-      <ion-item>
-        <ion-label position="floating">New Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
-      </ion-item>
-      <ion-button fill="clear" expand="full" type="submit" color="success">Update Password</ion-button>
-    </form>
     
+    <div class="card">
+      <form (submit)="updateUser($event)">
+        <div class="profile-image-container">
+          <img [src]="user.profileImage" alt="Profile Image" class="profile-image" />
+        </div>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Profile Image</ion-label>
+          <input type="file" (change)="onFileSelected($event)" />
+        </ion-item>
+        <ion-button expand="block" type="submit" color="success">Update Profile</ion-button>
+      </form>
+    </div>
+    <div class="card">
+      <form (submit)="updatePassword()">
+        <ion-item>
+          <ion-label position="floating">New Password</ion-label>
+          <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit" color="success">Update Password</ion-button>
+      </form>
+    </div>
+
     <!-- Logout Button -->
     <ion-button expand="block" color="danger" (click)="logout()">
       Logout
     </ion-button>
-
-  </div> 
-
+  </div>
 </ion-content>
+
