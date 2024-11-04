@@ -1,5 +1,7 @@
 {
   "name": "Govi-Nena-Home-Garden-Advertisement-module",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
