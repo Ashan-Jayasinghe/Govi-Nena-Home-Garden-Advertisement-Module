@@ -64,30 +64,6 @@ ion-card.fruits {
   );
 }
 
-ion-card.grains {
-  --background: linear-gradient(
-    145deg,
-    rgba(230, 220, 170, 0.8),
-    rgba(210, 190, 150, 0.8)
-  );
-}
-
-ion-card.herbs {
-  --background: linear-gradient(
-    145deg,
-    rgba(180, 230, 180, 0.8),
-    rgba(150, 210, 150, 0.8)
-  );
-}
-
-ion-card.flowers {
-  --background: linear-gradient(
-    145deg,
-    rgba(255, 220, 240, 0.8),
-    rgba(255, 200, 210, 0.8)
-  );
-}
-
 /* Responsive adjustments */
 @media (max-width: 576px) {
   ion-card {
