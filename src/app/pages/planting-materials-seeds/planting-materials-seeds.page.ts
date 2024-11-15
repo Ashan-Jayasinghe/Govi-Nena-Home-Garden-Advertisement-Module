@@ -17,9 +17,9 @@ export class PlantingMaterialsSeedsPage implements OnInit {
     title: string;
     stock: number | null;
     description: string;
-    price1kg: number | null;
-    price5kg: number | null;
-    price10kg: number | null;
+    unit: string;
+    amount: number | null;
+    price: number | null;
     address: string;
     mobile: string;
     acceptTerms: boolean;
@@ -30,9 +30,9 @@ export class PlantingMaterialsSeedsPage implements OnInit {
     title: '',
     stock: null,
     description: '',
-    price1kg: null,
-    price5kg: null,
-    price10kg: null,
+    unit: '',
+    amount: null,
+    price: null,
     address: '',
     mobile: '',
     acceptTerms: false
@@ -120,7 +120,7 @@ export class PlantingMaterialsSeedsPage implements OnInit {
       return;
     }
 
-    if (!this.seeds.type || !this.seeds.variety || !this.seeds.title || this.seeds.price1kg === null || !this.seeds.mobile) {
+    if (!this.seeds.type || !this.seeds.variety || !this.seeds.title || this.seeds.amount===null||!this.seeds.unit||this.seeds.price === null || !this.seeds.mobile) {
       this.presentToast('Please fill in all the required fields.', 'danger');
       return;
     }
@@ -146,9 +146,9 @@ export class PlantingMaterialsSeedsPage implements OnInit {
     // Unique attributes for Seeds
     formData.append('type', this.seeds.type || '');
     formData.append('variety', this.seeds.variety || '');
-    formData.append('price1kg', this.seeds.price1kg !== null ? this.seeds.price1kg.toString() : '');
-    formData.append('price5kg', this.seeds.price5kg !== null ? this.seeds.price5kg.toString() : '');
-    formData.append('price10kg', this.seeds.price10kg !== null ? this.seeds.price10kg.toString() : '');
+    formData.append('unit', this.seeds.unit || '');
+    formData.append('price5kg', this.seeds.amount !== null ? this.seeds.amount.toString() : '');
+    formData.append('price10kg', this.seeds.price !== null ? this.seeds.price.toString() : '');
 
     // Add specifications as JSON
     formData.append('description', this.seeds.description || '');

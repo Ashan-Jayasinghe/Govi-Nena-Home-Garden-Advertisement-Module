@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/planting-materials" color="light"></ion-back-button>
+      <ion-back-button
+        defaultHref="/planting-materials"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title color="light">SEEDS</ion-title>
     <ion-buttons slot="end">
@@ -13,7 +16,6 @@
 </ion-header>
 
 <ion-content>
-
   <!-- Category -->
   <ion-item>
     <ion-label>Category</ion-label>
@@ -21,24 +23,49 @@
   </ion-item>
 
   <form (ngSubmit)="onSubmit()" #seedsForm="ngForm">
-    
     <!-- Type Selector -->
     <div class="form-group">
-      <label for="type">Type <span style="color: red;">*</span></label>
-      <ion-select id="type" name="type" [(ngModel)]="seeds.type" required>
+      <label for="type">Type <span style="color: red">*</span></label>
+      <ion-select
+        id="type"
+        name="type"
+        [(ngModel)]="seeds.type"
+        required
+        interface="popover"
+        placeholder="Select a type"
+      >
         <ion-select-option value="vegetables">Vegetables</ion-select-option>
         <ion-select-option value="fruits">Fruits</ion-select-option>
+        <ion-select-option value="herbs">Herbs</ion-select-option>
+        <ion-select-option value="flowers">Flowers</ion-select-option>
+        <ion-select-option value="grains">Grains</ion-select-option>
+        <ion-select-option value="legumes">Legumes</ion-select-option>
+        <ion-select-option value="spices">Spices</ion-select-option>
+        <ion-select-option value="trees">Trees</ion-select-option>
+        <ion-select-option value="aquatic_plants"
+          >Aquatic Plants</ion-select-option
+        >
+        <ion-select-option value="medicinal_plants"
+          >Medicinal Plants</ion-select-option
+        >
         <ion-select-option value="other">Other</ion-select-option>
       </ion-select>
       <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.type">
         Type is required.
       </ion-text>
     </div>
-
     <!-- Variety -->
     <div class="form-group">
-      <label for="variety">Variety <span style="color: red;">*</span></label>
-      <ion-input id="variety" type="text" name="variety" maxlength="30" [(ngModel)]="seeds.variety" required></ion-input>
+      <label for="variety">Variety <span style="color: red">*</span></label>
+      <ion-input
+        id="variety"
+        type="text"
+        name="variety"
+        maxlength="30"
+        [(ngModel)]="seeds.variety"
+        placeholder="Enter seed variety"
+        required
+      ></ion-input>
       <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.variety">
         Variety is required.
       </ion-text>
@@ -46,83 +73,177 @@
 
     <!-- Title -->
     <div class="form-group">
-      <label for="title">Title <span style="color: red;">*</span></label>
-      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="seeds.title" required></ion-input>
+      <label for="title">Title <span style="color: red">*</span></label>
+      <ion-input
+        id="title"
+        type="text"
+        name="title"
+        maxlength="30"
+        [(ngModel)]="seeds.title"
+        placeholder="Enter seed title"
+        required
+      ></ion-input>
       <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.title">
         Title is required.
       </ion-text>
     </div>
+
     <!-- Description (Optional) -->
     <div class="form-group">
-      <label for="description">Description <span style="color: gray;">(Optional)</span></label>
-      <ion-textarea id="description" name="description" [(ngModel)]="seeds.description" placeholder="Enter description"></ion-textarea>
+      <label for="description"
+        >Description <span style="color: gray">(Optional)</span></label
+      >
+      <ion-textarea
+        id="description"
+        name="description"
+        [(ngModel)]="seeds.description"
+        placeholder="Enter description (optional)"
+      ></ion-textarea>
     </div>
+
     <!-- Images -->
     <div class="form-group">
-      <label for="images">Images <span style="color: gray;">(Optional)</span></label>
-      <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+      <label for="images"
+        >Images <span style="color: gray">(Optional)</span></label
+      >
+      <input
+        id="images"
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        multiple
+      />
     </div>
 
     <!-- Display Image Previews -->
     <div class="image-preview">
-      <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
+      <img
+        *ngFor="let image of previewImages"
+        [src]="image"
+        class="preview-img"
+      />
     </div>
 
-    <!-- Stock -->
+    <!-- Stock (Optional) -->
     <div class="form-group">
-      <label for="stock">Stock <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="stock" type="number" name="stock" [(ngModel)]="seeds.stock"></ion-input>
+      <label for="stock"
+        >Stock <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="stock"
+        type="number"
+        name="stock"
+        [(ngModel)]="seeds.stock"
+        placeholder="Enter available stock (optional)"
+      ></ion-input>
     </div>
 
-    
-
-
-    <!-- Prices -->
+    <!-- Units Dropdown -->
     <div class="form-group">
-      <label for="price1kg">Price for 1kg <span style="color: red;">*</span></label>
-      <ion-input id="price1kg" type="number" name="price1kg" [(ngModel)]="seeds.price1kg" required></ion-input>
-      <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.price1kg">
-        Price for 1kg is required.
+      <label for="unit">Units <span style="color: red">*</span></label>
+      <ion-select
+        id="unit"
+        name="unit"
+        [(ngModel)]="seeds.unit"
+        required
+        interface="popover"
+        placeholder="Select a unit"
+      >
+        <ion-select-option value="kg">Kilogram (kg)</ion-select-option>
+        <ion-select-option value="g">Gram (g)</ion-select-option>
+        <ion-select-option value="mg">Milligram (mg)</ion-select-option>
+        <ion-select-option value="oz">Ounce (oz)</ion-select-option>
+      </ion-select>
+      <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.unit">
+        Units selection is required.
       </ion-text>
     </div>
 
+    <!-- Amount -->
     <div class="form-group">
-      <label for="price5kg">Price for 5kg <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="price5kg" type="number" name="price5kg" [(ngModel)]="seeds.price5kg"></ion-input>
+      <label for="amount">Amount <span style="color: red">*</span></label>
+      <ion-input
+        id="amount"
+        type="number"
+        name="amount"
+        [(ngModel)]="seeds.amount"
+        placeholder="Enter amount"
+        required
+      ></ion-input>
+      <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.amount">
+        Amount is required.
+      </ion-text>
     </div>
 
+    <!-- Price -->
     <div class="form-group">
-      <label for="price10kg">Price for 10kg <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="price10kg" type="number" name="price10kg" [(ngModel)]="seeds.price10kg"></ion-input>
+      <label for="price">Price <span style="color: red">*</span></label>
+      <ion-input
+        id="price"
+        type="number"
+        name="price"
+        [(ngModel)]="seeds.price"
+        placeholder="Enter price for the amount"
+        required
+      ></ion-input>
+      <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.price">
+        Price is required.
+      </ion-text>
     </div>
 
-    
-    <!-- Address -->
+    <!-- Address (Optional) -->
     <div class="form-group">
-      <label for="address">Address <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="seeds.address"></ion-input>
+      <label for="address"
+        >Address <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="address"
+        type="text"
+        name="address"
+        [(ngModel)]="seeds.address"
+        placeholder="Enter your address (optional)"
+      ></ion-input>
     </div>
 
     <!-- Mobile -->
     <div class="form-group">
-      <label for="mobile">Mobile <span style="color: red;">*</span></label>
-      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="seeds.mobile" required></ion-input>
-      <ion-text color="danger" *ngIf="seedsForm.submitted && !isValidMobile(seeds.mobile)">
+      <label for="mobile">Mobile <span style="color: red">*</span></label>
+      <ion-input
+        id="mobile"
+        type="tel"
+        name="mobile"
+        [(ngModel)]="seeds.mobile"
+        placeholder="Enter your mobile number"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="seedsForm.submitted && !isValidMobile(seeds.mobile)"
+      >
         Please enter a valid 10-digit mobile number.
       </ion-text>
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="seeds.acceptTerms" name="acceptTerms" required></ion-checkbox>
-      <ion-label>Accept terms and conditions <span style="color: red;">*</span></ion-label>
-      <ion-text color="danger" *ngIf="seedsForm.submitted && !seeds.acceptTerms">
+      <ion-checkbox
+        [(ngModel)]="seeds.acceptTerms"
+        name="acceptTerms"
+        required
+      ></ion-checkbox>
+      <ion-label
+        >Accept terms and conditions
+        <span style="color: red">*</span></ion-label
+      >
+      <ion-text
+        color="danger"
+        *ngIf="seedsForm.submitted && !seeds.acceptTerms"
+      >
         You must accept the terms and conditions.
       </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" >List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
-
 </ion-content>
