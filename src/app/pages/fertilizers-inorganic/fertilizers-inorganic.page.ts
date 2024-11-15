@@ -8,42 +8,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./fertilizers-inorganic.page.scss'],
 })
 export class FertilizersInorganicPage implements OnInit {
-
   inorganic: {
-    userName: string;  // Added userName field
+    userName: string; // Added userName field
     type: string;
     title: string;
-    npkRatio: string | null;  // NPK ratio is important for inorganic fertilizers
-    method: string;  // Method of application for inorganic fertilizers
+    npkRatio: string | null; // NPK ratio is important for inorganic fertilizers
+    method: string; // Method of application for inorganic fertilizers
     stock: number | null;
-    description: string;  // Optional description
-    price1L: number | null;
-    price5L: number | null;
-    price10L: number | null;
-    address: string;  // Optional address
+    description: string; // Optional description
+    unit: string;
+    amount: number | null;
+    price: number | null;
+    address: string; // Optional address
     mobile: string;
     acceptTerms: boolean;
   } = {
-    userName: '',  // Initialize userName as empty
+    userName: '', // Initialize userName as empty
     type: '',
     title: '',
     npkRatio: null,
     method: '',
     stock: null,
     description: '',
-    price1L: null,
-    price5L: null,
-    price10L: null,
+    unit: '',
+    amount: null,
+    price: null,
     address: '',
     mobile: '',
-    acceptTerms: false
+    acceptTerms: false,
   };
 
   selectedImages: File[] = [];
   previewImages: string[] = [];
-  imageError: string = '';  // To display image error
+  imageError: string = ''; // To display image error
 
-  constructor(private http: HttpClient, private toastController: ToastController, private router:Router) {}
+  constructor(
+    private http: HttpClient,
+    private toastController: ToastController,
+    private router: Router
+  ) {}
 
   // Helper method to show a toast notification
   async presentToast(message: string, color: string = 'dark') {
@@ -51,28 +54,33 @@ export class FertilizersInorganicPage implements OnInit {
       message: message,
       duration: 3000,
       color: color,
-      position: 'bottom'
+      position: 'bottom',
     });
     await toast.present();
   }
 
   // Load user info to automatically set userName
   loadUserInfo() {
-    this.http.get('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_profile.php', {
-      withCredentials: true
-    }).subscribe({
-      next: (response: any) => {
-        if (response.status === 'success') {
-          this.inorganic.userName = response.user.name;  // Automatically set the user name
-        } else {
-          this.presentToast('Failed to load user information.', 'danger');
+    this.http
+      .get(
+        'http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/get_profile.php',
+        {
+          withCredentials: true,
         }
-      },
-      error: (error) => {
-        console.error('Error fetching user information:', error);
-        this.presentToast('Error loading user information.', 'danger');
-      }
-    });
+      )
+      .subscribe({
+        next: (response: any) => {
+          if (response.status === 'success') {
+            this.inorganic.userName = response.user.name; // Automatically set the user name
+          } else {
+            this.presentToast('Failed to load user information.', 'danger');
+          }
+        },
+        error: (error) => {
+          console.error('Error fetching user information:', error);
+          this.presentToast('Error loading user information.', 'danger');
+        },
+      });
   }
 
   // Handle file selection and preview
@@ -88,7 +96,7 @@ export class FertilizersInorganicPage implements OnInit {
     this.previewImages = []; // Reset preview images
     this.imageError = ''; // Clear previous error if valid
 
-    files.forEach(file => {
+    files.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.previewImages.push(e.target.result); // Add image URL for preview
@@ -106,19 +114,32 @@ export class FertilizersInorganicPage implements OnInit {
   // Handle form submission
   onSubmit() {
     if (!this.inorganic.acceptTerms) {
-      this.presentToast('Please accept the terms and conditions to proceed.', 'danger');
+      this.presentToast(
+        'Please accept the terms and conditions to proceed.',
+        'danger'
+      );
       return;
     }
 
     // Validate required fields
-    if (!this.inorganic.type || !this.inorganic.title || this.inorganic.price1L === null || !this.inorganic.mobile) {
+    if (
+      !this.inorganic.type ||
+      !this.inorganic.title ||
+      !this.inorganic.unit ||
+      this.inorganic.amount === null ||
+      this.inorganic.price === null ||
+      !this.inorganic.mobile
+    ) {
       this.presentToast('Please fill in all the required fields.', 'danger');
       return;
     }
 
     // Validate mobile number
     if (!this.isValidMobile(this.inorganic.mobile)) {
-      this.presentToast('Please enter a valid 10-digit mobile number.', 'danger');
+      this.presentToast(
+        'Please enter a valid 10-digit mobile number.',
+        'danger'
+      );
       return;
     }
 
@@ -128,7 +149,10 @@ export class FertilizersInorganicPage implements OnInit {
     formData.append('category', 'Fertilizers');
     formData.append('subcategory', 'Inorganic');
     formData.append('title', this.inorganic.title || '');
-    formData.append('stock', this.inorganic.stock !== null ? this.inorganic.stock.toString() : '');
+    formData.append(
+      'stock',
+      this.inorganic.stock !== null ? this.inorganic.stock.toString() : ''
+    );
     formData.append('address', this.inorganic.address || '');
     formData.append('mobile', this.inorganic.mobile || '');
     formData.append('acceptTerms', this.inorganic.acceptTerms ? '1' : '0');
@@ -138,9 +162,18 @@ export class FertilizersInorganicPage implements OnInit {
     formData.append('type', this.inorganic.type || '');
     formData.append('npkRatio', this.inorganic.npkRatio || ''); // Specific for inorganic fertilizers
     formData.append('method', this.inorganic.method || ''); // Method of application
-    formData.append('price1L', this.inorganic.price1L !== null ? this.inorganic.price1L.toString() : '');
-    formData.append('price5L', this.inorganic.price5L !== null ? this.inorganic.price5L.toString() : '');
-    formData.append('price10L', this.inorganic.price10L !== null ? this.inorganic.price10L.toString() : '');
+    formData.append(
+      'unit',
+      this.inorganic.unit || ''
+    );
+    formData.append(
+      'amount',
+      this.inorganic.amount !== null ? this.inorganic.amount.toString() : ''
+    );
+    formData.append(
+      'price',
+      this.inorganic.price !== null ? this.inorganic.price.toString() : ''
+    );
 
     // Add userName
     formData.append('userName', this.inorganic.userName || '');
@@ -151,23 +184,34 @@ export class FertilizersInorganicPage implements OnInit {
     });
 
     // Send form data to backend (add_inorganic.php)
-    this.http.post('http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/add_inorganic.php', formData,{
-      withCredentials: true  // Ensure that cookies are sent with the request
-    }).subscribe({
+    this.http
+      .post(
+        'http://localhost/Govi-Nena-Home-Garden-Advertisement-Module-Backend/add_inorganic.php',
+        formData,
+        {
+          withCredentials: true, // Ensure that cookies are sent with the request
+        }
+      )
+      .subscribe({
         next: (response) => {
           console.log('Response:', response);
-          this.presentToast('Inorganic fertilizer advertisement successfully submitted.', 'success');
+          this.presentToast(
+            'Inorganic fertilizer advertisement successfully submitted.',
+            'success'
+          );
           this.router.navigate(['/advertisement-confirmation']);
         },
         error: (error) => {
           console.error('Error:', error);
-          this.presentToast('An error occurred while submitting the form. Please try again.', 'danger');
-        }
+          this.presentToast(
+            'An error occurred while submitting the form. Please try again.',
+            'danger'
+          );
+        },
       });
-
   }
 
   ngOnInit() {
-    this.loadUserInfo();  // Automatically load user info when the component is initialized
+    this.loadUserInfo(); // Automatically load user info when the component is initialized
   }
 }

@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/fertilizers" color="light"></ion-back-button>
+      <ion-back-button
+        defaultHref="/fertilizers"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title color="light">INORGANIC</ion-title>
     <ion-buttons slot="end">
@@ -14,141 +17,309 @@
 
 <ion-content>
   <form (ngSubmit)="onSubmit()" #inorganicForm="ngForm">
-
     <!-- User Name (Read-only) -->
     <div class="form-group">
       <label for="userName">User Name</label>
-      <ion-input id="userName" type="text" name="userName" [(ngModel)]="inorganic.userName" readonly></ion-input>
+      <ion-input
+        id="userName"
+        type="text"
+        name="userName"
+        [(ngModel)]="inorganic.userName"
+        readonly
+      ></ion-input>
     </div>
 
     <!-- Type Selector -->
+
     <div class="form-group">
-      <label for="type">Type <span style="color: red;">*</span></label>
-      <ion-select id="type" name="type" [(ngModel)]="inorganic.type" required>
-         <!-- Nitrogen Fertilizers -->
-    <ion-select-option value="urea">Urea (46% N)</ion-select-option>
-    <ion-select-option value="ammonium_nitrate">Ammonium Nitrate (33-34% N)</ion-select-option>
-    <ion-select-option value="ammonium_sulfate">Ammonium Sulfate (21% N, 24% S)</ion-select-option>
-    <ion-select-option value="calcium_ammonium_nitrate">Calcium Ammonium Nitrate (27% N)</ion-select-option>
-
-    <!-- Phosphorus Fertilizers -->
-    <ion-select-option value="ssp">Single Superphosphate (16-20% P₂O₅, 11-12% S)</ion-select-option>
-    <ion-select-option value="tsp">Triple Superphosphate (44-46% P₂O₅)</ion-select-option>
-    <ion-select-option value="dap">Diammonium Phosphate (18% N, 46% P₂O₅)</ion-select-option>
-    <ion-select-option value="map">Monoammonium Phosphate (11% N, 52% P₂O₅)</ion-select-option>
-
-    <!-- Potassium Fertilizers -->
-    <ion-select-option value="kcl">Potassium Chloride (60-62% K₂O)</ion-select-option>
-    <ion-select-option value="k2so4">Potassium Sulfate (50% K₂O, 18% S)</ion-select-option>
-    <ion-select-option value="kno3">Potassium Nitrate (13% N, 44% K₂O)</ion-select-option>
-
-    <!-- Mixed NPK Fertilizers -->
-    <ion-select-option value="npk_10_10_10">NPK 10-10-10 (10% N, 10% P, 10% K)</ion-select-option>
-    <ion-select-option value="npk_20_10_10">NPK 20-10-10 (20% N, 10% P, 10% K)</ion-select-option>
-    <ion-select-option value="npk_15_15_15">NPK 15-15-15 (15% N, 15% P, 15% K)</ion-select-option>
-
-    <!-- Secondary and Micronutrient Fertilizers -->
-    <ion-select-option value="calcium_nitrate">Calcium Nitrate (15.5% N, 19% Ca)</ion-select-option>
-    <ion-select-option value="magnesium_sulfate">Magnesium Sulfate (9.8% Mg, 13% S)</ion-select-option>
-    <ion-select-option value="zinc_sulfate">Zinc Sulfate</ion-select-option>
-    <ion-select-option value="iron_chelates">Iron Chelates</ion-select-option>
-    <ion-select-option value="copper_sulfate">Copper Sulfate</ion-select-option>
-    <ion-select-option value="other">Other</ion-select-option>
-
-  
-  
-  </ion-select>
-      <ion-text color="danger" *ngIf="inorganicForm.submitted && !inorganic.type">
+      <label for="type">Type <span style="color: red">*</span></label>
+      <ion-select
+        id="type"
+        name="type"
+        [(ngModel)]="inorganic.type"
+        required
+        interface="popover"
+        placeholder="Select a type"
+      >
+        <!-- Nitrogen Fertilizers -->
+        <ion-select-option value="urea">Urea (46% N)</ion-select-option>
+        <ion-select-option value="ammonium_nitrate"
+          >Ammonium Nitrate (33-34% N)</ion-select-option
+        >
+        <ion-select-option value="ammonium_sulfate"
+          >Ammonium Sulfate (21% N, 24% S)</ion-select-option
+        >
+        <ion-select-option value="calcium_ammonium_nitrate"
+          >Calcium Ammonium Nitrate (27% N)</ion-select-option
+        >
+        <!-- Phosphorus Fertilizers -->
+        <ion-select-option value="ssp"
+          >Single Superphosphate (16-20% P₂O₅, 11-12% S)</ion-select-option
+        >
+        <ion-select-option value="tsp"
+          >Triple Superphosphate (44-46% P₂O₅)</ion-select-option
+        >
+        <ion-select-option value="dap"
+          >Diammonium Phosphate (18% N, 46% P₂O₅)</ion-select-option
+        >
+        <ion-select-option value="map"
+          >Monoammonium Phosphate (11% N, 52% P₂O₅)</ion-select-option
+        >
+        <!-- Potassium Fertilizers -->
+        <ion-select-option value="kcl"
+          >Potassium Chloride (60-62% K₂O)</ion-select-option
+        >
+        <ion-select-option value="k2so4"
+          >Potassium Sulfate (50% K₂O, 18% S)</ion-select-option
+        >
+        <ion-select-option value="kno3"
+          >Potassium Nitrate (13% N, 44% K₂O)</ion-select-option
+        >
+        <!-- Mixed NPK Fertilizers -->
+        <ion-select-option value="npk_10_10_10"
+          >NPK 10-10-10 (10% N, 10% P, 10% K)</ion-select-option
+        >
+        <ion-select-option value="npk_20_10_10"
+          >NPK 20-10-10 (20% N, 10% P, 10% K)</ion-select-option
+        >
+        <ion-select-option value="npk_15_15_15"
+          >NPK 15-15-15 (15% N, 15% P, 15% K)</ion-select-option
+        >
+        <!-- Secondary and Micronutrient Fertilizers -->
+        <ion-select-option value="calcium_nitrate"
+          >Calcium Nitrate (15.5% N, 19% Ca)</ion-select-option
+        >
+        <ion-select-option value="magnesium_sulfate"
+          >Magnesium Sulfate (9.8% Mg, 13% S)</ion-select-option
+        >
+        <ion-select-option value="zinc_sulfate">Zinc Sulfate</ion-select-option>
+        <ion-select-option value="iron_chelates"
+          >Iron Chelates</ion-select-option
+        >
+        <ion-select-option value="copper_sulfate"
+          >Copper Sulfate</ion-select-option
+        >
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+      <ion-text
+        color="danger"
+        *ngIf="inorganicForm.submitted && !inorganic.type"
+      >
         Type is required.
       </ion-text>
     </div>
 
     <!-- Title -->
     <div class="form-group">
-      <label for="title">Title <span style="color: red;">*</span></label>
-      <ion-input id="title" type="text" name="title" maxlength="70" [(ngModel)]="inorganic.title" required></ion-input>
-      <ion-text color="danger" *ngIf="inorganicForm.submitted && !inorganic.title">
+      <label for="title">Title <span style="color: red">*</span></label>
+      <ion-input
+        id="title"
+        type="text"
+        name="title"
+        maxlength="70"
+        [(ngModel)]="inorganic.title"
+        placeholder="Enter a Title"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="inorganicForm.submitted && !inorganic.title"
+      >
         Title is required.
       </ion-text>
     </div>
 
     <!-- Images -->
     <div class="form-group">
-      <label for="images">Images <span style="color: gray;">(Optional)</span></label>
-      <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+      <label for="images"
+        >Images <span style="color: gray">(Optional)</span></label
+      >
+      <input
+        id="images"
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        multiple
+      />
     </div>
-    <!-- Display Image Previews -->
     <div class="image-preview">
-      <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
+      <img
+        *ngFor="let image of previewImages"
+        [src]="image"
+        class="preview-img"
+      />
     </div>
 
     <!-- NPK Ratio -->
     <div class="form-group">
-      <label for="npkRatio">NPK Ratio <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="npkRatio" type="text" name="npkRatio" [(ngModel)]="inorganic.npkRatio"></ion-input>
+      <label for="npkRatio"
+        >NPK Ratio <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="npkRatio"
+        type="text"
+        name="npkRatio"
+        [(ngModel)]="inorganic.npkRatio"
+        placeholder="Enter N-P-K Ratio"
+      ></ion-input>
     </div>
 
     <!-- Method -->
     <div class="form-group">
-      <label for="method">Method <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="method" type="text" name="method" [(ngModel)]="inorganic.method"></ion-input>
+      <label for="method"
+        >Method <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="method"
+        type="text"
+        name="method"
+        [(ngModel)]="inorganic.method"
+      ></ion-input>
     </div>
 
     <!-- Stock -->
     <div class="form-group">
-      <label for="stock">Stock <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="stock" type="number" name="stock" [(ngModel)]="inorganic.stock"></ion-input>
+      <label for="stock"
+        >Stock <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="stock"
+        type="number"
+        name="stock"
+        [(ngModel)]="inorganic.stock"
+        placeholder="How many Quantities are available"
+      ></ion-input>
     </div>
 
     <!-- Prices -->
+    <!-- Units Dropdown -->
     <div class="form-group">
-      <label for="price1L">Price for 1L <span style="color: red;">*</span></label>
-      <ion-input id="price1L" type="number" name="price1L" [(ngModel)]="inorganic.price1L" required></ion-input>
-      <ion-text color="danger" *ngIf="inorganicForm.submitted && !inorganic.price1L">
-        Price for 1L is required.
+      <label for="unit">Units <span style="color: red">*</span></label>
+      <ion-select
+        id="unit"
+        name="unit"
+        [(ngModel)]="inorganic.unit"
+        required
+        interface="popover"
+        placeholder="Select a unit"
+      >
+        <ion-select-option value="kg">Kilogram (kg)</ion-select-option>
+        <ion-select-option value="g">Gram (g)</ion-select-option>
+        <ion-select-option value="mg">Milligram (mg)</ion-select-option>
+        <ion-select-option value="oz">Ounce (oz)</ion-select-option>
+      </ion-select>
+      <ion-text
+        color="danger"
+        *ngIf="inorganicForm.submitted && !inorganic.unit"
+      >
+        Units selection is required.
       </ion-text>
     </div>
+
+    <!-- Amount -->
     <div class="form-group">
-      <label for="price5L">Price for 5L <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="price5L" type="number" name="price5L" [(ngModel)]="inorganic.price5L"></ion-input>
-    </div>
-    <div class="form-group">
-      <label for="price10L">Price for 10L <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="price10L" type="number" name="price10L" [(ngModel)]="inorganic.price10L"></ion-input>
+      <label for="amount">Amount <span style="color: red">*</span></label>
+      <ion-input
+        id="amount"
+        type="number"
+        name="amount"
+        [(ngModel)]="inorganic.amount"
+        placeholder="Amount to be labeled"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="inorganicForm.submitted && !inorganic.amount"
+      >
+        Amount is required.
+      </ion-text>
     </div>
 
-        <!-- Description -->
-        <div class="form-group">
-          <label for="description">Description <span style="color: gray;">(Optional)</span></label>
-          <ion-textarea id="description" name="description" [(ngModel)]="inorganic.description" placeholder="Enter description"></ion-textarea>
-        </div>
-    
+    <!-- Price -->
+    <div class="form-group">
+      <label for="price">Price <span style="color: red">*</span></label>
+      <ion-input
+        id="price"
+        type="number"
+        name="price"
+        [(ngModel)]="inorganic.price"
+        placeholder="Price of the labeled amount"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="inorganicForm.submitted && !inorganic.price"
+      >
+        Price is required.
+      </ion-text>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description"
+        >Description <span style="color: gray">(Optional)</span></label
+      >
+      <ion-textarea
+        id="description"
+        name="description"
+        [(ngModel)]="inorganic.description"
+        placeholder="Enter description"
+      ></ion-textarea>
+    </div>
 
     <!-- Address -->
     <div class="form-group">
-      <label for="address">Address <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="inorganic.address"></ion-input>
+      <label for="address"
+        >Address <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="address"
+        type="text"
+        name="address"
+        [(ngModel)]="inorganic.address"
+        placeholder="Enter your address"
+      ></ion-input>
     </div>
 
     <!-- Mobile -->
     <div class="form-group">
-      <label for="mobile">Mobile <span style="color: red;">*</span></label>
-      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="inorganic.mobile" required></ion-input>
-      <ion-text color="danger" *ngIf="inorganicForm.submitted && !isValidMobile(inorganic.mobile)">
+      <label for="mobile">Mobile <span style="color: red">*</span></label>
+      <ion-input
+        id="mobile"
+        type="tel"
+        name="mobile"
+        [(ngModel)]="inorganic.mobile"
+        placeholder="Enter a mobile number"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="inorganicForm.submitted && !isValidMobile(inorganic.mobile)"
+      >
         Please enter a valid 10-digit mobile number.
       </ion-text>
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="inorganic.acceptTerms" name="acceptTerms" required></ion-checkbox>
-      <ion-label>Accept terms and conditions <span style="color: red;">*</span></ion-label>
-      <ion-text color="danger" *ngIf="inorganicForm.submitted && !inorganic.acceptTerms">
+      <ion-checkbox
+        [(ngModel)]="inorganic.acceptTerms"
+        name="acceptTerms"
+        required
+      ></ion-checkbox>
+      <ion-label
+        >Accept terms and conditions
+        <span style="color: red">*</span></ion-label
+      >
+      <ion-text
+        color="danger"
+        *ngIf="inorganicForm.submitted && !inorganic.acceptTerms"
+      >
         You must accept the terms and conditions.
       </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" >List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
 </ion-content>
