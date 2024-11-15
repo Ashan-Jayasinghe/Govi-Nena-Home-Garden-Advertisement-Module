@@ -17,9 +17,9 @@ export class FertilizersOrganicPage implements OnInit {
     method: string; // Method of application for organic fertilizers
     stock: number | null;
     description: string; // Optional description
-    price1L: number | null;
-    price5L: number | null;
-    price10L: number | null;
+    unit: string;
+    amount: number | null;
+    price: number | null;
     address: string; // Optional address
     mobile: string;
     acceptTerms: boolean;
@@ -31,9 +31,9 @@ export class FertilizersOrganicPage implements OnInit {
     method: '',
     stock: null,
     description: '',
-    price1L: null,
-    price5L: null,
-    price10L: null,
+    unit: '',
+    amount: null,
+    price: null,
     address: '',
     mobile: '',
     acceptTerms: false
@@ -111,7 +111,7 @@ export class FertilizersOrganicPage implements OnInit {
     }
 
     // Validate required fields
-    if (!this.organic.type || !this.organic.title || this.organic.price1L === null || !this.organic.mobile) {
+    if (!this.organic.type || !this.organic.title || this.organic.amount === null || !this.organic.unit ||this.organic.price === null || !this.organic.mobile) {
       this.presentToast('Please fill in all the required fields.', 'danger');
       return;
     }
@@ -138,9 +138,9 @@ export class FertilizersOrganicPage implements OnInit {
     formData.append('type', this.organic.type || '');
     formData.append('npk', this.organic.npk || ''); // NPK ratio specific to organic fertilizers
     formData.append('method', this.organic.method || ''); // Method of application
-    formData.append('price1L', this.organic.price1L !== null ? this.organic.price1L.toString() : '');
-    formData.append('price5L', this.organic.price5L !== null ? this.organic.price5L.toString() : '');
-    formData.append('price10L', this.organic.price10L !== null ? this.organic.price10L.toString() : '');
+    formData.append('unit', this.organic.unit ||'');
+    formData.append('amount', this.organic.amount !== null ? this.organic.amount.toString() : '');
+    formData.append('price', this.organic.price !== null ? this.organic.price.toString() : '');
 
     // Add userName
     formData.append('userName', this.organic.userName || '');
