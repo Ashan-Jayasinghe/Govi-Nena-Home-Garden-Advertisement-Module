@@ -243,27 +243,6 @@ const routes: Routes = [
       ).then((m) => m.AdvertisementConfirmationPageModule),
   },
   {
-    path: 'vegetables-fruits',
-    loadChildren: () =>
-      import('./vegetables-fruits/vegetables-fruits.module').then(
-        (m) => m.VegetablesFruitsPageModule
-      ),
-  },
-  {
-    path: 'vegetables-fruits-vegetables',
-    loadChildren: () =>
-      import(
-        './vegetables-fruits-vegetables/vegetables-fruits-vegetables.module'
-      ).then((m) => m.VegetablesFruitsVegetablesPageModule),
-  },
-  {
-    path: 'vegetables-fruits-fruits',
-    loadChildren: () =>
-      import('./vegetables-fruits-fruits/vegetables-fruits-fruits.module').then(
-        (m) => m.VegetablesFruitsFruitsPageModule
-      ),
-  },
-  {
     path: 'agro-chemicals-insecticides',
     loadChildren: () =>
       import(
@@ -283,11 +262,28 @@ const routes: Routes = [
       import(
         './pages/agro-chemicals-herbicides/agro-chemicals-herbicides.module'
       ).then((m) => m.AgroChemicalsHerbicidesPageModule),
-  },  {
-    path: 'harvest-market',
-    loadChildren: () => import('./pages/harvest-market/harvest-market.module').then( m => m.HarvestMarketPageModule)
   },
-
+  {
+    path: 'vegetables-fruits',
+    loadChildren: () =>
+      import('./pages/vegetables-fruits/vegetables-fruits.module').then(
+        (m) => m.VegetablesFruitsPageModule
+      ),
+  },
+  {
+    path: 'vegetables-fruits-fruits',
+    loadChildren: () =>
+      import(
+        './pages/vegetables-fruits-fruits/vegetables-fruits-fruits.module'
+      ).then((m) => m.VegetablesFruitsFruitsPageModule),
+  },
+  {
+    path: 'vegetables-fruits-vegetables',
+    loadChildren: () =>
+      import(
+        './pages/vegetables-fruits-vegetables/vegetables-fruits-vegetables.module'
+      ).then((m) => m.VegetablesFruitsVegetablesPageModule),
+  },
 ];
 
 @NgModule({
