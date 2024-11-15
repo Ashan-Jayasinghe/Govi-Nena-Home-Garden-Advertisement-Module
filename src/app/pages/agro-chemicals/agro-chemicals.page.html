@@ -1,60 +1,108 @@
-
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="search-chef" color="light">
-      </ion-back-button>
+      <ion-back-button
+        defaultHref="search-chef"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title color="light">AGRO CHEMICALS</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
-
-  <ion-card class="Pestisides" [ngClass]="{'selected': selectedCard === 'Pestisides'}" (click)="selectCard('Pestisides')">
+<ion-content class="ion-padding">
+  <!-- Pesticides Card -->
+  <ion-card
+    class="fertilizer-card pesticides"
+    [ngClass]="{'selected': selectedCard === 'pesticides'}"
+    (click)="selectCard('Pesticides')"
+  >
     <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="fertilizer-title">Pesticides</h2>
+      </ion-col>
       <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/Pestisides.jpg" class="Pestisides-image"/>
-        </ion-col>
-        <ion-col size="5">
-          <h2>Pestisides</h2>
+        <ion-col size="12" size-md="7">
+          <img src="assets/pesticide.jpg" class="fertilizer-image" />
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  
-  <ion-card  class="Plant-Growth-Regulators" [ngClass]="{'selected': selectedCard === 'Plant-Growth-Regulators'}" (click)="selectCard('Plant-Growth-Regulators')">
+
+  <!-- Fungicides Card -->
+  <ion-card
+    class="fertilizer-card fungicides"
+    [ngClass]="{'selected': selectedCard === 'fungicides'}"
+    (click)="selectCard('Fungicides')"
+  >
     <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="fertilizer-title">Fungicides</h2>
+      </ion-col>
       <ion-row class="ion-align-items-center">
-        <ion-col size="5" class="ion-text-end">
-          <h2>Plant-Growth-Regulators</h2>
-        </ion-col>
-        <ion-col size="7">
-          <img src="assets/Plant-Growth-Regulators.jpg" class="Plant-Growth-Regulators-image"/>
+        <ion-col size="12" size-md="7">
+          <img src="assets/fungicide.jpg" class="fertilizer-image" />
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-<!--   
-  <ion-card  class="Other" [ngClass]="{'selected': selectedCard === 'Other'}" (click)="selectCard('Other')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/Other.jpg" class="Other-image"/>
-        </ion-col>
-        <ion-col size="5" class="ion-text-end">
-          <h2>Other</h2>
-        </ion-col>
 
+  <!-- Herbicides Card -->
+  <ion-card
+    class="fertilizer-card herbicides"
+    [ngClass]="{'selected': selectedCard === 'herbicides'}"
+    (click)="selectCard('Herbicides')"
+  >
+    <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="fertilizer-title">Herbicides</h2>
+      </ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="7">
+          <img src="assets/herbicide.jpg" class="fertilizer-image" />
+        </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-card> -->
+  </ion-card>
 
+  <!-- Plant Growth Regulators Card -->
+  <ion-card
+    class="fertilizer-card pgr"
+    [ngClass]="{'selected': selectedCard === 'pgr'}"
+    (click)="selectCard('PGR')"
+  >
+    <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="fertilizer-title">Plant Growth Regulators</h2>
+      </ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="7">
+          <img src="assets/pgr.jpg" class="fertilizer-image" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- Insecticides Card -->
+  <ion-card
+    class="fertilizer-card insecticides"
+    [ngClass]="{'selected': selectedCard === 'insecticides'}"
+    (click)="selectCard('Insecticides')"
+  >
+    <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="fertilizer-title">Insecticides</h2>
+      </ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="7">
+          <img src="assets/insecticide.jpg" class="fertilizer-image" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>
-

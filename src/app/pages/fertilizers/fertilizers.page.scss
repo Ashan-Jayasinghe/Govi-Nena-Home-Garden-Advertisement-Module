@@ -1,46 +1,82 @@
+.fertilizer-card {
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    opacity 0.3s ease;
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
 
-
-
-  ion-card.organic {
-    border-radius: 10px;
-    margin-top: 100px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.1s ease;
-  
-    &.selected {
-      border: 2px solid var(--ion-color-success);
-    }
-  
-    img {
-      width: 100%;
-      height: 200px;
-      border-radius: 8px;
-    }
-  
-    h2 {
-      text-align: center;
-    }
+  &.selected {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
   }
 
-  ion-card.inorganic {
-    border-radius: 10px;
+  .fertilizer-image {
+    width: 100%; /* Full width */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures image fills the width without stretching */
+    border-radius: 12px;
     margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
-  
-    &.selected {
-      border: 2px solid var(--ion-color-success);
-    }
-  
-    img {
-      width: 100%;
-      height: 200px;
-      border-radius: 8px;
-    }
-  
-    h2 {
-      text-align: center;
-    }
+    transition: transform 0.3s ease;
   }
-  
+
+  .fertilizer-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 0;
+  }
+}
+
+/* Organic card style - Mild green */
+.organic {
+  background: linear-gradient(
+    145deg,
+    rgba(220, 245, 220, 0.8),
+    rgba(180, 235, 180, 0.8)
+  );
+}
+
+/* Inorganic card style - Mild blue */
+.inorganic {
+  background: linear-gradient(
+    145deg,
+    rgba(210, 230, 255, 0.8),
+    rgba(170, 205, 255, 0.8)
+  );
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .fertilizer-card {
+    min-height: 280px;
+  }
+
+  .fertilizer-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 577px) {
+  .fertilizer-card {
+    min-height: 320px;
+  }
+}
+
+/* Hover effect */
+.fertilizer-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}

@@ -1,47 +1,54 @@
-
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="search-chef" color="light">
-      </ion-back-button>
+      <ion-back-button
+        defaultHref="search-chef"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title color="light">FERTILIZERS</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
-
-  <ion-card class="organic" [ngClass]="{'selected': selectedCard === 'organic'}" (click)="selectCard('organic')">
+<ion-content class="ion-padding">
+  <!-- Organic Card -->
+  <ion-card
+    class="fertilizer-card organic"
+    [ngClass]="{'selected': selectedCard === 'organic'}"
+    (click)="selectCard('organic')"
+  >
     <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="fertilizer-title">Organic</h2>
+      </ion-col>
       <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/organic.jpg" class="fertilizer-image"/>
-        </ion-col>
-        <ion-col size="5">
-          <h2>Organic</h2>
+        <ion-col size="12" size-md="7">
+          <img src="assets/organic.jpg" class="fertilizer-image" />
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  
-  <ion-card  class="inorganic" [ngClass]="{'selected': selectedCard === 'inorganic'}" (click)="selectCard('inorganic')">
+
+  <!-- Inorganic Card -->
+  <ion-card
+    class="fertilizer-card inorganic"
+    [ngClass]="{'selected': selectedCard === 'inorganic'}"
+    (click)="selectCard('inorganic')"
+  >
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col size="5" class="ion-text-end">
-          <h2>Inorganic</h2>
+        <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-end">
+          <h2 class="fertilizer-title">Inorganic</h2>
         </ion-col>
-        <ion-col size="7">
-          <img src="assets/inorganic.jpg" class="fertilizer-image"/>
+        <ion-col size="12" size-md="7">
+          <img src="assets/inorganic.jpg" class="fertilizer-image" />
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  
-
 </ion-content>
-

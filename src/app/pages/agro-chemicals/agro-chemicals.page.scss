@@ -1,66 +1,112 @@
+/* Base styles */
+.fertilizer-card {
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    opacity 0.3s ease;
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
 
-
-
-ion-card.Pestisides {
-    border-radius: 10px;
-    margin-top: 100px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.1s ease;
-  
-    &.selected {
-      border: 2px solid var(--ion-color-success);
-    }
-  
-    img {
-      width: 100%;
-      height: 200px;
-      border-radius: 8px;
-    }
-  
-    h2 {
-      text-align: center;
-    }
+  &.selected {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
   }
 
-  ion-card.Plant-Growth-Regulators {
-    border-radius: 10px;
+  .fertilizer-image {
+    width: 100%; /* Full width */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures image fills the width without stretching */
+    border-radius: 12px;
     margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
-  
-    &.selected {
-      border: 2px solid var(--ion-color-success);
-    }
-  
-    img {
-      width: 100%;
-      height: 200px;
-      border-radius: 8px;
-    }
-  
-    h2 {
-      text-align: center;
-    }
+    transition: transform 0.3s ease;
   }
-  
-  ion-card.Other {
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.1s ease;
-  
-    &.selected {
-      border: 2px solid var(--ion-color-success);
-    }
-  
-    img {
-      width: 100%;
-      height: 200px;
-      border-radius: 8px;
-    }
-  
-    h2 {
-      text-align: center;
-    }
+
+  .fertilizer-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 0;
   }
+}
+
+/* Specific card styles for each agro-chemical category */
+
+/* Pesticides card style - Light purple */
+.pesticides {
+  background: linear-gradient(
+    145deg,
+    rgba(240, 220, 255, 0.8),
+    rgba(210, 180, 255, 0.8)
+  );
+}
+
+/* Fungicides card style - Light green */
+.fungicides {
+  background: linear-gradient(
+    145deg,
+    rgba(220, 255, 220, 0.8),
+    rgba(180, 240, 180, 0.8)
+  );
+}
+
+/* Herbicides card style - Light yellow */
+.herbicides {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 180, 0.8),
+    rgba(255, 235, 150, 0.8)
+  );
+}
+
+/* Plant Growth Regulators (PGRs) card style - Light pink */
+.pgr {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 220, 220, 0.8),
+    rgba(255, 180, 180, 0.8)
+  );
+}
+
+/* Insecticides card style - Light blue */
+.insecticides {
+  background: linear-gradient(
+    145deg,
+    rgba(210, 240, 255, 0.8),
+    rgba(180, 220, 255, 0.8)
+  );
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .fertilizer-card {
+    min-height: 280px;
+  }
+
+  .fertilizer-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 577px) {
+  .fertilizer-card {
+    min-height: 320px;
+  }
+}
+
+/* Hover effect */
+.fertilizer-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
