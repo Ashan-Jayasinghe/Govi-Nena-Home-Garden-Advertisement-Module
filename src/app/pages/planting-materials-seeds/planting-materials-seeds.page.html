@@ -23,6 +23,17 @@
   </ion-item>
 
   <form (ngSubmit)="onSubmit()" #seedsForm="ngForm">
+    <!-- User Name (Read-only) -->
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <ion-input
+        id="userName"
+        type="text"
+        name="userName"
+        [(ngModel)]="seeds.userName"
+        readonly
+      ></ion-input>
+    </div>
     <!-- Type Selector -->
     <div class="form-group">
       <label for="type">Type <span style="color: red">*</span></label>
@@ -41,7 +52,6 @@
         <ion-select-option value="grains">Grains</ion-select-option>
         <ion-select-option value="legumes">Legumes</ion-select-option>
         <ion-select-option value="spices">Spices</ion-select-option>
-        <ion-select-option value="trees">Trees</ion-select-option>
         <ion-select-option value="aquatic_plants"
           >Aquatic Plants</ion-select-option
         >
@@ -78,7 +88,7 @@
         id="title"
         type="text"
         name="title"
-        maxlength="30"
+        maxlength="70"
         [(ngModel)]="seeds.title"
         placeholder="Enter seed title"
         required
