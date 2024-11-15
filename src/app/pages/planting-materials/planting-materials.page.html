@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
@@ -7,54 +6,73 @@
     </ion-buttons>
     <ion-title color="light">PLANTING MATERIALS</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
-
-  <ion-card class="seeds" [ngClass]="{'selected': selectedCard === 'seeds'}" (click)="selectCard('seeds')">
+<ion-content class="ion-padding">
+  <!-- Seeds Card -->
+  <ion-card
+    class="seeds"
+    [ngClass]="{'selected': selectedCard === 'seeds'}"
+    (click)="selectCard('seeds')"
+  >
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/seeds.jpg" class="seeds-image"/>
-        </ion-col>
-        <ion-col size="5">
+        <ion-col
+          size="12"
+          size-md="5"
+          class="ion-text-center ion-text-md-start"
+        >
           <h2>Seeds</h2>
         </ion-col>
+        <ion-col size="12" size-md="7">
+          <img src="assets/seeds.jpg" class="seeds-image" />
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  
-  <ion-card  class="seedlings" [ngClass]="{'selected': selectedCard === 'seedlings'}" (click)="selectCard('seedlings')">
+
+  <!-- Seedlings Card -->
+  <ion-card
+    class="seedlings"
+    [ngClass]="{'selected': selectedCard === 'seedlings'}"
+    (click)="selectCard('seedlings')"
+  >
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col size="5" class="ion-text-end">
+        <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-end">
           <h2>Seedlings</h2>
         </ion-col>
-        <ion-col size="7">
-          <img src="assets/seedlings.jpg" class="seedlings-image"/>
+        <ion-col size="12" size-md="7">
+          <img src="assets/seedlings.jpg" class="seedlings-image" />
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  
-  <ion-card  class="tubers" [ngClass]="{'selected': selectedCard === 'tubers'}" (click)="selectCard('tubers')">
+
+  <!-- Tubers Card -->
+  <ion-card
+    class="tubers"
+    [ngClass]="{'selected': selectedCard === 'tubers'}"
+    (click)="selectCard('tubers')"
+  >
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/tubers.jpg" class="tubers-image"/>
-        </ion-col>
-        <ion-col size="5" class="ion-text-end">
+        <ion-col
+          size="12"
+          size-md="5"
+          class="ion-text-center ion-text-md-start"
+        >
           <h2>Tubers</h2>
         </ion-col>
-
+        <ion-col size="12" size-md="7">
+          <img src="assets/tubers.jpg" class="tubers-image" />
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-
 </ion-content>
-

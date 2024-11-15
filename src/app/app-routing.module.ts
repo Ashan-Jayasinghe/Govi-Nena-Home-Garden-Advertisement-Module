@@ -283,7 +283,11 @@ const routes: Routes = [
       import(
         './pages/agro-chemicals-herbicides/agro-chemicals-herbicides.module'
       ).then((m) => m.AgroChemicalsHerbicidesPageModule),
+  },  {
+    path: 'harvest-market',
+    loadChildren: () => import('./pages/harvest-market/harvest-market.module').then( m => m.HarvestMarketPageModule)
   },
+
 ];
 
 @NgModule({

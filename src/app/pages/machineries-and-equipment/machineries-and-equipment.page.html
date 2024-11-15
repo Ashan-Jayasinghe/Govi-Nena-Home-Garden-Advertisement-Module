@@ -1,132 +1,33 @@
-
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="search-chef" color="light">
-      </ion-back-button>
+      <ion-back-button
+        defaultHref="search-chef"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title color="light">MACHINERIES & EQUIPMENTS</ion-title>
+    <ion-title color="light">Machineries & Equipments</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-
-  <ion-card class="Tractors" [ngClass]="{'selected': selectedCard === 'Tractors'}" (click)="selectCard('Tractors')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/Tractors.jpg" class="Tractors-image"/>
-        </ion-col>
-        <ion-col size="5">
-          <h2>Tractors</h2>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-  
-  <ion-card  class="Tillage" [ngClass]="{'selected': selectedCard === 'Tillage'}" (click)="selectCard('Tillage')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="5" class="ion-text-end">
-          <h2>Tillage</h2>
-        </ion-col>
-        <ion-col size="7">
-          <img src="assets/Tillage.jpg" class="Tillage-image"/>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-  
-  <ion-card  class="Sprayers" [ngClass]="{'selected': selectedCard === 'Sprayers'}" (click)="selectCard('Sprayers')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/Sprayers.jpg" class="Sprayers-image"/>
-        </ion-col>
-        <ion-col size="5" class="ion-text-end">
-          <h2>Sprayers</h2>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
-
-  
-  <ion-card  class="Dryers" [ngClass]="{'selected': selectedCard === 'Dryers'}" (click)="selectCard('Dryers')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="5" class="ion-text-end">
-          <h2>Dryers</h2>
-        </ion-col>
-        <ion-col size="7">
-          <img src="assets/Dryer.jpg" class="Dryers-image"/>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-  
-  <ion-card  class="HarvestingMachines" [ngClass]="{'selected': selectedCard === 'HarvestingMachines'}" (click)="selectCard('HarvestingMachines')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/HarvestingMachines.jpg" class="HarvestingMachines-image"/>
-        </ion-col>
-        <ion-col size="5" class="ion-text-end">
-          <h2>Harvesting Machines</h2>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
-
-  <ion-card  class="IrrigationSystems" [ngClass]="{'selected': selectedCard === 'IrrigationSystems'}" (click)="selectCard('IrrigationSystems')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/IrrigationSystem.jpg" class="IrrigationSystems-image"/>
-        </ion-col>
-        <ion-col size="5" class="ion-text-end">
-          <h2>Irrigation Systems</h2>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
-  
-  <ion-card  class="PlantingMachines" [ngClass]="{'selected': selectedCard === 'PlantingMachines'}" (click)="selectCard('PlantingMachines')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="5" class="ion-text-end">
-          <h2>Planting Machines</h2>
-        </ion-col>
-        <ion-col size="7">
-          <img src="assets/PlantingMachines.jpg" class="PlantingMachines-image"/>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-  
-  <ion-card  class="Other" [ngClass]="{'selected': selectedCard === 'Other'}" (click)="selectCard('Other')">
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col size="7">
-          <img src="assets/Other_machines.jpg" class="Other-image"/>
-        </ion-col>
-        <ion-col size="5" class="ion-text-end">
-          <h2>Other</h2>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let machinery of machineries">
+        <ion-card
+          [class]="machinery.className"
+          [ngClass]="{'selected': selectedCard === machinery.className}"
+          (click)="selectCard(machinery.className)"
+        >
+          <img [src]="machinery.image" [alt]="machinery.title" />
+          <h2>{{ machinery.title }}</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
-

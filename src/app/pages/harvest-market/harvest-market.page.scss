@@ -1,4 +1,4 @@
-/* Base styles for machinery cards */
+/* Base styles for harvest market cards */
 ion-card {
   border-radius: 20px;
   margin-bottom: 20px;
@@ -47,68 +47,44 @@ ion-card {
   }
 }
 
-/* Specific styles for each machinery type */
-ion-card.Tractors {
-  background: linear-gradient(
+/* Specific styles for each harvest market category */
+ion-card.vegetables {
+  --background: linear-gradient(
     145deg,
-    rgba(220, 230, 245, 0.8),
-    rgba(180, 210, 235, 0.8)
+    rgba(220, 245, 220, 0.8),
+    rgba(180, 230, 180, 0.8)
   );
 }
 
-ion-card.Tillage {
-  background: linear-gradient(
+ion-card.fruits {
+  --background: linear-gradient(
     145deg,
-    rgba(245, 220, 230, 0.8),
-    rgba(235, 180, 200, 0.8)
+    rgba(255, 230, 210, 0.8),
+    rgba(255, 210, 180, 0.8)
   );
 }
 
-ion-card.IrrigationSystems {
-  background: linear-gradient(
+ion-card.grains {
+  --background: linear-gradient(
     145deg,
-    rgba(220, 245, 230, 0.8),
-    rgba(180, 235, 210, 0.8)
+    rgba(230, 220, 170, 0.8),
+    rgba(210, 190, 150, 0.8)
   );
 }
 
-ion-card.Sprayers {
-  background: linear-gradient(
+ion-card.herbs {
+  --background: linear-gradient(
     145deg,
-    rgba(255, 240, 210, 0.8),
-    rgba(255, 225, 180, 0.8)
+    rgba(180, 230, 180, 0.8),
+    rgba(150, 210, 150, 0.8)
   );
 }
 
-ion-card.Dryers {
-  background: linear-gradient(
-    145deg,
-    rgba(240, 220, 200, 0.8),
-    rgba(220, 200, 180, 0.8)
-  );
-}
-
-ion-card.HarvestingMachines {
-  background: linear-gradient(
-    145deg,
-    rgba(220, 230, 255, 0.8),
-    rgba(180, 200, 255, 0.8)
-  );
-}
-
-ion-card.PlantingMachines {
-  background: linear-gradient(
+ion-card.flowers {
+  --background: linear-gradient(
     145deg,
     rgba(255, 220, 240, 0.8),
-    rgba(255, 180, 235, 0.8)
-  );
-}
-
-ion-card.Other {
-  background: linear-gradient(
-    145deg,
-    rgba(240, 240, 240, 0.8),
-    rgba(200, 200, 200, 0.8)
+    rgba(255, 200, 210, 0.8)
   );
 }
 

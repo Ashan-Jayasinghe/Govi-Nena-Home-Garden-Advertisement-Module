@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="harvest-market"
+        color="light"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Harvest Market</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Vegetables Card -->
+  <ion-card
+    class="harvest-card vegetables"
+    [ngClass]="{'selected': selectedCard === 'vegetables'}"
+    (click)="selectCard('vegetables')"
+  >
+    <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="harvest-title">Vegetables</h2>
+      </ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="7">
+          <img src="assets/vegetables.jpg" class="harvest-image" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- Fruits Card -->
+  <ion-card
+    class="harvest-card fruits"
+    [ngClass]="{'selected': selectedCard === 'fruits'}"
+    (click)="selectCard('fruits')"
+  >
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-end">
+          <h2 class="harvest-title">Fruits</h2>
+        </ion-col>
+        <ion-col size="12" size-md="7">
+          <img src="assets/fruits.jpg" class="harvest-image" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- Grains Card -->
+  <ion-card
+    class="harvest-card grains"
+    [ngClass]="{'selected': selectedCard === 'grains'}"
+    (click)="selectCard('grains')"
+  >
+    <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="harvest-title">Grains</h2>
+      </ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="7">
+          <img src="assets/grains.jpg" class="harvest-image" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- Herbs Card -->
+  <ion-card
+    class="harvest-card herbs"
+    [ngClass]="{'selected': selectedCard === 'herbs'}"
+    (click)="selectCard('herbs')"
+  >
+    <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="harvest-title">Herbs</h2>
+      </ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="7">
+          <img src="assets/herbs.jpg" class="harvest-image" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- Flowers Card -->
+  <ion-card
+    class="harvest-card flowers"
+    [ngClass]="{'selected': selectedCard === 'flowers'}"
+    (click)="selectCard('flowers')"
+  >
+    <ion-grid>
+      <ion-col size="12" size-md="5" class="ion-text-center ion-text-md-start">
+        <h2 class="harvest-title">Flowers</h2>
+      </ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" size-md="7">
+          <img src="assets/flowers.jpg" class="harvest-image" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
