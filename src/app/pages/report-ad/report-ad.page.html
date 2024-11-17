@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/advertisement-view"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Report Ad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modern-agriculture-theme">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Report This Advertisement</ion-card-title>
+      <ion-card-subtitle>
+        Select a reason and provide additional details, if necessary.
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="submitReport()" #reportForm="ngForm">
+        <ion-list>
+          <ion-radio-group
+            [(ngModel)]="report.selectedReason"
+            name="selectedReason"
+          >
+            <ion-list-header>
+              <ion-label>Select a reason</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-radio
+                slot="start"
+                value="Misleading or false information"
+              ></ion-radio>
+              <ion-label>Misleading or false information</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio slot="start" value="Inappropriate content"></ion-radio>
+              <ion-label>Inappropriate content</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio slot="start" value="Scam or fraud"></ion-radio>
+              <ion-label>Scam or fraud</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio
+                slot="start"
+                value="Violation of terms of service"
+              ></ion-radio>
+              <ion-label>Violation of terms of service</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio slot="start" value="Spam"></ion-radio>
+              <ion-label>Spam</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio slot="start" value="Duplicate ad"></ion-radio>
+              <ion-label>Duplicate ad</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio
+                slot="start"
+                value="Copyright infringement"
+              ></ion-radio>
+              <ion-label>Copyright infringement</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio
+                slot="start"
+                value="Offensive language or hate speech"
+              ></ion-radio>
+              <ion-label>Offensive language or hate speech</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-radio slot="start" value="Other"></ion-radio>
+              <ion-label>Other</ion-label>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+        <ion-item>
+          <ion-label position="floating">Additional Comments</ion-label>
+          <ion-textarea
+            name="comments"
+            [(ngModel)]="report.comments"
+            placeholder="Provide more details (optional)"
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Your Email (Optional)</ion-label>
+          <ion-input
+            type="email"
+            name="email"
+            [(ngModel)]="report.email"
+            placeholder="Enter your email"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button
+          type="submit"
+          expand="block"
+          color="danger"
+          [disabled]="!report.selectedReason"
+        >
+          Submit Report
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

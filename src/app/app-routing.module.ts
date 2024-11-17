@@ -259,7 +259,11 @@ const routes: Routes = [
       import(
         './pages/vegetables-fruits-vegetables/vegetables-fruits-vegetables.module'
       ).then((m) => m.VegetablesFruitsVegetablesPageModule),
+  },  {
+    path: 'report-ad',
+    loadChildren: () => import('./pages/report-ad/report-ad.module').then( m => m.ReportAdPageModule)
   },
+
 ];
 
 @NgModule({
