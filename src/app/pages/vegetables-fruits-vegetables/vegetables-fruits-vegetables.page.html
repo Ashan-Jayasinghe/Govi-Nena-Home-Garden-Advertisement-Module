@@ -16,16 +16,13 @@
 </ion-header>
 
 <ion-content>
-
-  
   <!-- Category -->
   <ion-item>
     <ion-label>Category</ion-label>
-    <ion-note slot="end">Vegitables & Fruits -> Vegetables</ion-note>
+    <ion-note slot="end">Vegetbles & Fruits -> Vegetables</ion-note>
   </ion-item>
 
   <form (ngSubmit)="onSubmit()" #vegetablesForm="ngForm">
-
     <!-- User Name (Read-only) -->
     <div class="form-group">
       <label for="userName">User Name</label>
@@ -37,32 +34,31 @@
         readonly
       ></ion-input>
     </div>
-
     <!-- Type Selector -->
     <div class="form-group">
       <label for="type">Type <span style="color: red">*</span></label>
-      <ion-select id="type" name="type" [(ngModel)]="vegetables.type" required>
-        <ion-select-option value="leafyGreens">Leafy Greens</ion-select-option>
-        <ion-select-option value="rootVegetables"
-          >Root Vegetables</ion-select-option
-        >
-        <ion-select-option value="legumesPods"
-          >Legumes and Pods</ion-select-option
-        >
-        <ion-select-option value="brassicasCruciferous"
-          >Brassicas and Cruciferous</ion-select-option
-        >
-        <ion-select-option value="nightshades">Nightshades</ion-select-option>
+      <ion-select
+        id="type"
+        name="type"
+        [(ngModel)]="vegetables.type"
+        required
+        interface="popover"
+        placeholder="Select a type"
+      >
+        <ion-select-option value="LeafyVegetables">Leafy Vegetables</ion-select-option>
+        <ion-select-option value=" RootandTuberVegetables">Root and Tuber Vegetables</ion-select-option>
+        <ion-select-option value=" FruitingVegetables"> Fruiting Vegetables</ion-select-option>
+        <ion-select-option value="LeguminousVegetables">Leguminous Vegetables</ion-select-option>
+        <ion-select-option value="CabbageCruciferous">Cabbage and Cruciferous</ion-select-option>
+        <ion-select-option value="GourdVegetables">Gourd Vegetables</ion-select-option>
+        <ion-select-option value="ChiliandPepper">Chili and Pepper</ion-select-option>
+        <ion-select-option value="ExoticVegetables">Exotic Vegetables</ion-select-option>
         <ion-select-option value="other">Other</ion-select-option>
       </ion-select>
-      <ion-text
-        color="danger"
-        *ngIf="vegetablesForm.submitted && !vegetables.type"
-      >
+      <ion-text color="danger" *ngIf="vegetablesForm.submitted && !vegetables.type">
         Type is required.
       </ion-text>
     </div>
-
     <!-- Variety -->
     <div class="form-group">
       <label for="variety">Variety <span style="color: red">*</span></label>
@@ -72,12 +68,10 @@
         name="variety"
         maxlength="30"
         [(ngModel)]="vegetables.variety"
+        placeholder="Enter vegetables variety"
         required
       ></ion-input>
-      <ion-text
-        color="danger"
-        *ngIf="vegetablesForm.submitted && !vegetables.variety"
-      >
+      <ion-text color="danger" *ngIf="vegetablesForm.submitted && !vegetables.variety">
         Variety is required.
       </ion-text>
     </div>
@@ -89,17 +83,16 @@
         id="title"
         type="text"
         name="title"
-        maxlength="30"
+        maxlength="70"
         [(ngModel)]="vegetables.title"
+        placeholder="Enter vegetables title"
         required
       ></ion-input>
-      <ion-text
-        color="danger"
-        *ngIf="vegetablesForm.submitted && !vegetables.title"
-      >
+      <ion-text color="danger" *ngIf="vegetablesForm.submitted && !vegetables.title">
         Title is required.
       </ion-text>
     </div>
+
     <!-- Description (Optional) -->
     <div class="form-group">
       <label for="description"
@@ -109,9 +102,10 @@
         id="description"
         name="description"
         [(ngModel)]="vegetables.description"
-        placeholder="Enter description"
+        placeholder="Enter description (optional)"
       ></ion-textarea>
     </div>
+
     <!-- Images -->
     <div class="form-group">
       <label for="images"
@@ -135,7 +129,7 @@
       />
     </div>
 
-    <!-- Stock -->
+    <!-- Stock (Optional) -->
     <div class="form-group">
       <label for="stock"
         >Stock <span style="color: gray">(Optional)</span></label
@@ -145,54 +139,64 @@
         type="number"
         name="stock"
         [(ngModel)]="vegetables.stock"
+        placeholder="Enter available stock (optional)"
       ></ion-input>
     </div>
 
-    <!-- Prices -->
+    <!-- Units Dropdown -->
     <div class="form-group">
-      <label for="price1kg"
-        >Price for 1kg <span style="color: red">*</span></label
-      >
-      <ion-input
-        id="price1kg"
-        type="number"
-        name="price1kg"
-        [(ngModel)]="vegetables.price1kg"
+      <label for="unit">Units <span style="color: red">*</span></label>
+      <ion-select
+        id="unit"
+        name="unit"
+        [(ngModel)]="vegetables.unit"
         required
-      ></ion-input>
-      <ion-text
-        color="danger"
-        *ngIf="vegetablesForm.submitted && !vegetables.price1kg"
+        interface="popover"
+        placeholder="Select a unit"
       >
-        Price for 1kg is required.
+        <ion-select-option value="kg">Kilogram (kg)</ion-select-option>
+        <ion-select-option value="g">Gram (g)</ion-select-option>
+        <ion-select-option value="mg">Milligram (mg)</ion-select-option>
+        <ion-select-option value="oz">Ounce (oz)</ion-select-option>
+      </ion-select>
+      <ion-text color="danger" *ngIf="vegetablesForm.submitted && !vegetables.unit">
+        Units selection is required.
       </ion-text>
     </div>
 
+    <!-- Amount -->
     <div class="form-group">
-      <label for="price5kg"
-        >Price for 5kg <span style="color: gray">(Optional)</span></label
-      >
+      <label for="amount">Amount <span style="color: red">*</span></label>
       <ion-input
-        id="price5kg"
+        id="amount"
         type="number"
-        name="price5kg"
-        [(ngModel)]="vegetables.price5kg"
+        name="amount"
+        [(ngModel)]="vegetables.amount"
+        placeholder="Enter amount"
+        required
       ></ion-input>
+      <ion-text color="danger" *ngIf="vegetablesForm.submitted && !vegetables.amount">
+        Amount is required.
+      </ion-text>
     </div>
 
+    <!-- Price -->
     <div class="form-group">
-      <label for="price10kg"
-        >Price for 10kg <span style="color: gray">(Optional)</span></label
-      >
+      <label for="price">Price <span style="color: red">*</span></label>
       <ion-input
-        id="price10kg"
+        id="price"
         type="number"
-        name="price10kg"
-        [(ngModel)]="vegetables.price10kg"
+        name="price"
+        [(ngModel)]="vegetables.price"
+        placeholder="Enter price for the amount"
+        required
       ></ion-input>
+      <ion-text color="danger" *ngIf="vegetablesForm.submitted && !vegetables.price">
+        Price is required.
+      </ion-text>
     </div>
 
-    <!-- Address -->
+    <!-- Address (Optional) -->
     <div class="form-group">
       <label for="address"
         >Address <span style="color: gray">(Optional)</span></label
@@ -202,6 +206,7 @@
         type="text"
         name="address"
         [(ngModel)]="vegetables.address"
+        placeholder="Enter your address (optional)"
       ></ion-input>
     </div>
 
@@ -213,6 +218,7 @@
         type="tel"
         name="mobile"
         [(ngModel)]="vegetables.mobile"
+        placeholder="Enter your mobile number"
         required
       ></ion-input>
       <ion-text

@@ -4,7 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-vegetables-fruits-fruits',
+  selector: 'app-vegitablefruits-fruits',
   templateUrl: './vegetables-fruits-fruits.page.html',
   styleUrls: ['./vegetables-fruits-fruits.page.scss'],
 })
@@ -16,9 +16,9 @@ export class VegetablesFruitsFruitsPage implements OnInit {
     title: string;
     stock: number | null;
     description: string;
-    price1kg: number | null;
-    price5kg: number | null;
-    price10kg: number | null;
+    unit: string;
+    amount: number | null;
+    price: number | null;
     address: string;
     mobile: string;
     acceptTerms: boolean;
@@ -29,9 +29,9 @@ export class VegetablesFruitsFruitsPage implements OnInit {
     title: '',
     stock: null,
     description: '',
-    price1kg: null,
-    price5kg: null,
-    price10kg: null,
+    unit: '',
+    amount: null,
+    price: null,
     address: '',
     mobile: '',
     acceptTerms: false,
@@ -135,7 +135,9 @@ export class VegetablesFruitsFruitsPage implements OnInit {
       !this.fruits.type ||
       !this.fruits.variety ||
       !this.fruits.title ||
-      this.fruits.price1kg === null ||
+      this.fruits.amount === null ||
+      !this.fruits.unit ||
+      this.fruits.price === null ||
       !this.fruits.mobile
     ) {
       this.presentToast('Please fill in all the required fields.', 'danger');
@@ -155,7 +157,7 @@ export class VegetablesFruitsFruitsPage implements OnInit {
 
     // Common attributes
     formData.append('category', 'Planting Materials');
-    formData.append('subcategory', 'fruits');
+    formData.append('subcategory', 'Fruits');
     formData.append('userName', this.fruits.userName || '');
     formData.append('title', this.fruits.title || '');
     formData.append(
@@ -166,26 +168,17 @@ export class VegetablesFruitsFruitsPage implements OnInit {
     formData.append('mobile', this.fruits.mobile || '');
     formData.append('acceptTerms', this.fruits.acceptTerms ? '1' : '0');
 
-    // Unique attributes for fruits
+    // Unique attributes for Fruits
     formData.append('type', this.fruits.type || '');
     formData.append('variety', this.fruits.variety || '');
+    formData.append('unit', this.fruits.unit || '');
     formData.append(
-      'price1kg',
-      this.fruits.price1kg !== null
-        ? this.fruits.price1kg.toString()
-        : ''
+      'amount',
+      this.fruits.amount !== null ? this.fruits.amount.toString() : ''
     );
     formData.append(
-      'price5kg',
-      this.fruits.price5kg !== null
-        ? this.fruits.price5kg.toString()
-        : ''
-    );
-    formData.append(
-      'price10kg',
-      this.fruits.price10kg !== null
-        ? this.fruits.price10kg.toString()
-        : ''
+      'price',
+      this.fruits.price !== null ? this.fruits.price.toString() : ''
     );
 
     // Add specifications as JSON
