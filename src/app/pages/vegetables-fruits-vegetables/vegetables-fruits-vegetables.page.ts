@@ -4,7 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-vegetables-fruits-vegetables',
+  selector: 'app-vegitablefruits-vegetables',
   templateUrl: './vegetables-fruits-vegetables.page.html',
   styleUrls: ['./vegetables-fruits-vegetables.page.scss'],
 })
@@ -16,9 +16,9 @@ export class VegetablesFruitsVegetablesPage implements OnInit {
     title: string;
     stock: number | null;
     description: string;
-    price1kg: number | null;
-    price5kg: number | null;
-    price10kg: number | null;
+    unit: string;
+    amount: number | null;
+    price: number | null;
     address: string;
     mobile: string;
     acceptTerms: boolean;
@@ -29,9 +29,9 @@ export class VegetablesFruitsVegetablesPage implements OnInit {
     title: '',
     stock: null,
     description: '',
-    price1kg: null,
-    price5kg: null,
-    price10kg: null,
+    unit: '',
+    amount: null,
+    price: null,
     address: '',
     mobile: '',
     acceptTerms: false,
@@ -135,7 +135,9 @@ export class VegetablesFruitsVegetablesPage implements OnInit {
       !this.vegetables.type ||
       !this.vegetables.variety ||
       !this.vegetables.title ||
-      this.vegetables.price1kg === null ||
+      this.vegetables.amount === null ||
+      !this.vegetables.unit ||
+      this.vegetables.price === null ||
       !this.vegetables.mobile
     ) {
       this.presentToast('Please fill in all the required fields.', 'danger');
@@ -155,7 +157,7 @@ export class VegetablesFruitsVegetablesPage implements OnInit {
 
     // Common attributes
     formData.append('category', 'Planting Materials');
-    formData.append('subcategory', 'vegetables');
+    formData.append('subcategory', 'Vegetables');
     formData.append('userName', this.vegetables.userName || '');
     formData.append('title', this.vegetables.title || '');
     formData.append(
@@ -166,26 +168,17 @@ export class VegetablesFruitsVegetablesPage implements OnInit {
     formData.append('mobile', this.vegetables.mobile || '');
     formData.append('acceptTerms', this.vegetables.acceptTerms ? '1' : '0');
 
-    // Unique attributes for vegetables
+    // Unique attributes for Vegetables
     formData.append('type', this.vegetables.type || '');
     formData.append('variety', this.vegetables.variety || '');
+    formData.append('unit', this.vegetables.unit || '');
     formData.append(
-      'price1kg',
-      this.vegetables.price1kg !== null
-        ? this.vegetables.price1kg.toString()
-        : ''
+      'amount',
+      this.vegetables.amount !== null ? this.vegetables.amount.toString() : ''
     );
     formData.append(
-      'price5kg',
-      this.vegetables.price5kg !== null
-        ? this.vegetables.price5kg.toString()
-        : ''
-    );
-    formData.append(
-      'price10kg',
-      this.vegetables.price10kg !== null
-        ? this.vegetables.price10kg.toString()
-        : ''
+      'price',
+      this.vegetables.price !== null ? this.vegetables.price.toString() : ''
     );
 
     // Add specifications as JSON
