@@ -1,9 +1,233 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>vegetables-fruits-fruits</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/vegitables-fruits"
+        color="light"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">FRUITS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- Category -->
+  <ion-item>
+    <ion-label>Category</ion-label>
+    <ion-note slot="end">Vegitables & Fruits -> Fruits</ion-note>
+  </ion-item>
 
+  <form (ngSubmit)="onSubmit()" #fruitsForm="ngForm">
+    <!-- Type Selector -->
+    <div class="form-group">
+      <label for="type">Type <span style="color: red">*</span></label>
+      <ion-select id="type" name="type" [(ngModel)]="fruits.type" required>
+        <ion-select-option value="tropicalFruits">Tropical Fruits</ion-select-option>
+        <ion-select-option value="seasonalFruits"
+          >Seasonal Fruits</ion-select-option
+        >
+        <ion-select-option value="indigenousFruits"
+          >Indigenous Fruits</ion-select-option
+        >
+        <ion-select-option value="wildFruits"
+          >Wild Fruits</ion-select-option
+        >
+        <ion-select-option value=" exportOrientedFruits"> Export-Oriented Fruits</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+      <ion-text
+        color="danger"
+        *ngIf="fruitsForm.submitted && !fruits.type"
+      >
+        Type is required.
+      </ion-text>
+    </div>
+
+    <!-- Variety -->
+    <div class="form-group">
+      <label for="variety">Variety <span style="color: red">*</span></label>
+      <ion-input
+        id="variety"
+        type="text"
+        name="variety"
+        maxlength="30"
+        [(ngModel)]="fruits.variety"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="fruitsForm.submitted && !fruits.variety"
+      >
+        Variety is required.
+      </ion-text>
+    </div>
+
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title <span style="color: red">*</span></label>
+      <ion-input
+        id="title"
+        type="text"
+        name="title"
+        maxlength="30"
+        [(ngModel)]="fruits.title"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="fruitsForm.submitted && !fruits.title"
+      >
+        Title is required.
+      </ion-text>
+    </div>
+    <!-- Description (Optional) -->
+    <div class="form-group">
+      <label for="description"
+        >Description <span style="color: gray">(Optional)</span></label
+      >
+      <ion-textarea
+        id="description"
+        name="description"
+        [(ngModel)]="fruits.description"
+        placeholder="Enter description"
+      ></ion-textarea>
+    </div>
+    <!-- Images -->
+    <div class="form-group">
+      <label for="images"
+        >Images <span style="color: gray">(Optional)</span></label
+      >
+      <input
+        id="images"
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        multiple
+      />
+    </div>
+
+    <!-- Display Image Previews -->
+    <div class="image-preview">
+      <img
+        *ngFor="let image of previewImages"
+        [src]="image"
+        class="preview-img"
+      />
+    </div>
+
+    <!-- Stock -->
+    <div class="form-group">
+      <label for="stock"
+        >Stock <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="stock"
+        type="number"
+        name="stock"
+        [(ngModel)]="fruits.stock"
+      ></ion-input>
+    </div>
+
+    <!-- Prices -->
+    <div class="form-group">
+      <label for="price1kg"
+        >Price for 1kg <span style="color: red">*</span></label
+      >
+      <ion-input
+        id="price1kg"
+        type="number"
+        name="price1kg"
+        [(ngModel)]="fruits.price1kg"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="fruitsForm.submitted && !fruits.price1kg"
+      >
+        Price for 1kg is required.
+      </ion-text>
+    </div>
+
+    <div class="form-group">
+      <label for="price5kg"
+        >Price for 5kg <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="price5kg"
+        type="number"
+        name="price5kg"
+        [(ngModel)]="fruits.price5kg"
+      ></ion-input>
+    </div>
+
+    <div class="form-group">
+      <label for="price10kg"
+        >Price for 10kg <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="price10kg"
+        type="number"
+        name="price10kg"
+        [(ngModel)]="fruits.price10kg"
+      ></ion-input>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address"
+        >Address <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="address"
+        type="text"
+        name="address"
+        [(ngModel)]="fruits.address"
+      ></ion-input>
+    </div>
+
+    <!-- Mobile -->
+    <div class="form-group">
+      <label for="mobile">Mobile <span style="color: red">*</span></label>
+      <ion-input
+        id="mobile"
+        type="tel"
+        name="mobile"
+        [(ngModel)]="fruits.mobile"
+        required
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="fruitsForm.submitted && !isValidMobile(fruits.mobile)"
+      >
+        Please enter a valid 10-digit mobile number.
+      </ion-text>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <ion-item>
+      <ion-checkbox
+        [(ngModel)]="fruits.acceptTerms"
+        name="acceptTerms"
+        required
+      ></ion-checkbox>
+      <ion-label
+        >Accept terms and conditions
+        <span style="color: red">*</span></ion-label
+      >
+      <ion-text
+        color="danger"
+        *ngIf="fruitsForm.submitted && !fruits.acceptTerms"
+      >
+        You must accept the terms and conditions.
+      </ion-text>
+    </ion-item>
+
+    <!-- Submit Button -->
+    <ion-button expand="block" type="submit">List Item</ion-button>
+  </form>
 </ion-content>
