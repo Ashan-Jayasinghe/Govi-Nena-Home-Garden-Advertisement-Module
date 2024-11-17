@@ -20,6 +20,7 @@ export class ReportAdPage {
     comments: '',
     email: '',
   };
+  isLimitExceeded = false;
 
   constructor(
     private router: Router,
@@ -41,6 +42,14 @@ export class ReportAdPage {
     await toast.present();
   }
 
+  checkCharacterLimit() {
+    // Check if the comments exceed 75 characters
+    if (this.report.comments.length === 75) {
+      this.isLimitExceeded = true;
+    } else {
+      this.isLimitExceeded = false;
+    }
+  }
   submitReport() {
     if (!this.report.adId || !this.report.selectedReason) {
       this.presentToast('Ad ID and reason are required.', 'danger');

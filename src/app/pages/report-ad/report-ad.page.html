@@ -83,8 +83,13 @@
             name="comments"
             [(ngModel)]="report.comments"
             placeholder="Provide more details (optional)"
+            maxlength="75"
+            (input)="checkCharacterLimit()"
           ></ion-textarea>
         </ion-item>
+        <ion-text color="danger" *ngIf="isLimitExceeded">
+          You have exceeded the 75 character limit.
+        </ion-text>
 
         <ion-item>
           <ion-label position="floating">Your Email (Optional)</ion-label>
