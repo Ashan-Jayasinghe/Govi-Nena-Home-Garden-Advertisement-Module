@@ -13,12 +13,12 @@ export class AgroChemicalsPesticidesPage implements OnInit {
     userName: string;  // Added userName field
     type: string;
     title: string;
-    applicationRatio: number | null;
+    applicationRatio: string;
     stock: number | null;
     description: string;
-    price1L: number | null;
-    price5L: number | null;
-    price10L: number | null;
+    unit: string;
+    amount: number | null;
+    price: number | null;
     address: string;
     mobile: string;
     acceptTerms: boolean;
@@ -26,12 +26,12 @@ export class AgroChemicalsPesticidesPage implements OnInit {
     userName: '',  // Initialize userName as empty
     type: '',
     title: '',
-    applicationRatio: null,
+    applicationRatio: '',
     stock: null,
     description: '',
-    price1L: null,
-    price5L: null,
-    price10L: null,
+    unit: '',
+    amount: null,
+    price: null,
     address: '',
     mobile: '',
     acceptTerms: false
@@ -73,20 +73,6 @@ export class AgroChemicalsPesticidesPage implements OnInit {
     });
   }
 
-  // Handle file selection and preview
-  // onFileChange(event: any): void {
-  //   const files = Array.from(event.target.files) as File[]; // Ensure the type is 'File'
-  //   this.selectedImages = files; // Store selected files
-  //   this.previewImages = []; // Reset preview images
-
-  //   files.forEach(file => {
-  //     const reader = new FileReader();
-  //     reader.onload = (e: any) => {
-  //       this.previewImages.push(e.target.result); // Add image URL for preview
-  //     };
-  //     reader.readAsDataURL(file); // Read the image as Data URL for preview
-  //   });
-  // }
 
   // Handle file selection and preview
   onFileChange(event: any): void {
@@ -125,7 +111,7 @@ export class AgroChemicalsPesticidesPage implements OnInit {
     }
 
     // Validate required fields
-    if (!this.pesticides.type || !this.pesticides.title || this.pesticides.price1L === null || !this.pesticides.mobile) {
+    if (!this.pesticides.type || !this.pesticides.title || this.pesticides.price === null || this.pesticides.amount===null|| !this.pesticides.unit|| !this.pesticides.mobile) {
       this.presentToast('Please fill in all the required fields.', 'danger');
       return;
     }
@@ -150,10 +136,10 @@ export class AgroChemicalsPesticidesPage implements OnInit {
 
     // Unique attributes for Pesticides
     formData.append('type', this.pesticides.type || '');
-    formData.append('applicationRatio', this.pesticides.applicationRatio !== null ? this.pesticides.applicationRatio.toString() : '');
-    formData.append('price1L', this.pesticides.price1L !== null ? this.pesticides.price1L.toString() : '');
-    formData.append('price5L', this.pesticides.price5L !== null ? this.pesticides.price5L.toString() : '');
-    formData.append('price10L', this.pesticides.price10L !== null ? this.pesticides.price10L.toString() : '');
+    formData.append('applicationRatio', this.pesticides.applicationRatio || '');
+    formData.append('unit', this.pesticides.unit ||'');
+    formData.append('amount', this.pesticides.amount !== null ? this.pesticides.amount.toString() : '');
+    formData.append('price', this.pesticides.price !== null ? this.pesticides.price.toString() : '');
 
     // Add userName
     formData.append('userName', this.pesticides.userName || '');

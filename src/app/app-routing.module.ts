@@ -29,10 +29,6 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard], // Add the guard here to protect the route
   },
-  // {
-  //   path: 'advertisement-details',
-  //   loadChildren: () => import('./pages/advertisement-details/advertisement-details.module').then( m => m.AdvertisementDetailsPageModule)
-  // },
   {
     path: 'fertilizers',
     loadChildren: () =>
@@ -242,27 +238,7 @@ const routes: Routes = [
         './pages/advertisement-confirmation/advertisement-confirmation.module'
       ).then((m) => m.AdvertisementConfirmationPageModule),
   },
-  {
-    path: 'agro-chemicals-insecticides',
-    loadChildren: () =>
-      import(
-        './pages/agro-chemicals-insecticides/agro-chemicals-insecticides.module'
-      ).then((m) => m.AgroChemicalsInsecticidesPageModule),
-  },
-  {
-    path: 'agro-chemicals-fungicides',
-    loadChildren: () =>
-      import(
-        './pages/agro-chemicals-fungicides/agro-chemicals-fungicides.module'
-      ).then((m) => m.AgroChemicalsFungicidesPageModule),
-  },
-  {
-    path: 'agro-chemicals-herbicides',
-    loadChildren: () =>
-      import(
-        './pages/agro-chemicals-herbicides/agro-chemicals-herbicides.module'
-      ).then((m) => m.AgroChemicalsHerbicidesPageModule),
-  },
+
   {
     path: 'vegetables-fruits',
     loadChildren: () =>
