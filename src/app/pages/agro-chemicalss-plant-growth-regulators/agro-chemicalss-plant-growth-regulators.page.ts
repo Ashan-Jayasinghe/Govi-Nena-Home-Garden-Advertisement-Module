@@ -17,9 +17,9 @@ export class AgroChemicalssPlantGrowthRegulatorsPage implements OnInit {
     applicationRatio: number | null;
     stock: number | null;
     description: string;
-    price1L: number | null;
-    price5L: number | null;
-    price10L: number | null;
+    unit: string;
+    amount: number | null;
+    price: number | null;
     address: string;
     mobile: string;
     acceptTerms: boolean;
@@ -30,9 +30,9 @@ export class AgroChemicalssPlantGrowthRegulatorsPage implements OnInit {
     applicationRatio: null,
     stock: null,
     description: '',
-    price1L: null,
-    price5L: null,
-    price10L: null,
+    unit: '',
+    amount: null,
+    price: null,
     address: '',
     mobile: '',
     acceptTerms: false
@@ -110,7 +110,7 @@ export class AgroChemicalssPlantGrowthRegulatorsPage implements OnInit {
     }
 
     // Validate required fields
-    if (!this.pgr.type || !this.pgr.title || this.pgr.price1L === null || !this.pgr.mobile) {
+    if (!this.pgr.type || !this.pgr.title || this.pgr.price === null || this.pgr.amount === null || !this.pgr.unit || !this.pgr.mobile) {
       this.presentToast('Please fill in all the required fields.', 'danger');
       return;
     }
@@ -136,9 +136,9 @@ export class AgroChemicalssPlantGrowthRegulatorsPage implements OnInit {
     // Unique attributes for Plant Growth Regulators
     formData.append('type', this.pgr.type || '');
     formData.append('applicationRatio', this.pgr.applicationRatio !== null ? this.pgr.applicationRatio.toString() : '');
-    formData.append('price1L', this.pgr.price1L !== null ? this.pgr.price1L.toString() : '');
-    formData.append('price5L', this.pgr.price5L !== null ? this.pgr.price5L.toString() : '');
-    formData.append('price10L', this.pgr.price10L !== null ? this.pgr.price10L.toString() : '');
+    formData.append('unit', this.pgr.unit ||'');
+    formData.append('amount', this.pgr.amount !== null ? this.pgr.amount.toString() : '');
+    formData.append('price', this.pgr.price !== null ? this.pgr.price.toString() : '');
 
     // Add userName
     formData.append('userName', this.pgr.userName || '');
