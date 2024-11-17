@@ -23,6 +23,17 @@
   </ion-item>
 
   <form (ngSubmit)="onSubmit()" #fruitsForm="ngForm">
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <ion-input
+        id="userName"
+        type="text"
+        name="userName"
+        [(ngModel)]="fruits.userName"
+        readonly
+      ></ion-input>
+    </div>
+
     <!-- Type Selector -->
     <div class="form-group">
       <label for="type">Type <span style="color: red">*</span></label>
