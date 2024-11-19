@@ -66,6 +66,7 @@ export class ProfilePage implements OnInit {
             this.user.name = response.user.name;
             this.user.email = response.user.email;
             this.user.id = response.user.id;
+            this.user.profileImage = response.user.profile_image;
             console.log(this.user.id);
           } else {
             this.presentToast('Failed to load profile information.', 'danger');
