@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/planting-machines" color="light"></ion-back-button>
+      <ion-back-button
+        defaultHref="/planting-machines"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title color="light">PLANTING MACHINES</ion-title>
     <ion-buttons slot="end">
@@ -14,21 +17,37 @@
 
 <ion-content>
   <form (ngSubmit)="onSubmit()" #plantingMachinesForm="ngForm">
-
-        <!-- User Name (Read-only) -->
-        <div class="form-group">
-          <label for="userName">User Name</label>
-          <ion-input id="userName" type="text" name="userName" [(ngModel)]="plantingmachines.userName" readonly></ion-input>
-        </div>
+    <!-- User Name (Read-only) -->
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <ion-input
+        id="userName"
+        type="text"
+        name="userName"
+        [(ngModel)]="plantingmachines.userName"
+        readonly
+        placeholder="Your username"
+      ></ion-input>
+    </div>
 
     <!-- Condition -->
     <div class="form-group">
       <label for="condition">Condition</label>
-      <ion-select id="condition" name="condition" [(ngModel)]="plantingmachines.condition" required>
+      <ion-select
+        id="condition"
+        name="condition"
+        [(ngModel)]="plantingmachines.condition"
+        required
+        placeholder="Select condition (New/Used)"
+        interface="popover"
+      >
         <ion-select-option value="new">New</ion-select-option>
         <ion-select-option value="used">Used</ion-select-option>
       </ion-select>
-      <ion-text color="danger" *ngIf="plantingMachinesForm.submitted && !plantingmachines.condition">
+      <ion-text
+        color="danger"
+        *ngIf="plantingMachinesForm.submitted && !plantingmachines.condition"
+      >
         Condition is required.
       </ion-text>
     </div>
@@ -36,11 +55,21 @@
     <!-- Rent Or Sell -->
     <div class="form-group">
       <label for="rentorsell">Rent Or Sell</label>
-      <ion-select id="rentorsell" name="rentorsell" [(ngModel)]="plantingmachines.rentorsell" required>
+      <ion-select
+        id="rentorsell"
+        name="rentorsell"
+        [(ngModel)]="plantingmachines.rentorsell"
+        required
+        placeholder="Select Rent or Sell"
+        interface="popover"
+      >
         <ion-select-option value="rent">Rent</ion-select-option>
         <ion-select-option value="sell">Sell</ion-select-option>
       </ion-select>
-      <ion-text color="danger" *ngIf="plantingMachinesForm.submitted && !plantingmachines.rentorsell">
+      <ion-text
+        color="danger"
+        *ngIf="plantingMachinesForm.submitted && !plantingmachines.rentorsell"
+      >
         Rent or Sell option is required.
       </ion-text>
     </div>
@@ -48,8 +77,19 @@
     <!-- Title -->
     <div class="form-group">
       <label for="title">Title</label>
-      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="plantingmachines.title" required></ion-input>
-      <ion-text color="danger" *ngIf="plantingMachinesForm.submitted && !plantingmachines.title">
+      <ion-input
+        id="title"
+        type="text"
+        name="title"
+        maxlength="30"
+        [(ngModel)]="plantingmachines.title"
+        required
+        placeholder="Enter title"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="plantingMachinesForm.submitted && !plantingmachines.title"
+      >
         Title is required.
       </ion-text>
     </div>
@@ -57,49 +97,78 @@
     <!-- Stock -->
     <div class="form-group">
       <label for="stock">Stock</label>
-      <ion-input id="stock" type="text" name="stock" maxlength="30" [(ngModel)]="plantingmachines.stock"></ion-input>
+      <ion-input
+        id="stock"
+        type="text"
+        name="stock"
+        maxlength="30"
+        [(ngModel)]="plantingmachines.stock"
+        placeholder="Enter stock details"
+      ></ion-input>
     </div>
 
     <!-- Manufacturer -->
     <div class="form-group">
       <label for="manufacturer">Manufacturer</label>
-      <ion-input id="manufacturer" type="text" name="manufacturer" maxlength="30" [(ngModel)]="plantingmachines.manufacturer"></ion-input>
+      <ion-input
+        id="manufacturer"
+        type="text"
+        name="manufacturer"
+        maxlength="30"
+        [(ngModel)]="plantingmachines.manufacturer"
+        placeholder="Enter manufacturer details"
+      ></ion-input>
     </div>
 
-<!-- Images (Max 4 images) -->
-<div class="form-group">
-  <label for="images">Images</label>
-  <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
-  <ion-text color="danger" *ngIf="imageError">
-    {{ imageError }}
-  </ion-text>
-</div>
+    <!-- Images (Max 4 images) -->
+    <div class="form-group">
+      <label for="images">Images</label>
+      <input
+        id="images"
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        multiple
+        placeholder="Upload up to 4 images"
+      />
+      <ion-text color="danger" *ngIf="imageError"> {{ imageError }} </ion-text>
+    </div>
     <!-- Display Image Previews -->
     <div class="image-preview">
-      <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
+      <img
+        *ngFor="let image of previewImages"
+        [src]="image"
+        class="preview-img"
+      />
     </div>
 
-    <!-- Specifications -->
-    <!-- <div class="form-group">
-      <label for="specifications">Specifications</label>
-      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="plantingmachines.specification"></ion-input>
-    </div>
-    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
-    <ion-list>
-      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
-    </ion-list> -->
-
+    <!-- Description -->
     <div class="form-group">
       <label for="description">Description</label>
-      <ion-textarea id="description" type="text" name="description" [(ngModel)]="plantingmachines.description" placeholder="Enter description"></ion-textarea>
+      <ion-textarea
+        id="description"
+        type="text"
+        name="description"
+        [(ngModel)]="plantingmachines.description"
+        placeholder="Enter description"
+      ></ion-textarea>
     </div>
-    
 
     <!-- Price -->
     <div class="form-group">
       <label for="price">Price</label>
-      <ion-input id="price" type="number" name="price" [(ngModel)]="plantingmachines.price" required></ion-input>
-      <ion-text color="danger" *ngIf="plantingMachinesForm.submitted && !plantingmachines.price">
+      <ion-input
+        id="price"
+        type="number"
+        name="price"
+        [(ngModel)]="plantingmachines.price"
+        required
+        placeholder="Enter price"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="plantingMachinesForm.submitted && !plantingmachines.price"
+      >
         Price is required.
       </ion-text>
     </div>
@@ -107,28 +176,51 @@
     <!-- Address -->
     <div class="form-group">
       <label for="address">Address</label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="plantingmachines.address"></ion-input>
+      <ion-input
+        id="address"
+        type="text"
+        name="address"
+        [(ngModel)]="plantingmachines.address"
+        placeholder="Enter address"
+      ></ion-input>
     </div>
 
     <!-- Mobile -->
     <div class="form-group">
       <label for="mobile">Mobile</label>
-      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="plantingmachines.mobile" required></ion-input>
-      <ion-text color="danger" *ngIf="plantingMachinesForm.submitted && !isValidMobile(plantingmachines.mobile)">
+      <ion-input
+        id="mobile"
+        type="tel"
+        name="mobile"
+        [(ngModel)]="plantingmachines.mobile"
+        required
+        placeholder="Enter 10-digit mobile number"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="plantingMachinesForm.submitted && !isValidMobile(plantingmachines.mobile)"
+      >
         Please enter a valid 10-digit mobile number.
       </ion-text>
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="plantingmachines.acceptTerms" name="acceptTerms" required></ion-checkbox>
+      <ion-checkbox
+        [(ngModel)]="plantingmachines.acceptTerms"
+        name="acceptTerms"
+        required
+      ></ion-checkbox>
       <ion-label>Accept terms and conditions</ion-label>
-      <ion-text color="danger" *ngIf="plantingMachinesForm.submitted && !plantingmachines.acceptTerms">
+      <ion-text
+        color="danger"
+        *ngIf="plantingMachinesForm.submitted && !plantingmachines.acceptTerms"
+      >
         You must accept the terms and conditions.
       </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" >List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
 </ion-content>

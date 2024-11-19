@@ -14,113 +14,207 @@
 
 <ion-content>
   <form (ngSubmit)="onSubmit()" #sprayersForm="ngForm">
-
     <!-- User Name (Read-only) -->
     <div class="form-group">
       <label for="userName">User Name</label>
-      <ion-input id="userName" type="text" name="userName" [(ngModel)]="sprayers.userName" readonly></ion-input>
+      <ion-input
+        id="userName"
+        type="text"
+        name="userName"
+        [(ngModel)]="sprayers.userName"
+        readonly
+        placeholder="Enter your user name"
+      ></ion-input>
     </div>
 
     <!-- Condition (Required) -->
     <div class="form-group">
-      <label for="condition">Condition <span style="color: red;">*</span></label>
-      <ion-select id="condition" name="condition" [(ngModel)]="sprayers.condition" required>
+      <label for="condition">Condition <span style="color: red">*</span></label>
+      <ion-select
+        id="condition"
+        name="condition"
+        [(ngModel)]="sprayers.condition"
+        required
+        placeholder="Brand-New or Used"
+        interface="popover"
+      >
         <ion-select-option value="new">New</ion-select-option>
         <ion-select-option value="used">Used</ion-select-option>
       </ion-select>
-      <ion-text color="danger" *ngIf="sprayersForm.submitted && !sprayers.condition">
+      <ion-text
+        color="danger"
+        *ngIf="sprayersForm.submitted && !sprayers.condition"
+      >
         Condition is required.
       </ion-text>
     </div>
 
     <!-- Rent or Sell (Required) -->
     <div class="form-group">
-      <label for="rentorsell">Rent Or Sell <span style="color: red;">*</span></label>
-      <ion-select id="rentorsell" name="rentorsell" [(ngModel)]="sprayers.rentorsell" required>
+      <label for="rentorsell"
+        >Rent Or Sell <span style="color: red">*</span></label
+      >
+      <ion-select
+        id="rentorsell"
+        name="rentorsell"
+        [(ngModel)]="sprayers.rentorsell"
+        required
+        placeholder="Choose Rent or Sell"
+        interface="popover"
+      >
         <ion-select-option value="rent">Rent</ion-select-option>
         <ion-select-option value="sell">Sell</ion-select-option>
       </ion-select>
-      <ion-text color="danger" *ngIf="sprayersForm.submitted && !sprayers.rentorsell">
+      <ion-text
+        color="danger"
+        *ngIf="sprayersForm.submitted && !sprayers.rentorsell"
+      >
         Please select whether to rent or sell.
       </ion-text>
     </div>
 
     <!-- Title (Required) -->
     <div class="form-group">
-      <label for="title">Title <span style="color: red;">*</span></label>
-      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="sprayers.title" required></ion-input>
-      <ion-text color="danger" *ngIf="sprayersForm.submitted && !sprayers.title">
+      <label for="title">Title <span style="color: red">*</span></label>
+      <ion-input
+        id="title"
+        type="text"
+        name="title"
+        maxlength="30"
+        [(ngModel)]="sprayers.title"
+        required
+        placeholder="Enter a title for the listing"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="sprayersForm.submitted && !sprayers.title"
+      >
         Title is required.
       </ion-text>
     </div>
 
     <!-- Stock (Optional) -->
     <div class="form-group">
-      <label for="stock">Stock <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="stock" type="text" name="stock" maxlength="30" [(ngModel)]="sprayers.stock"></ion-input>
+      <label for="stock"
+        >Stock <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="stock"
+        type="text"
+        name="stock"
+        maxlength="30"
+        [(ngModel)]="sprayers.stock"
+        placeholder="Enter stock details (if applicable)"
+      ></ion-input>
     </div>
 
     <!-- Manufacturer (Optional) -->
     <div class="form-group">
-      <label for="manufacturer">Manufacturer <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="manufacturer" type="text" name="manufacturer" maxlength="30" [(ngModel)]="sprayers.manufacturer"></ion-input>
+      <label for="manufacturer"
+        >Manufacturer <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="manufacturer"
+        type="text"
+        name="manufacturer"
+        maxlength="30"
+        [(ngModel)]="sprayers.manufacturer"
+        placeholder="Enter manufacturer name"
+      ></ion-input>
     </div>
 
     <!-- Images -->
     <div class="form-group">
-      <label for="images">Images <span style="color: gray;">(Optional)</span></label>
-      <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
+      <label for="images"
+        >Images <span style="color: gray">(Optional)</span></label
+      >
+      <input
+        id="images"
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        multiple
+        placeholder="Upload images"
+      />
     </div>
 
     <!-- Display Image Previews -->
     <div class="image-preview">
-      <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
+      <img
+        *ngFor="let image of previewImages"
+        [src]="image"
+        class="preview-img"
+      />
     </div>
-
-    <!-- Specifications (Optional) -->
-    <!-- <div class="form-group">
-      <label for="specifications">Specifications <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="sprayers.specification"></ion-input>
-    </div>
-    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
-    <ion-list>
-      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
-    </ion-list> -->
 
     <!-- Price (Required) -->
     <div class="form-group">
-      <label for="price">Price <span style="color: red;">*</span></label>
-      <ion-input id="price" type="number" name="price" [(ngModel)]="sprayers.price" required></ion-input>
-      <ion-text color="danger" *ngIf="sprayersForm.submitted && !sprayers.price">
+      <label for="price">Price <span style="color: red">*</span></label>
+      <ion-input
+        id="price"
+        type="number"
+        name="price"
+        [(ngModel)]="sprayers.price"
+        required
+        placeholder="Enter the price"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="sprayersForm.submitted && !sprayers.price"
+      >
         Price is required.
       </ion-text>
     </div>
 
     <!-- Address (Optional) -->
     <div class="form-group">
-      <label for="address">Address <span style="color: gray;">(Optional)</span></label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="sprayers.address"></ion-input>
+      <label for="address"
+        >Address <span style="color: gray">(Optional)</span></label
+      >
+      <ion-input
+        id="address"
+        type="text"
+        name="address"
+        [(ngModel)]="sprayers.address"
+        placeholder="Enter your address"
+      ></ion-input>
     </div>
 
     <!-- Mobile (Required) -->
     <div class="form-group">
-      <label for="mobile">Mobile <span style="color: red;">*</span></label>
-      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="sprayers.mobile" required></ion-input>
-      <ion-text color="danger" *ngIf="sprayersForm.submitted && !isValidMobile(sprayers.mobile)">
+      <label for="mobile">Mobile <span style="color: red">*</span></label>
+      <ion-input
+        id="mobile"
+        type="tel"
+        name="mobile"
+        [(ngModel)]="sprayers.mobile"
+        required
+        placeholder="Enter your mobile number"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="sprayersForm.submitted && !isValidMobile(sprayers.mobile)"
+      >
         Please enter a valid 10-digit mobile number.
       </ion-text>
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="sprayers.acceptTerms" name="acceptTerms"></ion-checkbox>
+      <ion-checkbox
+        [(ngModel)]="sprayers.acceptTerms"
+        name="acceptTerms"
+      ></ion-checkbox>
       <ion-label>Accept terms and conditions</ion-label>
-      <ion-text color="danger" *ngIf="sprayersForm.submitted && !sprayers.acceptTerms">
+      <ion-text
+        color="danger"
+        *ngIf="sprayersForm.submitted && !sprayers.acceptTerms"
+      >
         You must accept the terms and conditions.
       </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
-    <ion-button expand="block" type="submit" >List Item</ion-button>
+    <ion-button expand="block" type="submit">List Item</ion-button>
   </form>
 </ion-content>

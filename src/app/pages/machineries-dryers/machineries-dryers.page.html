@@ -1,143 +1,217 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/dryers" color="light">
-      </ion-back-button>
+      <ion-back-button defaultHref="/dryers" color="light"> </ion-back-button>
     </ion-buttons>
     <ion-title color="light">DRYERS</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" >
-        <ion-icon name="home" color="light" ></ion-icon>
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
       </ion-button>
-    </ion-buttons>  </ion-toolbar>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content>
   <form (ngSubmit)="onSubmit()" #dryersForm="ngForm">
-
     <!-- User Name -->
     <div class="form-group">
       <label for="userName">User Name</label>
-      <ion-input id="userName" type="text" name="userName" [(ngModel)]="dryers.userName" readonly></ion-input>
+      <ion-input
+        id="userName"
+        type="text"
+        name="userName"
+        [(ngModel)]="dryers.userName"
+        readonly
+        placeholder="Enter your username"
+      ></ion-input>
     </div>
-    
+
     <!-- Type Selector -->
     <div class="form-group">
       <label for="condition">Condition</label>
-      <ion-select id="condition" name="condition" [(ngModel)]="dryers.condition" required>
+      <ion-select
+        id="condition"
+        name="condition"
+        [(ngModel)]="dryers.condition"
+        placeholder="Select condition"
+        interface="popover"
+        required
+      >
         <ion-select-option value="new">New</ion-select-option>
         <ion-select-option value="used">Used</ion-select-option>
-        <!-- Add more options if needed -->
       </ion-select>
-      <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.condition">
+      <ion-text
+        color="danger"
+        *ngIf="dryersForm.submitted && !dryers.condition"
+      >
         Condition is required.
       </ion-text>
     </div>
 
+    <!-- Rent or Sell -->
     <div class="form-group">
       <label for="rentorsell">Rent Or Sell</label>
-      <ion-select id="rentorsell" name="rentorsell" [(ngModel)]="dryers.rentorsell" required>
+      <ion-select
+        id="rentorsell"
+        name="rentorsell"
+        [(ngModel)]="dryers.rentorsell"
+        placeholder="Select rent or sell"
+        interface="popover"
+        required
+      >
         <ion-select-option value="rent">Rent</ion-select-option>
         <ion-select-option value="sell">Sell</ion-select-option>
-        <!-- Add more options if needed -->
       </ion-select>
 
-      <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.rentorsell">
+      <ion-text
+        color="danger"
+        *ngIf="dryersForm.submitted && !dryers.rentorsell"
+      >
         Please select whether to rent or sell.
       </ion-text>
     </div>
 
-
-
     <!-- Title -->
     <div class="form-group">
       <label for="title">Title</label>
-      <ion-input id="title" type="text" name="title" maxlength="30" [(ngModel)]="dryers.title" required></ion-input>
+      <ion-input
+        id="title"
+        type="text"
+        name="title"
+        maxlength="30"
+        [(ngModel)]="dryers.title"
+        required
+        placeholder="Enter a title"
+      ></ion-input>
       <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.title">
         Title is required.
       </ion-text>
- 
     </div>
 
     <!-- Stock -->
     <div class="form-group">
       <label for="stock">Stock</label>
-      <ion-input id="stock" type="text" name="stock" maxlength="30" [(ngModel)]="dryers.stock" ></ion-input>
+      <ion-input
+        id="stock"
+        type="text"
+        name="stock"
+        maxlength="30"
+        [(ngModel)]="dryers.stock"
+        placeholder="Enter stock details"
+      ></ion-input>
     </div>
 
     <!-- Manufacturer -->
     <div class="form-group">
       <label for="manufacturer">Manufacturer</label>
-      <ion-input id="manufacturer" type="text" name="manufacturer" maxlength="30" [(ngModel)]="dryers.manufacturer" ></ion-input>
+      <ion-input
+        id="manufacturer"
+        type="text"
+        name="manufacturer"
+        maxlength="30"
+        [(ngModel)]="dryers.manufacturer"
+        placeholder="Enter manufacturer name"
+      ></ion-input>
     </div>
-
 
     <!-- Images -->
     <div class="form-group">
       <label for="images">Images</label>
-      <input id="images" type="file" (change)="onFileChange($event)" accept="image/*" multiple>
-      <ion-text color="danger" *ngIf="imageError">
-        {{ imageError }}
-      </ion-text>
-
-    
+      <input
+        id="images"
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        multiple
+        placeholder="Add images"
+      />
+      <ion-text color="danger" *ngIf="imageError"> {{ imageError }} </ion-text>
     </div>
-        <!-- Display Image Previews -->
-        <div class="image-preview">
-          <img *ngFor="let image of previewImages" [src]="image" class="preview-img">
-        </div>
-
-
-    <!-- Specifications
-    <div class="form-group">
-      <label for="specifications">Specifications</label>
-      <ion-input id="specifications" type="text" name="specification" [(ngModel)]="dryers.specification"></ion-input>
+    <!-- Display Image Previews -->
+    <div class="image-preview">
+      <img
+        *ngFor="let image of previewImages"
+        [src]="image"
+        class="preview-img"
+      />
     </div>
-    <ion-button expand="block" class="add-spec-button" (click)="addSpecification()">Add Specification</ion-button>
-    <ion-list>
-      <ion-item *ngFor="let spec of specifications">{{ spec }}</ion-item>
-    </ion-list> -->
 
+    <!-- Description -->
     <div class="form-group">
       <label for="description">Description</label>
-      <ion-textarea id="description" type="text" name="description" [(ngModel)]="dryers.description" placeholder="Enter description"></ion-textarea>
+      <ion-textarea
+        id="description"
+        type="text"
+        name="description"
+        [(ngModel)]="dryers.description"
+        placeholder="Enter description"
+      ></ion-textarea>
     </div>
-    
 
     <!-- Prices -->
     <div class="form-group">
       <label for="price">Price</label>
-      <ion-input id="price" type="number" name="price" [(ngModel)]="dryers.price" required></ion-input>
-      <ion-text color="danger" *ngIf="dryersForm.submitted && dryers.price === null">
+      <ion-input
+        id="price"
+        type="number"
+        name="price"
+        [(ngModel)]="dryers.price"
+        required
+        placeholder="Enter price"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="dryersForm.submitted && dryers.price === null"
+      >
         Price is required.
       </ion-text>
-    
     </div>
 
     <!-- Address -->
     <div class="form-group">
       <label for="address">Address</label>
-      <ion-input id="address" type="text" name="address" [(ngModel)]="dryers.address" ></ion-input>
+      <ion-input
+        id="address"
+        type="text"
+        name="address"
+        [(ngModel)]="dryers.address"
+        placeholder="Enter address"
+      ></ion-input>
     </div>
 
     <!-- Mobile -->
     <div class="form-group">
       <label for="mobile">Mobile</label>
-      <ion-input id="mobile" type="tel" name="mobile" [(ngModel)]="dryers.mobile" required></ion-input>
-      <ion-text color="danger" *ngIf="dryersForm.submitted && !isValidMobile(dryers.mobile)">
+      <ion-input
+        id="mobile"
+        type="tel"
+        name="mobile"
+        [(ngModel)]="dryers.mobile"
+        required
+        placeholder="Enter mobile number"
+      ></ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="dryersForm.submitted && !isValidMobile(dryers.mobile)"
+      >
         Please enter a valid 10-digit mobile number.
       </ion-text>
-   
     </div>
 
     <!-- Terms and Conditions -->
     <ion-item>
-      <ion-checkbox [(ngModel)]="dryers.acceptTerms" name="acceptTerms" required></ion-checkbox>
+      <ion-checkbox
+        [(ngModel)]="dryers.acceptTerms"
+        name="acceptTerms"
+        required
+      ></ion-checkbox>
       <ion-label>Accept terms and conditions</ion-label>
-    
-      <ion-text color="danger" *ngIf="dryersForm.submitted && !dryers.acceptTerms">
+
+      <ion-text
+        color="danger"
+        *ngIf="dryersForm.submitted && !dryers.acceptTerms"
+      >
         You must accept the terms and conditions.
       </ion-text>
     </ion-item>
