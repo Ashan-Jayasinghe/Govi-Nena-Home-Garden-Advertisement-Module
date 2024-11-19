@@ -83,15 +83,6 @@ export class VegetablesFruitsVegetablesPage implements OnInit {
       });
   }
 
-  // // Add specification to the list
-  // addSpecification() {
-  //   if (this.vegetables.specification) {
-  //     this.specifications.push(this.vegetables.specification);
-  //     this.vegetables.specification = ''; // Clear the input after adding
-  //   } else {
-  //     this.presentToast('Please enter a specification before adding.', 'danger');
-  //   }
-  // }
 
   // Handle file selection and preview
   onFileChange(event: any): void {
@@ -156,7 +147,7 @@ export class VegetablesFruitsVegetablesPage implements OnInit {
     const formData = new FormData();
 
     // Common attributes
-    formData.append('category', 'Planting Materials');
+    formData.append('category', 'harvest market');
     formData.append('subcategory', 'Vegetables');
     formData.append('userName', this.vegetables.userName || '');
     formData.append('title', this.vegetables.title || '');

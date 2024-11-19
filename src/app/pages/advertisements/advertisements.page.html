@@ -44,46 +44,6 @@
   
   <ion-grid>
     <ion-row>
-      <!-- Bind filtered advertisements instead of all advertisements -->
-      <!-- <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of filteredAdvertisements">
-        <ion-card class="advertisement-card">
-          <ion-img [src]="ad.images[0]" *ngIf="ad.images.length > 0"></ion-img>
-
-          <ion-card-header>
-            <ion-card-title>{{ ad.title }}</ion-card-title>
-            <ion-card-subtitle>
-              <strong>Price:</strong> {{ ad.price || ad.price_1L || ad.price_1kg }} 
-            </ion-card-subtitle>
-            <div class="info-row">
-              <span>
-                <ion-icon name="pricetag" class="icon"></ion-icon>
-                {{ ad.subcategory }}
-              </span>
-              <span>
-                <ion-icon name="call" class="icon"></ion-icon>
-                {{ ad.mobile }}
-              </span>
-            </div>
-          </ion-card-header> -->
-
-          <!-- <ion-card-content>
-            <p>{{ ad.description }}</p>
-            <ion-button expand="full" (click)="viewDetails(ad)" color="success">View</ion-button> -->
-            <!-- <ion-button expand="full" (click)="savePost(ad)" color="warning">Save</ion-button> -->
-            <!-- <ion-button
-            expand="full"
-            [ngClass]="{ 'saved-button': ad.isSaved, 'unsaved-button': !ad.isSaved }"
-            (click)="toggleSave(ad)"
-          >
-            {{ ad.isSaved ? 'Unsave' : 'Save' }}
-          </ion-button> -->
-          
-          
-            
-          <!-- </ion-card-content>
-        </ion-card>
-      </ion-col> -->
-
       <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of filteredAdvertisements">
         <ion-card [ngClass]="{'expired-advertisement': ad.isExpired, 'active-advertisement': !ad.isExpired}" class="advertisement-card">
           <ion-img [src]="ad.images[0]" *ngIf="ad.images.length > 0"></ion-img>
@@ -91,7 +51,7 @@
           <ion-card-header>
             <ion-card-title>{{ ad.title }}</ion-card-title>
             <ion-card-subtitle>
-              <strong>Price:</strong> {{ ad.price || ad.price_1L || ad.price_1kg }} 
+              <strong>Price:</strong> {{ ad.price }} 
               <span *ngIf="ad.isExpired" class="expired-label">Expired</span>
             </ion-card-subtitle>
             <div class="info-row">

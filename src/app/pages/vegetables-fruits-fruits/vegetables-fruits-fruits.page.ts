@@ -83,15 +83,6 @@ export class VegetablesFruitsFruitsPage implements OnInit {
       });
   }
 
-  // // Add specification to the list
-  // addSpecification() {
-  //   if (this.fruits.specification) {
-  //     this.specifications.push(this.fruits.specification);
-  //     this.fruits.specification = ''; // Clear the input after adding
-  //   } else {
-  //     this.presentToast('Please enter a specification before adding.', 'danger');
-  //   }
-  // }
 
   // Handle file selection and preview
   onFileChange(event: any): void {

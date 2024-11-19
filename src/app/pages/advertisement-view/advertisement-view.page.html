@@ -38,8 +38,10 @@
       >
       <div class="info-row">
         <ion-card-subtitle class="advertisement-price">
-          <strong>Price: </strong> Rs {{ ad?.price || ad?.price_1L ||
-          ad?.price_1kg }}
+          <strong>Price: </strong> Rs {{ ad?.price }}
+          <span *ngIf="ad?.amount && ad?.unit">
+            per {{ ad?.amount }} {{ ad?.unit }}</span
+          >
         </ion-card-subtitle>
       </div>
 
@@ -114,12 +116,6 @@
         <ion-icon name="cube-outline"></ion-icon>
         <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
         <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 5L/Kg:</strong> Rs {{ ad?.price_5L || 'N/A' }}
-        <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 10L/Kg:</strong> Rs {{ ad?.price_10L || 'N/A' }}
-        <br />
         <ion-icon name="call-outline"></ion-icon>
         <strong>Mobile Number:</strong> {{ ad?.mobile }}
         <br />
@@ -141,12 +137,6 @@
         <ion-icon name="cube-outline"></ion-icon>
         <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
         <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 5L/Kg:</strong> Rs {{ ad?.price_5L || 'N/A' }}
-        <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 10L/Kg:</strong> Rs {{ ad?.price_10L || 'N/A' }}
-        <br />
         <ion-icon name="call-outline"></ion-icon>
         <strong>Mobile Number:</strong> {{ ad?.mobile }}
         <br />
@@ -164,12 +154,6 @@
         <br />
         <ion-icon name="cube-outline"></ion-icon>
         <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
-        <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 5Kg: </strong> Rs {{ ad?.price_5kg || 'N/A' }}
-        <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 10Kg: </strong> Rs {{ ad?.price_10kg || 'N/A' }}
         <br />
         <ion-icon name="call-outline"></ion-icon>
         <strong>Mobile Number:</strong> {{ ad?.mobile }}
@@ -219,12 +203,6 @@
         <ion-icon name="cube-outline"></ion-icon>
         <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
         <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 5Kg: </strong> Rs {{ ad?.price_5kg || 'N/A' }}
-        <br />
-        <ion-icon name="construct-outline"></ion-icon>
-        <strong>Price 10Kg: </strong> Rs {{ ad?.price_10kg || 'N/A' }}
-        <br />
         <ion-icon name="call-outline"></ion-icon>
         <strong>Mobile Number:</strong> {{ ad?.mobile }}
         <br />
@@ -259,6 +237,24 @@
         <br />
         <ion-icon name="construct-outline"></ion-icon>
         <strong>Address:</strong> {{ ad?.address }}
+      </div>
+
+      <div *ngIf="ad?.category=== 'Harvest Market'" class="advertisement-category">
+        <ion-icon name="leaf-outline"></ion-icon>
+        <strong>Category:</strong> {{ ad?.subcategory }}
+        <br />
+        <ion-icon name="flask-outline"></ion-icon>
+        <strong>Variety:</strong> {{ ad?.variety || 'N/A' }}
+        <br />
+        <ion-icon name="cube-outline"></ion-icon>
+        <strong>Stock:</strong> {{ ad?.stock || 'N/A' }}
+        <br />
+        <ion-icon name="call-outline"></ion-icon>
+        <strong>Mobile Number:</strong> {{ ad?.mobile }}
+        <br />
+        <ion-icon name="location-outline"></ion-icon>
+        <strong>Address:</strong> {{ ad?.address || 'N/A' }}
+        <br />
       </div>
 
       <!-- Add similar blocks for other categories -->

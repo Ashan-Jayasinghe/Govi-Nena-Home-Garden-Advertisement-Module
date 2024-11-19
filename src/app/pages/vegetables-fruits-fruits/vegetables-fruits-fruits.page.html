@@ -19,7 +19,7 @@
   <!-- Category -->
   <ion-item>
     <ion-label>Category</ion-label>
-    <ion-note slot="end">Vegetbles & Fruits -> Fruits</ion-note>
+    <ion-note slot="end">Vegetables & Fruits -> Fruits</ion-note>
   </ion-item>
 
   <form (ngSubmit)="onSubmit()" #fruitsForm="ngForm">
@@ -34,9 +34,10 @@
         readonly
       ></ion-input>
     </div>
+
     <!-- Type Selector -->
     <div class="form-group">
-      <label for="type">Type <span style="color: red">*</span></label>
+      <label for="type">Type <span class="required">*</span></label>
       <ion-select
         id="type"
         name="type"
@@ -45,23 +46,40 @@
         interface="popover"
         placeholder="Select a type"
       >
-        <ion-select-option value="nativefruits">Native Fruits</ion-select-option>
-        <ion-select-option value="tropicalfruits">Tropical Fruits</ion-select-option>
-        <ion-select-option value="citrusfruits">Citrus Fruits</ion-select-option>
-        <ion-select-option value="seasonalfruits">Seasonal Fruits</ion-select-option>
-        <ion-select-option value="exoticfruits">Exotic Fruits</ion-select-option>
-        <ion-select-option value="medicinalorherbalfruits">Medicinal or Herbal Fruits</ion-select-option>
-        <ion-select-option value="CommonlyGrownBackyardFruits">Commonly Grown Backyard Fruits</ion-select-option>
-        <ion-select-option value="FruitsforExports">Fruits for Exports</ion-select-option>
+        <ion-select-option value="nativefruits"
+          >Native Fruits</ion-select-option
+        >
+        <ion-select-option value="tropicalfruits"
+          >Tropical Fruits</ion-select-option
+        >
+        <ion-select-option value="citrusfruits"
+          >Citrus Fruits</ion-select-option
+        >
+        <ion-select-option value="seasonalfruits"
+          >Seasonal Fruits</ion-select-option
+        >
+        <ion-select-option value="exoticfruits"
+          >Exotic Fruits</ion-select-option
+        >
+        <ion-select-option value="medicinalorherbalfruits"
+          >Medicinal or Herbal Fruits</ion-select-option
+        >
+        <ion-select-option value="CommonlyGrownBackyardFruits"
+          >Commonly Grown Backyard Fruits</ion-select-option
+        >
+        <ion-select-option value="FruitsforExports"
+          >Fruits for Exports</ion-select-option
+        >
         <ion-select-option value="other">Other</ion-select-option>
       </ion-select>
-      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.type">
-        Type is required.
-      </ion-text>
+      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.type"
+        >Type is required.</ion-text
+      >
     </div>
+
     <!-- Variety -->
     <div class="form-group">
-      <label for="variety">Variety <span style="color: red">*</span></label>
+      <label for="variety">Variety <span class="required">*</span></label>
       <ion-input
         id="variety"
         type="text"
@@ -71,14 +89,14 @@
         placeholder="Enter fruits variety"
         required
       ></ion-input>
-      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.variety">
-        Variety is required.
-      </ion-text>
+      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.variety"
+        >Variety is required.</ion-text
+      >
     </div>
 
     <!-- Title -->
     <div class="form-group">
-      <label for="title">Title <span style="color: red">*</span></label>
+      <label for="title">Title <span class="required">*</span></label>
       <ion-input
         id="title"
         type="text"
@@ -88,15 +106,15 @@
         placeholder="Enter fruits title"
         required
       ></ion-input>
-      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.title">
-        Title is required.
-      </ion-text>
+      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.title"
+        >Title is required.</ion-text
+      >
     </div>
 
     <!-- Description (Optional) -->
     <div class="form-group">
       <label for="description"
-        >Description <span style="color: gray">(Optional)</span></label
+        >Description <span class="optional">(Optional)</span></label
       >
       <ion-textarea
         id="description"
@@ -109,7 +127,7 @@
     <!-- Images -->
     <div class="form-group">
       <label for="images"
-        >Images <span style="color: gray">(Optional)</span></label
+        >Images <span class="optional">(Optional)</span></label
       >
       <input
         id="images"
@@ -131,9 +149,7 @@
 
     <!-- Stock (Optional) -->
     <div class="form-group">
-      <label for="stock"
-        >Stock <span style="color: gray">(Optional)</span></label
-      >
+      <label for="stock">Stock <span class="optional">(Optional)</span></label>
       <ion-input
         id="stock"
         type="number"
@@ -145,7 +161,7 @@
 
     <!-- Units Dropdown -->
     <div class="form-group">
-      <label for="unit">Units <span style="color: red">*</span></label>
+      <label for="unit">Units <span class="required">*</span></label>
       <ion-select
         id="unit"
         name="unit"
@@ -159,14 +175,14 @@
         <ion-select-option value="mg">Milligram (mg)</ion-select-option>
         <ion-select-option value="oz">Ounce (oz)</ion-select-option>
       </ion-select>
-      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.unit">
-        Units selection is required.
-      </ion-text>
+      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.unit"
+        >Units selection is required.</ion-text
+      >
     </div>
 
     <!-- Amount -->
     <div class="form-group">
-      <label for="amount">Amount <span style="color: red">*</span></label>
+      <label for="amount">Amount <span class="required">*</span></label>
       <ion-input
         id="amount"
         type="number"
@@ -175,14 +191,14 @@
         placeholder="Enter amount"
         required
       ></ion-input>
-      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.amount">
-        Amount is required.
-      </ion-text>
+      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.amount"
+        >Amount is required.</ion-text
+      >
     </div>
 
     <!-- Price -->
     <div class="form-group">
-      <label for="price">Price <span style="color: red">*</span></label>
+      <label for="price">Price <span class="required">*</span></label>
       <ion-input
         id="price"
         type="number"
@@ -191,15 +207,15 @@
         placeholder="Enter price for the amount"
         required
       ></ion-input>
-      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.price">
-        Price is required.
-      </ion-text>
+      <ion-text color="danger" *ngIf="fruitsForm.submitted && !fruits.price"
+        >Price is required.</ion-text
+      >
     </div>
 
     <!-- Address (Optional) -->
     <div class="form-group">
       <label for="address"
-        >Address <span style="color: gray">(Optional)</span></label
+        >Address <span class="optional">(Optional)</span></label
       >
       <ion-input
         id="address"
@@ -212,7 +228,7 @@
 
     <!-- Mobile -->
     <div class="form-group">
-      <label for="mobile">Mobile <span style="color: red">*</span></label>
+      <label for="mobile">Mobile <span class="required">*</span></label>
       <ion-input
         id="mobile"
         type="tel"
@@ -224,9 +240,8 @@
       <ion-text
         color="danger"
         *ngIf="fruitsForm.submitted && !isValidMobile(fruits.mobile)"
+        >Please enter a valid 10-digit mobile number.</ion-text
       >
-        Please enter a valid 10-digit mobile number.
-      </ion-text>
     </div>
 
     <!-- Terms and Conditions -->
@@ -237,15 +252,13 @@
         required
       ></ion-checkbox>
       <ion-label
-        >Accept terms and conditions
-        <span style="color: red">*</span></ion-label
+        >Accept terms and conditions <span class="required">*</span></ion-label
       >
       <ion-text
         color="danger"
         *ngIf="fruitsForm.submitted && !fruits.acceptTerms"
+        >You must accept the terms and conditions.</ion-text
       >
-        You must accept the terms and conditions.
-      </ion-text>
     </ion-item>
 
     <!-- Submit Button -->
