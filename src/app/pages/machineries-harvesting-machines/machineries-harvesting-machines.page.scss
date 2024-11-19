@@ -1,125 +1,112 @@
-/* Minimal and modern look */
-ion-content {
-  --background: #f9f9f9; /* Light gray background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 16px;
-}
-
-/* Form container */
+/* General styling for form */
 form {
-  width: 100%;
-  max-width: 400px; /* Slightly smaller form width */
-  padding: 24px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Soft shadow for modern feel */
-  box-sizing: border-box;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto; /* Center the form */
+  max-width: 600px; /* Set maximum width for larger screens */
+  width: 100%; /* Adjust to screen size */
 }
 
-/* Form group layout */
+/* Form groups */
 .form-group {
-  margin-bottom: 20px; /* Consistent spacing between form elements */
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  ion-input,
+  ion-select,
+  ion-textarea {
+    width: 100%;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --background: #ffffff;
+    --box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    --border-radius: 8px;
+    --placeholder-color: #aaa;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  ion-text {
+    font-size: 0.85rem;
+    color: red;
+  }
+}
+
+/* Image preview styling */
+.image-preview {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  .preview-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 
-/* Label Styling */
-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333333; /* Neutral dark text color */
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
+/* Checkbox styling */
+ion-item {
+  --background: none;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
 
-/* Input fields */
-ion-input,
-ion-select,
-input[type="file"] {
-  width: 100%; /* Full width */
-  padding: 14px; /* Subtle increase in padding for comfort */
-  font-size: 14px;
-  border: 1px solid #e0e0e0; /* Light border for modern look */
-  border-radius: 6px; /* Slightly rounded corners */
-  background-color: #f5f5f5; /* Light gray background for input fields */
-  transition: border-color 0.3s ease; /* Smooth transition effect */
-  box-sizing: border-box;
-}
-
-ion-input:focus,
-ion-select:focus,
-input[type="file"]:focus {
-  border-color: #4caf50; /* Highlight the border on focus */
-  outline: none; /* Remove default focus outline */
-  background-color: #ffffff; /* White background when focused */
+  ion-label {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    color: #333;
+  }
 }
 
 /* Buttons */
 ion-button {
-  --border-radius: 30px; /* Rounded button */
-  --background: #4caf50;
-  --box-shadow: none; /* Remove shadow for a flat look */
-  margin-top: 16px;
+  --background: linear-gradient(90deg, #4caf50, #81c784);
+  --border-radius: 25px;
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
   font-weight: bold;
-  height: 48px;
-  width: 100%;
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
 }
 
-ion-button:hover {
-  --background: #388e3c; /* Darker green on hover */
+ion-button[disabled] {
+  --background: #ccc;
+  --box-shadow: none;
 }
 
-ion-button.add-spec-button {
-  --background: #81c784;
+/* Header */
+ion-header {
+  --background: #4caf50;
   --color: white;
-  height: 48px;
-  width: 100%;
-}
 
-/* Minimal file input styling */
-input[type="file"] {
-  padding: 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  text-align: center;
-  color: #4caf50;
-  border: 1px dashed #c8e6c9; /* Dashed border for file input */
-}
+  ion-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 
-/* Minimal image preview section */
-.image-preview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-.preview-img {
-  width: 80px; /* Slightly smaller preview */
-  height: 80px;
-  object-fit: cover;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-}
-
-/* Responsive Design - Adjust layout for larger screens */
-@media (min-width: 768px) {
-  form {
-      max-width: 100%; /* Full width on tablets */
-      padding: 32px;
+  ion-back-button,
+  ion-icon {
+    font-size: 1.2rem;
   }
 }
 
-@media (min-width: 1200px) {
-  form {
-      max-width: 100%; /* Full width on large screens */
-  }
+/* Content spacing */
+ion-content {
+  --padding-start: 1rem;
+  --padding-end: 1rem;
 }
