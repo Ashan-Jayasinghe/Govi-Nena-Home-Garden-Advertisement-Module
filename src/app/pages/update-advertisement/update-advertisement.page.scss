@@ -1,0 +1,140 @@
+/* General styling for form */
+form {
+  padding: 1.5rem;
+  background-color: #ffffff; /* Light background for contrast */
+  border-radius: 12px; /* Rounded corners for modern appeal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  margin: 2rem auto; /* Center the form and space it from top */
+  max-width: 650px; /* Maximum width for better structure on larger screens */
+  width: 100%; /* Ensure it adapts to smaller screens */
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    font-size: 1rem;
+    color: #333; /* Dark text for readability */
+    font-weight: 600; /* Emphasized labels */
+    margin-bottom: 0.5rem;
+  }
+
+  ion-input,
+  ion-textarea {
+    width: 100%;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --background: #f9f9f9; /* Light gray background for fields */
+    --box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 1rem;
+    color: #333;
+    margin-top: 0.5rem;
+  }
+
+  ion-text {
+    font-size: 0.875rem;
+    color: red; /* Error message styling */
+  }
+}
+
+/* Image preview styling */
+.image-preview {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  justify-content: center;
+
+  .preview-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for preview images */
+  }
+}
+
+/* Checkbox styling */
+ion-item {
+  --background: none;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+
+  ion-label {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    color: #333;
+  }
+}
+
+/* Buttons */
+ion-button {
+  --background: linear-gradient(
+    90deg,
+    #4caf50,
+    #81c784
+  ); /* Green gradient for buttons */
+  --border-radius: 25px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slight shadow for depth */
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  width: 100%; /* Full width for easy clicking */
+}
+
+ion-button[disabled] {
+  --background: #b0b0b0; /* Disabled button with gray background */
+  --box-shadow: none;
+}
+
+/* Header */
+ion-header {
+  --background: #4caf50; /* Green background for the header */
+  --color: white;
+
+  ion-title {
+    font-size: 1.3rem;
+    font-weight: 600; /* Bold title */
+    text-transform: uppercase;
+  }
+
+  ion-back-button,
+  ion-icon {
+    font-size: 1.3rem; /* Consistent size with title */
+  }
+}
+
+/* Content spacing */
+ion-content {
+  --padding-start: 1.5rem;
+  --padding-end: 1.5rem;
+  --padding-top: 2rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767px) {
+  form {
+    padding: 1rem; /* Reduced padding for mobile view */
+    max-width: 100%; /* Full width on mobile */
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem; /* Slightly smaller margins */
+  }
+
+  ion-input,
+  ion-textarea {
+    font-size: 0.95rem; /* Slightly smaller text for mobile */
+  }
+
+  ion-button {
+    padding: 0.8rem 1.4rem; /* Slightly smaller buttons */
+    font-size: 0.95rem; /* Smaller font for mobile */
+  }
+}

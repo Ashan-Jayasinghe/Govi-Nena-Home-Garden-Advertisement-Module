@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button
+        default-href="/search-chef"
+        color="light"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light"
+      >{{ advertisement.subcategory }} Update Form</ion-title
+    >
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="home" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="updateAd()">
+    <!-- Category -->
+    <ion-item>
+      <ion-label position="stacked">Category</ion-label>
+      <ion-input
+        [(ngModel)]="advertisement.category"
+        name="category"
+        type="text"
+        required
+        readonly
+      ></ion-input>
+    </ion-item>
+
+    <!-- Subcategory -->
+    <ion-item>
+      <ion-label position="stacked">Subcategory</ion-label>
+      <ion-input
+        [(ngModel)]="advertisement.subcategory"
+        name="subcategory"
+        type="text"
+        required
+        readonly
+      ></ion-input>
+    </ion-item>
+
+    <!-- Advertisement Title -->
+    <ion-item>
+      <ion-label position="stacked">Title</ion-label>
+      <ion-input
+        [(ngModel)]="advertisement.title"
+        name="title"
+        type="text"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Stock -->
+    <ion-item>
+      <ion-label position="stacked">Stock</ion-label>
+      <ion-input
+        [(ngModel)]="advertisement.stock"
+        name="stock"
+        type="number"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Address -->
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-input
+        [(ngModel)]="advertisement.address"
+        name="address"
+        type="text"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Mobile -->
+    <ion-item>
+      <ion-label position="stacked">Mobile</ion-label>
+      <ion-input
+        [(ngModel)]="advertisement.mobile"
+        name="mobile"
+        type="tel"
+        [pattern]="'[0-9]{10}'"
+        placeholder="Enter 10-digit mobile number"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Price -->
+    <ion-item>
+      <ion-label position="stacked">Price</ion-label>
+      <ion-input
+        [(ngModel)]="advertisement.price"
+        name="price"
+        type="number"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-textarea
+        [(ngModel)]="advertisement.description"
+        name="description"
+      ></ion-textarea>
+    </ion-item>
+
+    <!-- Submit Button -->
+    <ion-button
+      expand="full"
+      type="submit"
+      [disabled]="!advertisement.title || !advertisement.mobile"
+    >
+      Update Advertisement
+    </ion-button>
+  </form>
+</ion-content>

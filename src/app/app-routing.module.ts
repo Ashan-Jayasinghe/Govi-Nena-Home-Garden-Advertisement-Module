@@ -263,6 +263,10 @@ const routes: Routes = [
     path: 'report-ad',
     loadChildren: () => import('./pages/report-ad/report-ad.module').then( m => m.ReportAdPageModule)
   },
+  {
+    path: 'update-advertisement',
+    loadChildren: () => import('./pages/update-advertisement/update-advertisement.module').then( m => m.UpdateAdvertisementPageModule)
+  },
 
 ];
 

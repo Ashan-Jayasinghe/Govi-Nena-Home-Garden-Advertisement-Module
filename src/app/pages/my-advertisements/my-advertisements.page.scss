@@ -103,11 +103,29 @@ ion-button:disabled {
 }
 
 .section-Header {
-  font-size: 1.2rem;        // Moderate size for mobile
-  font-weight: 600;         // Semi-bold for prominence
-  color: #4CAF50;           // Subtle green color matching mobile themes
-  padding: 10px 0;          // Padding to give spacing from content
-  margin: 20px 0 10px;      // Margin to add spacing between sections
-  text-align: center;       // Center alignment for a clean look
-  border-bottom: 2px solid #e0e0e0;  // Light border for separation
+  font-size: 1.2rem; // Moderate size for mobile
+  font-weight: 600; // Semi-bold for prominence
+  color: #4caf50; // Subtle green color matching mobile themes
+  padding: 10px 0; // Padding to give spacing from content
+  margin: 20px 0 10px; // Margin to add spacing between sections
+  text-align: center; // Center alignment for a clean look
+  border-bottom: 2px solid #e0e0e0; // Light border for separation
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* Allows wrapping to a new line if space is insufficient */
+  justify-content: center; /* Center-align buttons */
+}
+
+.button-group ion-button {
+  flex: 1 1 auto; /* Makes buttons flexible and adjusts their width */
+  min-width: 120px; /* Ensures a minimum width for buttons */
+}
+
+@media (max-width: 400px) {
+  .button-group {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    gap: 5px; /* Reduce gap between buttons for smaller screens */
+  }
 }

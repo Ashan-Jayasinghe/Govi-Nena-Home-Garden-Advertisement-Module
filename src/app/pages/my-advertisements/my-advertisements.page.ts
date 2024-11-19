@@ -83,6 +83,7 @@ export class MyAdvertisementsPage implements OnInit {
 
   updateAdvertisement(ad: any) {
     this.router.navigate(['/update-advertisement'], { state: { advertisement: ad } });
+    console.log(ad);
   }
 
   deleteAdvertisement(ad: any) {

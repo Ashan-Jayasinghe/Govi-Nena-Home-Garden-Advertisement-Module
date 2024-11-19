@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="search-chef" color="light"></ion-back-button>
+      <ion-back-button
+        defaultHref="search-chef"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title color="light">My Advertisements</ion-title>
     <ion-buttons slot="end">
@@ -19,16 +22,23 @@
       <ion-col size="12">
         <h2 class="section-Header">Active Advertisements</h2>
       </ion-col>
-      
+
       <!-- Show message if no active ads -->
-      <ion-col *ngIf="activeAds.length === 0" size="12" style="text-align: center; color: grey;">
+      <ion-col
+        *ngIf="activeAds.length === 0"
+        size="12"
+        style="text-align: center; color: grey"
+      >
         <p>No active advertisements</p>
       </ion-col>
-      
+
       <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of activeAds">
         <div *ngIf="!ad.isExpired && ad.is_active">
           <ion-card class="advertisement-card active-advertisement">
-            <ion-img [src]="ad.images[0]" *ngIf="ad.images.length > 0"></ion-img>
+            <ion-img
+              [src]="ad.images[0]"
+              *ngIf="ad.images.length > 0"
+            ></ion-img>
             <ion-card-header>
               <ion-card-title>{{ ad.title }}</ion-card-title>
               <ion-card-subtitle>
@@ -37,14 +47,27 @@
             </ion-card-header>
             <ion-card-content>
               <p>{{ ad.description }}</p>
-              <ion-button expand="full" (click)="viewDetails(ad)" color="success">View</ion-button>
-              <ion-button [color]="ad.is_active ? 'secondary' : 'medium'" (click)="toggleActivation(ad)">
-                {{ ad.is_active ? 'Deactivate' : 'Activate' }}
-              </ion-button>
-              <div class="button-group" style="margin-top: 10px; display: flex; justify-content: space-between;">
+              <ion-button
+                expand="full"
+                (click)="viewDetails(ad)"
+                color="success"
+                >View</ion-button
+              >
+              <div class="button-group">
+                <!-- Activate/Deactivate Button -->
+                <ion-button
+                  [color]="ad.is_active ? 'secondary' : 'medium'"
+                  (click)="toggleActivation(ad)"
+                >
+                  {{ ad.is_active ? 'Deactivate' : 'Activate' }}
+                </ion-button>
+
+                <!-- Update Button -->
                 <ion-button color="primary" (click)="updateAdvertisement(ad)">
                   <ion-icon slot="start" name="create-outline"></ion-icon>Update
                 </ion-button>
+
+                <!-- Delete Button -->
                 <ion-button color="danger" (click)="deleteAdvertisement(ad)">
                   <ion-icon slot="start" name="trash-outline"></ion-icon>Delete
                 </ion-button>
@@ -58,16 +81,28 @@
       <ion-col size="12">
         <h2 class="section-Header">Deactivated Advertisements</h2>
       </ion-col>
-      
+
       <!-- Show message if no deactivated ads -->
-      <ion-col *ngIf="deactivatedAds.length === 0" size="12" style="text-align: center; color: grey;">
+      <ion-col
+        *ngIf="deactivatedAds.length === 0"
+        size="12"
+        style="text-align: center; color: grey"
+      >
         <p>No deactivated advertisements</p>
       </ion-col>
-      
-      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of deactivatedAds">
+
+      <ion-col
+        size="12"
+        size-md="6"
+        size-lg="4"
+        *ngFor="let ad of deactivatedAds"
+      >
         <div *ngIf="!(ad.isExpired) && !(ad.is_active)">
           <ion-card class="advertisement-card">
-            <ion-img [src]="ad.images[0]" *ngIf="ad.images.length > 0"></ion-img>
+            <ion-img
+              [src]="ad.images[0]"
+              *ngIf="ad.images.length > 0"
+            ></ion-img>
             <ion-card-header>
               <ion-card-title>{{ ad.title }}</ion-card-title>
               <ion-card-subtitle>
@@ -76,11 +111,26 @@
             </ion-card-header>
             <ion-card-content>
               <p>{{ ad.description }}</p>
-              <ion-button expand="full" (click)="viewDetails(ad)" color="success">View</ion-button>
-              <ion-button [color]="ad.is_active ? 'secondary' : 'medium'" (click)="toggleActivation(ad)">
+              <ion-button
+                expand="full"
+                (click)="viewDetails(ad)"
+                color="success"
+                >View</ion-button
+              >
+              <ion-button
+                [color]="ad.is_active ? 'secondary' : 'medium'"
+                (click)="toggleActivation(ad)"
+              >
                 {{ ad.is_active ? 'Deactivate' : 'Activate' }}
               </ion-button>
-              <div class="button-group" style="margin-top: 10px; display: flex; justify-content: space-between;">
+              <div
+                class="button-group"
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  justify-content: space-between;
+                "
+              >
                 <ion-button color="primary" (click)="updateAdvertisement(ad)">
                   <ion-icon slot="start" name="create-outline"></ion-icon>Update
                 </ion-button>
@@ -97,16 +147,23 @@
       <ion-col size="12">
         <h2 class="section-Header">Expired Advertisements</h2>
       </ion-col>
-      
+
       <!-- Show message if no expired ads -->
-      <ion-col *ngIf="expiredAds.length === 0" size="12" style="text-align: center; color: grey;">
+      <ion-col
+        *ngIf="expiredAds.length === 0"
+        size="12"
+        style="text-align: center; color: grey"
+      >
         <p>No expired advertisements</p>
       </ion-col>
-      
+
       <ion-col size="12" size-md="6" size-lg="4" *ngFor="let ad of expiredAds">
         <div *ngIf="ad.isExpired">
           <ion-card class="advertisement-card expired-advertisement">
-            <ion-img [src]="ad.images[0]" *ngIf="ad.images.length > 0"></ion-img>
+            <ion-img
+              [src]="ad.images[0]"
+              *ngIf="ad.images.length > 0"
+            ></ion-img>
             <ion-card-header>
               <ion-card-title>{{ ad.title }}</ion-card-title>
               <ion-card-subtitle>
@@ -115,7 +172,9 @@
             </ion-card-header>
             <ion-card-content>
               <p>{{ ad.description }}</p>
-              <ion-button expand="full" color="medium" disabled>Expired</ion-button>
+              <ion-button expand="full" color="medium" disabled
+                >Expired</ion-button
+              >
             </ion-card-content>
           </ion-card>
         </div>
